@@ -1,101 +1,112 @@
 ---
 name: "swe:capture-knowledge"
-description: "Investigate a codebase and its documentation to identify important patterns, conventions, and architectural decisions that are not yet captured in agent rules or skills, then draft entries for review before saving."
+description: >-
+  Audits a repository's code and docs to find important conventions, workflows,
+  and architectural decisions that are missing from agent-facing guidance, then
+  drafts review-ready updates. Use when a user says `capture repo knowledge`,
+  `document implicit conventions`, `turn repo patterns into agent rules`, or
+  asks what future agents should remember about a codebase. Do NOT use for a
+  generic repo tour, onboarding walkthrough, or architecture summary that does
+  not need reusable guidance updates.
+compatibility: >-
+  Requires a local repository checkout plus access to docs and existing
+  agent-facing guidance files. Works best with shell access and standard repo
+  discovery tools such as `git`, `fd`, and `rg`.
 metadata:
   short-description: Draft missing repo knowledge for agent review
 ---
 
 # SWE Capture Knowledge
 
-Use this skill when the user wants to extract important implicit knowledge from a repository and turn it into reusable agent guidance.
+## What This Skill Does
 
-## Goal
+Use this skill to convert implicit repo knowledge into explicit guidance that
+future agents can follow reliably.
 
-Investigate the codebase and documentation to identify the most important patterns, conventions, and architectural decisions that are not yet captured in agent rules, skills, or other agent-facing guidance.
+The job is not to summarize the repo. The job is to compare:
 
-Draft the missing entries, present them for user review, and do not save anything until the user explicitly approves.
+- What the repo actually does
+- What the existing agent guidance already says
+- What high-signal guidance is still missing
 
-## What To Optimize For
+Then draft the missing entries and stop for review before writing anything.
 
-- High-signal knowledge that will help future agents
-- Concrete evidence from code and docs
-- Gaps between actual practice and existing agent guidance
-- Small set of impactful entries rather than exhaustive capture
-- Explicit review before any write
+## When To Use
 
-## Hard Constraint
+Use this skill when the user wants to:
 
-Do not save proposed entries automatically.
+- Capture undocumented repo conventions
+- Turn repeated implementation patterns into reusable agent guidance
+- Find what current rules or skills are missing
+- Draft agent-facing guidance updates before saving them
 
-Always:
+## Do Not Use
 
-1. Investigate
-2. Draft candidate entries
-3. Ask the user to review
-4. Save only after explicit approval
+Do not use this skill for:
 
-## Required Workflow
+- A general repo orientation report with no writing goal
+- A broad architecture review that will not produce guidance updates
+- A documentation audit for human-facing docs only
+- Automatic write-back without an explicit review step
 
-1. Inspect the repository structure and key documentation.
-2. Read the existing agent guidance in scope, such as:
-   - Agent rules
-   - Existing skills
-   - Workflow docs
-   - Repository guidance files
-3. Inspect implementation patterns in the codebase to understand how the system is actually built and maintained.
-4. Identify important conventions or decisions that appear repeatedly but are not already captured in agent-facing guidance.
-5. Prioritize only the most impactful missing knowledge.
-6. Draft candidate entries with evidence and a proposed destination.
-7. Present the entries to the user for review before saving.
-8. Only after approval, write the accepted entries to the appropriate files.
+## Inputs To Confirm
 
-## What To Look For
+Before doing deep work, confirm or infer:
 
-Focus on knowledge such as:
+- The repo or paths in scope
+- Which guidance files count as agent-facing guidance
+- Whether the user wants draft-only output or draft-plus-write after approval
+- Any write restrictions for where approved entries may be saved
+
+If the scope is missing, ask for the narrowest clarification needed before
+proceeding.
+
+## Instructions
+
+### Step 1: Inventory Existing Guidance
+
+Inspect the current agent-facing guidance first, such as:
+
+- `AGENTS.md`, `CLAUDE.md`, and repo-level workflow docs
+- Existing skills
+- Agent rules, prompts, or operating docs
+- Any docs that future agents are expected to follow
+
+Capture what is already documented so you do not restate it later.
+
+### Step 2: Inspect Repo Reality
+
+Inspect the codebase, configs, tests, and representative implementations to
+understand how the repo is actually built and maintained.
+
+Focus on repeated or operationally important patterns such as:
 
 - Architectural boundaries
-- Service ownership patterns
-- Naming conventions
-- File placement conventions
+- Naming and file placement conventions
+- Testing and release expectations
 - Dependency or package management norms
-- Testing expectations
-- Deployment or release conventions
-- Common extension points
-- Repeated implementation patterns
-- Local rules that differ from framework defaults
+- Repeated extension points or adapter patterns
+- Local rules that override framework defaults
+
+### Step 3: Identify Real Knowledge Gaps
+
+Compare observed repo behavior against the existing guidance and keep only the
+highest-signal gaps.
+
+Prioritize:
+
+- Patterns that show up repeatedly
+- Decisions that will change future agent behavior
+- Guidance that is currently absent or materially under-specified
 
 Avoid:
 
-- Generic advice that would apply to any repository
-- Low-value trivia
+- Generic advice that applies to any repository
+- Trivia that will not change agent behavior
 - One-off exceptions unless they are operationally important
-- Broad restatements of documentation already captured in rules or skills
+- Restating guidance that is already documented well enough
 
-## Gap Analysis Rule
-
-Do not just summarize the repo.
-
-Instead:
-
-- Compare observed reality in the codebase and docs to what is already captured in agent rules or skills
-- Identify the missing knowledge that would most improve future agent behavior
-- Explain why each proposed entry is missing today
-
-## Evidence Rules
-
-- Ground every proposed entry in concrete repository evidence
-- Cite the files, directories, docs, configs, or code patterns that support the entry
-- Distinguish observed facts from inferred conventions
-- If an item is uncertain, present it as a candidate for confirmation rather than a rule
-
-## Output Requirements
-
-Produce a review packet with these sections:
-
-1. Existing guidance reviewed
-2. Candidate knowledge gaps
-3. Proposed entries for review
-4. Suggested save targets
+### Step 4: Draft A Review Packet
 
 For each proposed entry, include:
 
@@ -107,35 +118,98 @@ For each proposed entry, include:
 - Suggested destination
 - Confidence
 
-## Save Targets
+Ground every draft in concrete evidence from named files, directories, configs,
+or repeated code patterns. Distinguish observed facts from inferences.
 
-When suggesting where an approved entry should go, choose the narrowest appropriate target:
+### Step 5: Pause For Review
+
+Do not save proposed entries automatically.
+
+Always:
+
+1. Investigate
+2. Draft candidate entries
+3. Ask the user to review
+4. Save only after explicit approval
+
+If the user approves only a subset, save only that subset.
+
+### Step 6: Save Approved Entries Narrowly
+
+When writing approved entries, choose the narrowest correct destination:
 
 - Agent rules
-- A specific skill
-- A new skill
+- A specific existing skill
+- A new skill, if the pattern is large enough to deserve one
 - Repository documentation
 - Another agent-facing guidance file
 
 Explain why that destination is the right place.
 
-## Review Step
+## Output Requirements
 
-Before writing any files, ask the user to review the proposed entries.
+Produce a review packet with these sections:
 
-If the user approves only a subset:
+1. Existing guidance reviewed
+2. Candidate knowledge gaps
+3. Proposed entries for review
+4. Suggested save targets
 
-- Save only the approved subset
-- Leave the rest unchanged
+Prefer 3-7 strong entries over a long weak list.
 
-If the user requests edits:
+## Examples
 
-- Revise the entries first
-- Re-present them for review
+### Example 1
+
+User says: `Review this repo and capture the conventions future agents keep
+missing.`
+
+Actions:
+
+1. Inspect `AGENTS.md`, `README.md`, and existing skills
+2. Sample implementation patterns across the repo
+3. Draft only the missing guidance items with evidence
+4. Present them for review before writing
+
+Result: The user gets a small, high-signal review packet instead of a long repo
+summary.
+
+### Example 2
+
+User says: `Turn the implicit release workflow in this repo into agent guidance,
+but do not save anything until I approve it.`
+
+Actions:
+
+1. Inspect release docs, CI config, and recent release-related changes
+2. Compare those patterns to existing agent guidance
+3. Draft proposed workflow guidance with exact evidence
+4. Pause for approval
+
+Result: Draft guidance is ready for review with a clear suggested destination.
+
+## Troubleshooting
+
+### Problem: The Repo Already Has Extensive Guidance
+
+If the existing guidance already captures the important behavior, say so
+explicitly. Return `No material knowledge gaps found` rather than forcing weak
+proposals.
+
+### Problem: The Evidence Is Ambiguous
+
+Do not promote uncertainty into a rule. Present the item as a candidate for
+confirmation, explain what you observed, and state exactly what still needs to
+be verified.
+
+### Problem: The User Wants Immediate Write-Back
+
+If the user wants edits saved, you can prepare the write targets and draft text
+in the same pass, but still show the proposed entries before writing so the
+review step is explicit.
 
 ## Quality Bar
 
-- Prefer 3-7 strong entries over a long weak list
 - Keep entries concrete and reusable
 - Capture repo-specific behavior, not generic engineering advice
 - Make the review packet easy to approve or reject item by item
