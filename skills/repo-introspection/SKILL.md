@@ -1,19 +1,60 @@
 ---
 name: "swe:repo-introspection"
-description: "Inspect any software repository and produce a concrete, evidence-backed orientation report covering structure, tooling, conventions, active surfaces, and safe entry points for follow-on work."
+description: >-
+  Inspects an unfamiliar software repository and produces a concrete orientation
+  report covering structure, tooling, entry points, boundaries, active
+  surfaces, and safe places to start work. Use when a user says `help me
+  understand this repo`, `map this codebase before I edit it`, `where should I
+  start`, or asks for an engineering walkthrough before planning or delegation.
+  Do NOT use when the user already knows the target change and wants
+  implementation, or when they need a specific bug diagnosis rather than repo
+  orientation.
+compatibility: >-
+  Requires a local checkout and shell access. Works best with standard repo
+  inspection tools such as `fd`, `rg`, and `git`, plus access to repo docs or
+  CI configuration.
 metadata:
   short-description: Map a repo before changing it
 ---
 
 # SWE Repo Introspection
 
-Use this skill when the user wants to understand an unfamiliar repository before making changes, delegating work, or planning follow-on tasks.
+## What This Skill Does
 
-## Goal
+Use this skill to help an engineer or agent become productive in an unfamiliar
+codebase without guessing.
 
-Review the repository and produce a concise, concrete orientation report that helps an engineer or agent become productive quickly without guessing.
+The report should explain:
 
-The report should explain how the repository is organized, how it is likely operated, where the important boundaries are, and which areas look safest to touch next.
+- How the repository is organized
+- How it is likely operated
+- Where the important boundaries are
+- Which surfaces look safest to touch next
+
+## When To Use
+
+Use this skill when the user wants to:
+
+- Understand an unfamiliar repository before editing it
+- Prepare for delegation or planning
+- Map tooling, entry points, and boundaries
+- Find safe starting surfaces for follow-on work
+
+## Do Not Use
+
+Do not use this skill for:
+
+- Implementing a known change request
+- Debugging one specific defect
+- Writing a broad architecture vision that goes beyond visible repo evidence
+
+## Inputs To Confirm
+
+Confirm or infer:
+
+- Repo or package scope
+- Whether the user wants a whole-repo view or only selected directories
+- Whether recent activity or ownership context matters
 
 ## What To Optimize For
 
@@ -23,22 +64,55 @@ The report should explain how the repository is organized, how it is likely oper
 - Accurate identification of entry points and working surfaces
 - Explicit unknowns instead of speculation
 
-## Required Workflow
+## Instructions
 
-1. Inspect the repository root, major directories, and primary documentation.
-2. Identify the main languages, frameworks, package managers, and build or runtime tooling.
-3. Find likely entry points such as app starts, services, CLI commands, routes, workers, jobs, or library exports.
-4. Map the major code surfaces and their responsibilities.
-5. Identify test locations, validation commands, and any visible CI or automation surfaces.
-6. Inspect recent commits when useful to understand active areas or likely ownership.
-7. Summarize the safest and most relevant surfaces for follow-on work.
+### Step 1: Inspect The Root And Primary Docs
+
+Start with the repo root, major directories, and the main documentation files.
+
+### Step 2: Identify Tooling And Runtime Shape
+
+Find the main languages, frameworks, package managers, and build or runtime
+tooling.
+
+### Step 3: Locate Entry Points And Boundaries
+
+Find likely entry points such as:
+
+- App starts
+- Services
+- CLI commands
+- Routes
+- Workers
+- Jobs
+- Library exports
+
+Map the major code surfaces and their responsibilities.
+
+### Step 4: Capture Validation And Automation Surfaces
+
+Identify:
+
+- Test locations
+- Validation commands
+- CI or automation surfaces
+- Generated or machine-managed areas
+
+### Step 5: Note Active And Safe Areas
+
+Inspect recent commits when useful to understand active areas or likely
+ownership.
+
+Then summarize the safest and most relevant surfaces for follow-on work.
 
 ## Evidence Rules
 
-- Ground the report in specific files, directories, configs, commands, or recent commits.
-- Use direct repo evidence whenever possible.
-- If something is inferred rather than directly observed, label it as an inference.
-- If key information is missing, say so plainly.
+- Ground the report in specific files, directories, configs, commands, or
+  recent commits
+- Use direct repo evidence whenever possible
+- If something is inferred rather than directly observed, label it as an
+  inference
+- If key information is missing, say so plainly
 
 ## What To Look For
 
@@ -69,21 +143,69 @@ Provide a report with these sections:
 
 For each major area you describe, include:
 
-- Area / surface
+- Area or surface
 - Relevant files or directories
 - Responsibility
 - Why it matters
 
-For the "safe starting points" section, include:
+For the `safe starting points` section, include:
 
 - The area
 - Why it is relatively safe to touch
 - What kind of work is a good fit there
+
+## Examples
+
+### Example 1
+
+User says: `Before I change anything, help me understand this repo and where I
+should start.`
+
+Actions:
+
+1. Inspect the repo root, docs, and major directories
+2. Identify tooling, entry points, and boundaries
+3. Summarize active surfaces and safe starting points
+
+Result: The user gets a concrete orientation report for immediate follow-on
+work.
+
+### Example 2
+
+User says: `Map this monorepo and tell me which package is safest for a first
+small change.`
+
+Actions:
+
+1. Review package layout and runtime boundaries
+2. Identify validation commands and generated areas
+3. Recommend low-risk starting surfaces with reasons
+
+Result: The user gets a repo map plus a short list of safe entry points.
+
+## Troubleshooting
+
+### Problem: The Repo Has Little Or No Documentation
+
+Lean harder on direct evidence from configs, manifests, entry points, and test
+layout. Say explicitly that the mental model is code-derived rather than
+doc-backed.
+
+### Problem: The Monorepo Is Too Large For A Full Pass
+
+Narrow the scope to the packages or services most relevant to the user's next
+step. A partial but concrete map is better than a shallow global survey.
+
+### Problem: A Boundary Is Only Inferred
+
+Label it as an inference and explain what evidence supports it. Do not present
+hidden architecture as a fact.
 
 ## Quality Bar
 
 - Be concise but specific
 - Prefer named files and directories over generic descriptions
 - Distinguish facts from inferences
-- Do not pretend to understand hidden architecture that is not visible in the repo
+- Do not pretend to understand hidden architecture that is not visible in the
+  repo
 - Make the report useful for immediate follow-on engineering work

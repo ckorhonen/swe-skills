@@ -9,7 +9,7 @@ AI skill files and eval suites for streamlining SWE workflows.
 
 ## Conventions
 
-- Prefix every skill identifier/name with `swe:`.
+- Prefix every skill identifier or name with `swe:`.
 - Keep repo documentation aligned with the current install flow and file layout.
 
 ## Install
@@ -21,16 +21,41 @@ Use `npx skills install`.
 - Run `npm install` to install repo-local lint tooling and set up the Git hook.
 - Run `npm run lint:md` to check Markdown files.
 - Run `npm run lint:md:fix` to apply Markdown fixes.
-- Pre-commit runs `lint-staged`, which lints and auto-fixes staged Markdown files.
+- Pre-commit runs `lint-staged`, which lints and auto-fixes staged Markdown
+  files.
+
+## Authoring Conventions
+
+- Keep every skill name prefixed with `swe:` even though some generic external
+  skill guides use unprefixed kebab-case examples.
+- Write frontmatter descriptions so they clearly state what the skill does, when
+  to use it, and a few realistic trigger phrases.
+- Include explicit non-goals or negative triggers so skills do not overfire.
+- Prefer a consistent `SKILL.md` structure: what the skill does, when to use
+  it, inputs to confirm, instructions, output requirements, examples, and
+  troubleshooting.
+- Add `compatibility` notes when a skill depends on local checkout access,
+  GitHub metadata, observability tooling, or ecosystem-specific scanners.
 
 ## Skills
 
-- `swe:capture-knowledge`: Investigates a repo and its docs to find important uncaptured patterns or decisions, drafts proposed agent knowledge entries, and pauses for review before saving.
-- `swe:merged-pr-monitoring`: Reviews recently merged PRs, verifies deployment status, compares pre/post deploy production signals, and summarizes observable impact using any available monitoring stack.
-- `swe:repo-introspection`: Inspects any repository and produces a concrete orientation report covering structure, tooling, entry points, active surfaces, and safe places to start work.
-- `swe:refactor-opportunities`: Reviews a repository and returns a best-first shortlist of small, low-risk, high-leverage refactor tickets that are suitable for parallel execution.
-- `swe:recent-commit-bug-hunt`: Scans recent commits in a scoped set of repositories, finds likely bugs using concrete repo evidence only, and proposes minimal remediation sessions.
-- `swe:security-audit`: Splits a codebase into services or packages, audits each surface for vulnerabilities, outdated dependencies, and license issues, and compiles one evidence-backed report.
+- `swe:capture-knowledge`: Finds repo conventions or architectural decisions
+  missing from agent-facing guidance, drafts evidence-backed entries, and pauses
+  for review before any write-back.
+- `swe:merged-pr-monitoring`: Reviews merged PRs, confirms production
+  deployment, compares pre- and post-deploy signals, and summarizes observable
+  production impact.
+- `swe:repo-introspection`: Produces an evidence-backed repo orientation report
+  covering structure, tooling, entry points, boundaries, and safe starting
+  surfaces.
+- `swe:refactor-opportunities`: Returns a best-first backlog of small, low-risk,
+  high-leverage refactor tickets that can be executed independently.
+- `swe:recent-commit-bug-hunt`: Scans recent commits in a scoped set of
+  repositories, finds likely bugs using concrete repo evidence only, and
+  proposes minimal remediation sessions.
+- `swe:security-audit`: Splits a codebase into services or packages, audits each
+  surface for vulnerabilities, outdated dependencies, and license issues, and
+  compiles one evidence-backed report.
 
 ## Notes
 
