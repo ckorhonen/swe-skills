@@ -6,6 +6,15 @@ AI skill files and eval suites for streamlining SWE workflows.
 
 - `skills/` stores skill definitions.
 - `evals/` stores evaluation suites and fixtures.
+- `judges/` stores draft LLM-as-judge prompt assets for subjective eval
+  criteria.
+- `review-app/` stores the zero-dependency browser review interface.
+- `review-data/` stores local generated review datasets and saved review
+  results.
+- `scripts/` stores local repo utilities, including eval validation and
+  review-packet rendering.
+- `docs/plans/` stores design and implementation plans for substantive repo
+  changes.
 
 ## Conventions
 
@@ -21,6 +30,14 @@ Use `npx skills install`.
 - Run `npm install` to install repo-local lint tooling and set up the Git hook.
 - Run `npm run lint:md` to check Markdown files.
 - Run `npm run lint:md:fix` to apply Markdown fixes.
+- Run `npm run evals:check` to validate skill and eval asset structure.
+- Run `npm run evals:packet -- <skill-slug>` to render a review packet for one
+  skill.
+- Run `npm run judges:check` to validate draft judge prompt assets.
+- Run `npm run review:build-dataset` to generate local review datasets from the
+  current eval cases.
+- Run `npm run review:serve` to start the zero-dependency local review server
+  and open the browser UI manually if desired.
 - Pre-commit runs `lint-staged`, which lints and auto-fixes staged Markdown
   files.
 
@@ -56,6 +73,32 @@ Use `npx skills install`.
 - `swe:security-audit`: Splits a codebase into services or packages, audits each
   surface for vulnerabilities, outdated dependencies, and license issues, and
   compiles one evidence-backed report.
+
+## Eval Framework
+
+- Every skill should have a matching `evals/<skill-slug>/` directory.
+- Each eval set should include `README.md`, `rubric.md`, and `cases.json`.
+- Shared eval contracts live in `evals/shared/`.
+- Use binary pass/fail review for behavior evals.
+- Keep objective checks in code or validation scripts when possible.
+- Do not rely on LLM judges before there is labeled data to validate them.
+
+## Review Workflow
+
+- `npm run review:build-dataset` generates local JSON review datasets under
+  `review-data/datasets/`.
+- `npm run review:serve` starts a small local server for the browser review app.
+- The review app saves annotations to local JSON files under
+  `review-data/results/`.
+- Generated review data files stay local by default and are ignored by git.
+
+## Draft Judges
+
+- Judge prompts in `judges/` are draft assets only.
+- They are intended for subjective criteria such as scope discipline,
+  evidence-grounding, and actionability.
+- They are not validated and should not be treated as trusted evaluators until
+  enough human-labeled review data exists to run a proper train/dev/test split.
 
 ## Notes
 

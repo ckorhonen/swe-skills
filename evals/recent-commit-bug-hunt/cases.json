@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:recent-commit-bug-hunt",
+  "cases": [
+    {
+      "id": "recent-commit-bug-hunt-last-24h",
+      "title": "Last 24 hours with local git and validation available",
+      "tags": [
+        "happy-path",
+        "time-window"
+      ],
+      "user_request": "Review my commits from the last 24 hours and tell me what I probably broke, with the smallest safe fixes.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Git history, diffs, and targeted local validation are available.",
+          "The report should rank only evidence-backed findings."
+        ],
+        "available_artifacts": [
+          "Commit history",
+          "Diffs",
+          "Local validation",
+          "Optional CI status"
+        ]
+      },
+      "artifact_requirements": [
+        "scoped commit list",
+        "ranked findings",
+        "minimal remediation sessions"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Findings cite specific commits or changed files.",
+        "Weak signals are separated from fix proposals."
+      ],
+      "review_questions": [
+        "Does each proposed issue clearly tie back to one or more recent commits?",
+        "Does the report avoid generic cleanup ideas and stay behavior-focused?",
+        "Does every proposed remediation include a narrow validation path?"
+      ]
+    },
+    {
+      "id": "recent-commit-bug-hunt-single-commit",
+      "title": "Single commit review with a tight write surface",
+      "tags": [
+        "bounded-scope",
+        "single-commit"
+      ],
+      "user_request": "Inspect commit c9ad52f for likely regressions and suggest the smallest possible follow-up sessions.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The review must stay pinned to one commit.",
+          "The user wants fix sessions only if the evidence clears the bar."
+        ],
+        "available_artifacts": [
+          "Single commit diff",
+          "Relevant local checks"
+        ]
+      },
+      "artifact_requirements": [
+        "commit-scoped findings",
+        "weak-signal section",
+        "fix sessions only for evidence-backed issues"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "honest-unknowns",
+        "instruction-adherence"
+      ],
+      "static_checks": [
+        "The output does not drift into other commits or general repo health."
+      ],
+      "review_questions": [
+        "Does the analysis remain anchored to the requested commit?",
+        "Does it explicitly say when a suspicious signal is too weak for a fix proposal?",
+        "Are the follow-up sessions minimal enough to review quickly?"
+      ]
+    },
+    {
+      "id": "recent-commit-bug-hunt-overbroad-scope",
+      "title": "Overbroad request that should trigger scope discipline",
+      "tags": [
+        "edge-case",
+        "scope-control"
+      ],
+      "user_request": "Scan everything I changed this month and tell me all the bugs I introduced.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The requested window is broader than the skill's ideal focused review.",
+          "A conservative response should narrow the review or clearly state the limitations."
+        ],
+        "available_artifacts": [
+          "Long git history"
+        ]
+      },
+      "artifact_requirements": [
+        "scope clarification or narrowed plan",
+        "explicit limitation handling",
+        "no speculative bug list"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "honest-unknowns",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Avoids pretending a month-long sweep has the same confidence as a focused pass."
+      ],
+      "review_questions": [
+        "Does the response acknowledge the overly broad scope instead of overclaiming confidence?",
+        "Does it offer a narrower and more reliable review approach?",
+        "Does it avoid speculative bug findings unsupported by concrete evidence?"
+      ]
+    }
+  ]
+}

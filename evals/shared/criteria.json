@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "sharedCriteria": [
+    {
+      "id": "scope-discipline",
+      "title": "Scope Discipline",
+      "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+      "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+      "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+    },
+    {
+      "id": "concrete-evidence",
+      "title": "Concrete Evidence",
+      "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+      "passCondition": "Important claims cite specific evidence from the available sources.",
+      "failCondition": "The response relies on generic advice or unsupported assertions."
+    },
+    {
+      "id": "honest-unknowns",
+      "title": "Honest Unknowns",
+      "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+      "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+      "failCondition": "It presents guesses as facts or hides missing evidence."
+    },
+    {
+      "id": "actionable-output",
+      "title": "Actionable Output",
+      "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+      "passCondition": "The output is directly usable for follow-on work or review.",
+      "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+    },
+    {
+      "id": "instruction-adherence",
+      "title": "Instruction Adherence",
+      "description": "The response follows the skill's hard constraints and workflow guidance.",
+      "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+      "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+    },
+    {
+      "id": "reviewable-structure",
+      "title": "Reviewable Structure",
+      "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+      "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+      "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+    }
+  ]
+}

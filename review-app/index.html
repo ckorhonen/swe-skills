@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SWE Evals Review</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SWE Skills Review</p>
+          <h1>Eval Review Interface</h1>
+        </div>
+        <div class="topbar-controls">
+          <label class="control-group">
+            <span>Dataset</span>
+            <select id="dataset-select"></select>
+          </label>
+          <div class="save-status" id="save-status">Idle</div>
+        </div>
+      </header>
+
+      <section class="statusbar">
+        <div id="item-counter">0 of 0</div>
+        <div class="pill-row">
+          <span class="pill pill-pass">Pass <strong id="count-pass">0</strong></span>
+          <span class="pill pill-fail">Fail <strong id="count-fail">0</strong></span>
+          <span class="pill pill-defer">Defer <strong id="count-defer">0</strong></span>
+          <span class="pill pill-empty">Unlabeled <strong id="count-unlabeled">0</strong></span>
+        </div>
+        <label class="control-group jump-group">
+          <span>Jump to item ID</span>
+          <input id="jump-input" type="text" placeholder="case-id__synthetic-pass">
+        </label>
+      </section>
+
+      <main class="layout">
+        <section class="primary-panel">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow" id="skill-label">Skill</p>
+                <h2 id="item-title">Select a dataset</h2>
+              </div>
+              <div class="pill-row">
+                <span class="pill" id="variant-pill">Variant</span>
+                <span class="pill" id="case-pill">Case</span>
+              </div>
+            </div>
+            <div class="metadata-grid">
+              <div>
+                <span class="meta-label">User request</span>
+                <p id="user-request"></p>
+              </div>
+              <div>
+                <span class="meta-label">Repo path</span>
+                <p id="repo-path"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Candidate Output</h3>
+              <span class="meta-label" id="candidate-format">markdown</span>
+            </div>
+            <article class="candidate-output markdown-body" id="candidate-output"></article>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Review Decision</h3>
+              <p class="hint">Shortcuts: 1 pass, 2 fail, D defer, arrows navigate, U undo, Cmd/Ctrl+S save, Cmd/Ctrl+Enter save and next.</p>
+            </div>
+            <div class="decision-row">
+              <button class="decision-button pass" data-decision="Pass">Pass</button>
+              <button class="decision-button fail" data-decision="Fail">Fail</button>
+              <button class="decision-button defer" data-decision="Defer">Defer</button>
+            </div>
+            <label class="notes-field">
+              <span>Notes</span>
+              <textarea id="review-notes" rows="6" placeholder="Why did this pass or fail?"></textarea>
+            </label>
+          </div>
+
+          <div class="nav-row">
+            <button id="prev-button">Previous</button>
+            <button id="next-button">Next</button>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <div class="card">
+            <div class="card-header">
+              <h3>Shared Criteria</h3>
+            </div>
+            <div id="criteria-list" class="checklist"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Review Questions</h3>
+            </div>
+            <div id="question-list" class="checklist"></div>
+          </div>
+
+          <div class="card">
+            <details open>
+              <summary>Context And Artifacts</summary>
+              <div id="context-list" class="detail-stack"></div>
+              <div id="artifact-list" class="detail-stack"></div>
+            </details>
+          </div>
+
+          <div class="card">
+            <details>
+              <summary>Rubric</summary>
+              <div id="rubric-panel" class="detail-stack"></div>
+            </details>
+          </div>
+
+          <div class="card">
+            <details>
+              <summary>Reference</summary>
+              <div id="reference-panel" class="detail-stack"></div>
+            </details>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:security-audit",
+  "cases": [
+    {
+      "id": "security-audit-full-package-surface",
+      "title": "Audit the full package surface with native tooling",
+      "tags": [
+        "happy-path",
+        "dependency-audit"
+      ],
+      "user_request": "Run a dependency and package-surface security audit for this repo and summarize the real findings.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A package manifest and lockfile are present.",
+          "The report should stay focused on dependency and package-surface risk."
+        ],
+        "available_artifacts": [
+          "package.json",
+          "package-lock.json",
+          "npm audit or equivalent ecosystem-native tooling"
+        ]
+      },
+      "artifact_requirements": [
+        "audit unit definition",
+        "raw evidence",
+        "ranked findings"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Uses ecosystem-native tooling when available."
+      ],
+      "review_questions": [
+        "Does the report stay grounded in dependency or package-surface evidence rather than drifting into general code review?",
+        "Does it explain what was audited and why that uniting makes sense for the repo?",
+        "Are findings ranked with enough detail for a follow-on remediation decision?"
+      ]
+    },
+    {
+      "id": "security-audit-selected-scope",
+      "title": "Selected package scope with explicit boundaries",
+      "tags": [
+        "bounded-scope",
+        "selected-unit"
+      ],
+      "user_request": "Only audit the root Node package for dependency security and tell me what matters most.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The audit should stay on the selected package surface only."
+        ],
+        "available_artifacts": [
+          "Root package manifest",
+          "Root lockfile",
+          "Native audit tooling"
+        ]
+      },
+      "artifact_requirements": [
+        "scoped package audit",
+        "explicit out-of-scope note",
+        "ranked findings or clean report"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence"
+      ],
+      "static_checks": [
+        "Mentions what was intentionally left out of scope."
+      ],
+      "review_questions": [
+        "Does the report stay within the selected package surface?",
+        "Does it avoid broad claims about services or packages that were not audited?",
+        "Would the user understand the most important dependency risks for the chosen scope?"
+      ]
+    },
+    {
+      "id": "security-audit-tooling-gap",
+      "title": "Missing best-in-class tooling should be reported as a gap",
+      "tags": [
+        "edge-case",
+        "tooling-gap"
+      ],
+      "user_request": "Audit this repo for dependency vulnerabilities and license issues, but tell me plainly if the best scanner is unavailable.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Some preferred scanners may be unavailable locally.",
+          "The response should still use the strongest available checks."
+        ],
+        "available_artifacts": [
+          "Manifests",
+          "Lockfiles",
+          "Subset of local scanners"
+        ]
+      },
+      "artifact_requirements": [
+        "available-tool summary",
+        "raw evidence from executed checks",
+        "explicit coverage limitations"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "honest-unknowns",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "States what coverage was unavailable because tooling was missing."
+      ],
+      "review_questions": [
+        "Does the report use the strongest available checks without pretending missing tooling does not matter?",
+        "Does it clearly state what coverage remains incomplete?",
+        "Does it avoid manufacturing findings from tools that were never run?"
+      ]
+    }
+  ]
+}

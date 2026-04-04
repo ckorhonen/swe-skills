@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:capture-knowledge",
+  "cases": [
+    {
+      "id": "capture-knowledge-review-packet",
+      "title": "Draft a review packet for missing agent guidance",
+      "tags": [
+        "happy-path",
+        "draft-only"
+      ],
+      "user_request": "Compare this repo's current agent guidance to how the repo actually works and draft any missing high-signal entries for review.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "AGENTS.md and the current skill files count as existing guidance.",
+          "The user asked for draft output, not immediate write-back."
+        ],
+        "available_artifacts": [
+          "Repo docs",
+          "Existing skills",
+          "Git history"
+        ]
+      },
+      "artifact_requirements": [
+        "review packet or equivalent draft output",
+        "guidance gap list",
+        "evidence for each proposed entry"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Compares existing guidance against repo reality before proposing gaps.",
+        "Keeps the output in draft or review form."
+      ],
+      "review_questions": [
+        "Does the output clearly distinguish what is already documented from what is missing?",
+        "Are the proposed entries high-signal conventions that would change future agent behavior?",
+        "Does the response stop before write-back and preserve the requested review step?"
+      ]
+    },
+    {
+      "id": "capture-knowledge-narrow-guidance-gap",
+      "title": "Narrow guidance audit for install and workflow docs",
+      "tags": [
+        "bounded-scope",
+        "docs"
+      ],
+      "user_request": "Only inspect install and workflow guidance, then tell me what future agents should remember that is still missing.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Limit the audit to README.md, AGENTS.md, and directly related workflow docs.",
+          "Do not expand into a whole-repo guidance rewrite."
+        ],
+        "available_artifacts": [
+          "README.md",
+          "AGENTS.md",
+          "package.json"
+        ]
+      },
+      "artifact_requirements": [
+        "scoped findings",
+        "evidence references",
+        "suggested destination for each missing entry"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "honest-unknowns",
+        "actionable-output"
+      ],
+      "static_checks": [
+        "Keeps findings limited to install and workflow guidance."
+      ],
+      "review_questions": [
+        "Does the output stay within the requested documentation scope?",
+        "Does it avoid repackaging unrelated repo observations as guidance gaps?",
+        "Does each suggested entry have a plausible destination and reason to exist?"
+      ]
+    },
+    {
+      "id": "capture-knowledge-ambiguous-evidence",
+      "title": "Handle ambiguous conventions without overstating them",
+      "tags": [
+        "edge-case",
+        "ambiguous"
+      ],
+      "user_request": "Find undocumented repo conventions that future agents keep missing, but do not include anything unless the evidence is strong.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Some apparent patterns may only appear once.",
+          "Weak or ambiguous evidence should be called out and skipped."
+        ],
+        "available_artifacts": [
+          "Current repo files",
+          "Recent commits"
+        ]
+      },
+      "artifact_requirements": [
+        "ranked proposed entries",
+        "weak-signal items skipped",
+        "confidence or evidence notes"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "honest-unknowns",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Includes an explicit no-entry or skip decision for weak signals."
+      ],
+      "review_questions": [
+        "Does the output avoid turning one-off observations into conventions?",
+        "Does it explicitly separate strong evidence from weak signals?",
+        "Would a reviewer understand why each proposed entry matters and why skipped items were rejected?"
+      ]
+    }
+  ]
+}

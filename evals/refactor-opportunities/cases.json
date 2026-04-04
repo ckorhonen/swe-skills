@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:refactor-opportunities",
+  "cases": [
+    {
+      "id": "refactor-opportunities-small-ticket-backlog",
+      "title": "Best-first backlog of small parallelizable refactors",
+      "tags": [
+        "happy-path",
+        "ticket-backlog"
+      ],
+      "user_request": "Find a handful of small, low-risk refactor tickets we could hand to agents in parallel.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The user wants ticket-shaped recommendations, not a broad cleanup strategy."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Recent history"
+        ]
+      },
+      "artifact_requirements": [
+        "ranked ticket list",
+        "clear write boundaries",
+        "validation path per ticket"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Each ticket reads like an executable task rather than a theme."
+      ],
+      "review_questions": [
+        "Are the suggested refactors narrow enough to assign independently?",
+        "Does each ticket identify a concrete surface and expected validation?",
+        "Does the list avoid turning into architecture or style cleanup work?"
+      ]
+    },
+    {
+      "id": "refactor-opportunities-tailored-contributor",
+      "title": "Tailor suggestions to a contributor when history is present",
+      "tags": [
+        "bounded-scope",
+        "tailored"
+      ],
+      "user_request": "Give me a shortlist of refactors that make sense for the area I've been touching recently.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Recent contribution history is available.",
+          "The response should explicitly connect fit-to-contributor when possible."
+        ],
+        "available_artifacts": [
+          "Git history",
+          "Repo files"
+        ]
+      },
+      "artifact_requirements": [
+        "shortlist of tickets",
+        "fit-to-contributor rationale",
+        "concrete boundaries"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "actionable-output",
+        "honest-unknowns",
+        "instruction-adherence"
+      ],
+      "static_checks": [
+        "Mentions whether contribution history was used or unavailable."
+      ],
+      "review_questions": [
+        "Does the response tie at least some recommendations to the contributor's recent surfaces when that evidence exists?",
+        "Does it stay honest if the contribution signal is weak?",
+        "Are the tickets still low-risk and bounded even when tailored?"
+      ]
+    },
+    {
+      "id": "refactor-opportunities-thin-surface",
+      "title": "Few good refactors should yield a short or empty list",
+      "tags": [
+        "edge-case",
+        "thin-surface"
+      ],
+      "user_request": "Find refactor opportunities, but only suggest items that are genuinely small and safe.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The inspected surface may not contain many good candidates.",
+          "The correct answer might be a very short list."
+        ],
+        "available_artifacts": [
+          "Selected repo surface"
+        ]
+      },
+      "artifact_requirements": [
+        "short or empty recommendation list",
+        "reasoning for exclusions",
+        "no filler suggestions"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "honest-unknowns",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Avoids inventing weak refactors just to fill the list."
+      ],
+      "review_questions": [
+        "Does the response stay selective instead of padding the list with mediocre ideas?",
+        "Does it explain why larger or riskier candidates were excluded?",
+        "Would the final shortlist be safe to hand off without re-scoping?"
+      ]
+    }
+  ]
+}

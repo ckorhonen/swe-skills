@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:merged-pr-monitoring",
+  "cases": [
+    {
+      "id": "merged-pr-monitoring-confirmed-deploy",
+      "title": "Recent merged PRs with confirmed production deployment",
+      "tags": [
+        "happy-path",
+        "prod-impact"
+      ],
+      "user_request": "Review the last two merged PRs for this service, confirm whether they reached production, and summarize any observable impact.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "GitHub PR metadata, deploy logs, and service metrics are available.",
+          "The expected output is a short PR-by-PR report."
+        ],
+        "available_artifacts": [
+          "Merged PR metadata",
+          "Deploy logs",
+          "Metrics dashboards"
+        ]
+      },
+      "artifact_requirements": [
+        "scoped PR list",
+        "deployment confirmation evidence",
+        "PR-by-PR production impact summary"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Includes merge and deployment evidence before impact analysis."
+      ],
+      "review_questions": [
+        "Does the report tie each production claim back to a specific PR and deployment signal?",
+        "Does it compare a before-and-after window instead of making generic statements?",
+        "Would an engineer understand whether each PR changed production behavior or not?"
+      ]
+    },
+    {
+      "id": "merged-pr-monitoring-unconfirmed-deploy",
+      "title": "Deployment status cannot be confirmed",
+      "tags": [
+        "bounded-scope",
+        "missing-evidence"
+      ],
+      "user_request": "Tell me whether yesterday's merged changes hit production and what they did.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Merged PR metadata is available.",
+          "Deployment evidence is incomplete or missing."
+        ],
+        "available_artifacts": [
+          "Merged PR metadata",
+          "Partial CI records"
+        ]
+      },
+      "artifact_requirements": [
+        "scoped PR summary",
+        "explicit deployment uncertainty",
+        "no-impact overclaim guardrail"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "honest-unknowns",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Avoids claiming production impact when deployment cannot be confirmed."
+      ],
+      "review_questions": [
+        "Does the response stop short of claiming production impact without deploy proof?",
+        "Does it state exactly what evidence is missing?",
+        "Does it still provide a useful scoped readout rather than giving up entirely?"
+      ]
+    },
+    {
+      "id": "merged-pr-monitoring-conflicting-signals",
+      "title": "Conflicting metrics after deployment",
+      "tags": [
+        "edge-case",
+        "conflicting-data"
+      ],
+      "user_request": "Check whether the newest merged PR hurt production after it deployed.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Deployment is confirmed.",
+          "Different monitoring sources disagree about impact."
+        ],
+        "available_artifacts": [
+          "Deploy records",
+          "Latency dashboard",
+          "Error-rate dashboard",
+          "Tracing sample"
+        ]
+      },
+      "artifact_requirements": [
+        "deployed PR summary",
+        "cross-source comparison",
+        "cautious conclusion with uncertainty"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "honest-unknowns",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Calls out disagreement across data sources."
+      ],
+      "review_questions": [
+        "Does the report compare sources instead of cherry-picking one convenient metric?",
+        "Does it avoid overstating causality when the evidence conflicts?",
+        "Does it leave the user with a clear next question or follow-up check if uncertainty remains?"
+      ]
+    }
+  ]
+}

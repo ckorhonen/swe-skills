@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:repo-introspection",
+  "cases": [
+    {
+      "id": "repo-introspection-whole-repo-orientation",
+      "title": "Whole-repo orientation with safe starting points",
+      "tags": [
+        "happy-path",
+        "whole-repo"
+      ],
+      "user_request": "Before I change anything, help me understand this repo and where I should start.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Use repo docs, configs, directory structure, and recent commits as evidence.",
+          "The user wants a practical orientation report."
+        ],
+        "available_artifacts": [
+          "README.md",
+          "AGENTS.md",
+          "skills/",
+          "package.json",
+          "Git history"
+        ]
+      },
+      "artifact_requirements": [
+        "repository summary",
+        "structure map",
+        "tooling and validation notes",
+        "safe starting points"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "honest-unknowns",
+        "actionable-output",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Includes concrete file or directory references.",
+        "Mentions the repo's validation surface."
+      ],
+      "review_questions": [
+        "Does the report explain how the repo is organized using named files or directories?",
+        "Does it identify at least one low-risk area for follow-on work and explain why it is safe?",
+        "Does it distinguish direct observations from inferences where architecture is not explicit?"
+      ]
+    },
+    {
+      "id": "repo-introspection-bounded-surface",
+      "title": "Map only the requested local surface",
+      "tags": [
+        "bounded-scope",
+        "partial-repo"
+      ],
+      "user_request": "Only inspect the repo-introspection skill and the top-level README, then tell me what I need to know before editing that area.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The output should stay focused on the requested surfaces.",
+          "Do not expand into a whole-repo report."
+        ],
+        "available_artifacts": [
+          "skills/repo-introspection/SKILL.md",
+          "README.md"
+        ]
+      },
+      "artifact_requirements": [
+        "bounded structure summary",
+        "relevant validation notes",
+        "safe local edit guidance"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence"
+      ],
+      "static_checks": [
+        "The response stays limited to the requested surfaces."
+      ],
+      "review_questions": [
+        "Does the report stay within the requested local scope?",
+        "Does it still provide practical editing guidance rather than a generic partial summary?",
+        "Does it avoid claims about unrelated repo surfaces that were not inspected?"
+      ]
+    },
+    {
+      "id": "repo-introspection-inference-boundary",
+      "title": "Handle missing runtime entry points with explicit inferences",
+      "tags": [
+        "edge-case",
+        "unknowns"
+      ],
+      "user_request": "Find the main entry points and boundaries in this repo, and tell me what is only inferred.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repo is documentation-heavy and may not expose obvious runtime entry points.",
+          "The response should call out missing evidence clearly."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Package manifests",
+          "Git history"
+        ]
+      },
+      "artifact_requirements": [
+        "entry-point discussion",
+        "explicit inference labeling",
+        "unknowns or risks section"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "honest-unknowns",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Includes an explicit unknowns or risks section."
+      ],
+      "review_questions": [
+        "Does the output avoid inventing hidden runtime surfaces when the repo does not show them directly?",
+        "Does it clearly label which boundaries are observed and which are inferred?",
+        "Would a reader understand what evidence is missing before making larger architectural assumptions?"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Draft Judge Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "critique",
+    "result"
+  ],
+  "properties": {
+    "critique": {
+      "type": "string",
+      "minLength": 1
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "Pass",
+        "Fail"
+      ]
+    }
+  }
+}
