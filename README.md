@@ -73,6 +73,9 @@ Use `npx skills install`.
 - `swe:security-audit`: Splits a codebase into services or packages, audits each
   surface for vulnerabilities, outdated dependencies, and license issues, and
   compiles one evidence-backed report.
+- `swe:test-gap-hunt`: Detects the local test ecosystem, ranks high-value
+  coverage and weak-test gaps, and runs a bounded incremental pass that can be
+  repeated or scheduled over time.
 
 ## Eval Framework
 

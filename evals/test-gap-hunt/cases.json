@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:test-gap-hunt",
+  "cases": [
+    {
+      "id": "test-gap-hunt-coverage-and-weak-tests",
+      "title": "Rank real gaps when coverage and weak tests are both visible",
+      "tags": [
+        "happy-path",
+        "coverage",
+        "weak-tests"
+      ],
+      "user_request": "Find the highest-value test gaps in this workspace, fix the best small batch, and strengthen any obviously weak tests you touch.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Coverage artifacts and runnable tests exist.",
+          "Some code paths are technically covered by weak tests with shallow assertions."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage reports",
+          "Test files",
+          "Recent history"
+        ]
+      },
+      "artifact_requirements": [
+        "detected test tooling",
+        "ranked gap list",
+        "bounded execution plan",
+        "validation results"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Treats weak tests as real gaps instead of only listing uncovered files."
+      ],
+      "review_questions": [
+        "Does the response distinguish missing coverage from weak existing tests?",
+        "Are the selected fixes or proposed changes small enough for an incremental pass?",
+        "Does the validation plan stay narrow and realistic for the touched surfaces?"
+      ]
+    },
+    {
+      "id": "test-gap-hunt-no-coverage-report",
+      "title": "Stay honest when coverage reports are unavailable",
+      "tags": [
+        "edge-case",
+        "missing-signals"
+      ],
+      "user_request": "Improve test coverage in this repo, but use what's already here and don't invent a new framework.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "No trusted coverage artifact is available.",
+          "The repository has established test naming, helpers, and package scripts."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Test files",
+          "Package scripts",
+          "CI config"
+        ]
+      },
+      "artifact_requirements": [
+        "tooling detection",
+        "evidence-backed prioritization despite missing coverage report",
+        "honest unknowns",
+        "report or execution plan"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "honest-unknowns",
+        "instruction-adherence",
+        "scope-discipline"
+      ],
+      "static_checks": [
+        "Does not pretend a coverage percentage exists when the artifact is missing."
+      ],
+      "review_questions": [
+        "Does the response reuse local test conventions instead of suggesting a new framework?",
+        "Does it stay honest about the missing coverage signal while still ranking plausible opportunities?",
+        "Are the proposed improvements grounded in the inspected repo surface rather than generic test advice?"
+      ]
+    },
+    {
+      "id": "test-gap-hunt-scheduled-incremental-pass",
+      "title": "Model the workflow as a recurring incremental pass",
+      "tags": [
+        "loop-mode",
+        "scheduled",
+        "parallel"
+      ],
+      "user_request": "Set up the workflow I could run weekly: find the top test gaps, use subagents where safe, and leave a ranked backlog for the next pass.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The workspace is large enough that only a small batch should be touched in one run.",
+          "Some packages are cleanly separable, but others share helpers and fixtures."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage or CI signals",
+          "Test files",
+          "Workspace structure"
+        ]
+      },
+      "artifact_requirements": [
+        "incremental batch policy",
+        "safe subagent plan",
+        "central validation strategy",
+        "remaining backlog"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Leaves a ranked backlog instead of pretending the whole workspace should be fixed in one pass."
+      ],
+      "review_questions": [
+        "Does the response keep the run bounded enough for a recurring schedule?",
+        "Does it use parallel or subagent work only where write boundaries are clearly separated?",
+        "Would the resulting workflow improve confidence over time instead of just inflating coverage metrics?"
+      ]
+    }
+  ]
+}
