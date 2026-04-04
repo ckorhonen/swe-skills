@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:performance-hunt",
+  "cases": [
+    {
+      "id": "performance-hunt-measured-bottleneck-review",
+      "title": "Rank bottlenecks on a scoped flow using strong evidence",
+      "tags": [
+        "happy-path",
+        "performance"
+      ],
+      "user_request": "Find the main performance bottlenecks in this repo and give me the smallest high-value fixes to try first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository contains one or more performance-sensitive flows with code and supporting artifacts.",
+          "Profiler output, benchmarks, traces, query plans, or bundle analysis may be available for at least part of the scoped surface."
+        ],
+        "available_artifacts": [
+          "Application code",
+          "Benchmark or profiler artifacts",
+          "Performance-related configuration",
+          "Operational notes"
+        ]
+      },
+      "artifact_requirements": [
+        "scoped surface and metric",
+        "ranked bottlenecks",
+        "evidence-backed next steps",
+        "weak-signal section"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Stays focused on performance bottlenecks instead of drifting into a broad code review."
+      ],
+      "review_questions": [
+        "Does the response identify the specific flow or surface being optimized and the metric that matters?",
+        "Are the bottlenecks tied to concrete performance evidence or clearly labeled repo-grounded inference?",
+        "Would the proposed next steps be small enough to validate quickly?"
+      ]
+    },
+    {
+      "id": "performance-hunt-report-only-no-runtime-data",
+      "title": "Stay honest when runtime evidence is weak or missing",
+      "tags": [
+        "edge-case",
+        "missing-evidence",
+        "report-only"
+      ],
+      "user_request": "Do a report-only performance hunt on this codebase. If you do not have profiler or runtime data, say that clearly and tell me the smallest measurements to add first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repo has code and configs, but live profiler data, traces, or benchmark output may be missing.",
+          "The response should extract useful repo-grounded hotspots without overstating confidence."
+        ],
+        "available_artifacts": [
+          "Code",
+          "Config files",
+          "Partial or missing performance artifacts"
+        ]
+      },
+      "artifact_requirements": [
+        "available evidence summary",
+        "explicit limitations",
+        "ranked hotspots or clean report",
+        "measurement plan"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "honest-unknowns",
+        "instruction-adherence",
+        "scope-discipline"
+      ],
+      "static_checks": [
+        "States what could not be verified because runtime evidence was missing."
+      ],
+      "review_questions": [
+        "Does the response stay honest about missing profiler or runtime evidence?",
+        "Does it still extract useful repo-based hotspots without pretending they are measured bottlenecks?",
+        "Are the recommended next measurements small and specific enough to remove uncertainty?"
+      ]
+    },
+    {
+      "id": "performance-hunt-bounded-first-pass",
+      "title": "Bound an overbroad optimization request to one first pass",
+      "tags": [
+        "scope",
+        "incremental",
+        "bounded"
+      ],
+      "user_request": "Make this app fast. I want a performance hunt that finds the first bottlenecks to attack without turning into a massive rewrite plan.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The request is intentionally broad and should be narrowed to one performance surface and one target metric for a first pass.",
+          "The best response should leave a bounded follow-up backlog instead of pretending the whole app can be optimized at once."
+        ],
+        "available_artifacts": [
+          "Repo layout",
+          "Performance-sensitive code paths",
+          "Build or benchmark configuration",
+          "Recent change history"
+        ]
+      },
+      "artifact_requirements": [
+        "bounded first-pass scope",
+        "target metric",
+        "ranked first-pass backlog",
+        "remaining backlog"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Leaves a bounded next backlog instead of proposing a broad rewrite program."
+      ],
+      "review_questions": [
+        "Does the response narrow the optimization request to a usable first pass?",
+        "Does it focus on one critical metric and surface rather than the whole app at once?",
+        "Would the resulting backlog support iterative performance work instead of an open-ended rewrite?"
+      ]
+    }
+  ]
+}

@@ -83,6 +83,9 @@ Use `npx skills install`.
 - `swe:ownership-risk-map`: Maps bus-factor and ownership risk from repo
   evidence such as churn, CODEOWNERS coverage, test density, and orphaned or
   unclear-owner surfaces.
+- `swe:performance-hunt`: Hunts for concrete performance bottlenecks using
+  profiler output, benchmarks, traces, query plans, bundle analysis, or repo
+  evidence, then returns the smallest high-value experiments or fixes.
 - `swe:pr-risk-review`: Reviews open or draft pull requests for merge risk,
   focusing on missing validation, hidden coupling, rollout and rollback gaps,
   migrations, and feature-flag issues.
