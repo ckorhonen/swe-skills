@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:incident-followup-audit",
+  "cases": [
+    {
+      "id": "incident-followup-audit-complete-loop",
+      "title": "Complete follow-up loop with evidence across multiple artifacts",
+      "tags": [
+        "happy-path",
+        "complete-loop"
+      ],
+      "user_request": "Audit the follow-up from SEV-42 and tell me what engineering work is done, what is still open, and what the next backlog should be.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A postmortem, follow-up tickets, PRs, and some monitoring changes are available.",
+          "The report should distinguish completed follow-up from remaining backlog."
+        ],
+        "available_artifacts": [
+          "Postmortem",
+          "Follow-up tickets",
+          "Pull requests",
+          "CI/test results",
+          "Monitoring or alerting notes"
+        ]
+      },
+      "artifact_requirements": [
+        "incident scope",
+        "evidence reviewed",
+        "completed follow-up",
+        "ranked remaining backlog"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Separates completed follow-up from remaining backlog.",
+        "Does not drift into root-cause analysis."
+      ],
+      "review_questions": [
+        "Does the response stay anchored to the incident and its follow-up artifacts?",
+        "Does it clearly distinguish done, partial, missing, and unknown work?",
+        "Is the remaining backlog tight enough to be acted on without re-scoping?"
+      ]
+    },
+    {
+      "id": "incident-followup-audit-partial-evidence",
+      "title": "Partial evidence with gaps in tickets or monitoring updates",
+      "tags": [
+        "edge-case",
+        "missing-evidence"
+      ],
+      "user_request": "We have a postmortem for SEV-43, but I need an honest audit of what follow-up is actually proven and what is still unknown.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The postmortem exists, but linked tickets and some monitoring updates are incomplete or missing.",
+          "The skill should be conservative about any follow-up that cannot be proven."
+        ],
+        "available_artifacts": [
+          "Postmortem",
+          "A few PRs",
+          "Partial docs changes",
+          "Limited tracker visibility"
+        ]
+      },
+      "artifact_requirements": [
+        "explicit unknowns",
+        "evidence-backed follow-up status",
+        "narrow backlog or no-backlog explanation"
+      ],
+      "shared_criteria": [
+        "honest-unknowns",
+        "concrete-evidence",
+        "instruction-adherence",
+        "scope-discipline"
+      ],
+      "static_checks": [
+        "Does not treat missing evidence as proof that follow-up never happened."
+      ],
+      "review_questions": [
+        "Does the response stay honest about what cannot be proven from the available artifacts?",
+        "Does it avoid filling gaps with assumptions about tickets, tests, or monitoring?",
+        "Would a reader understand which follow-up steps are confirmed versus merely implied?"
+      ]
+    },
+    {
+      "id": "incident-followup-audit-overbroad-root-cause-request",
+      "title": "Overbroad request that should stay out of root cause",
+      "tags": [
+        "edge-case",
+        "scope-control"
+      ],
+      "user_request": "Explain why SEV-44 happened and list every bug we should fix across the repo.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The request asks for incident root cause and broad bug hunting, which is outside this skill's scope.",
+          "A correct response should narrow back to follow-up audit boundaries."
+        ],
+        "available_artifacts": [
+          "Incident references",
+          "Repo files",
+          "A postmortem stub"
+        ]
+      },
+      "artifact_requirements": [
+        "scope boundary",
+        "follow-up-only response",
+        "no root-cause analysis"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "instruction-adherence",
+        "honest-unknowns",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Does not answer root cause or broad bug hunting as if it were a follow-up audit."
+      ],
+      "review_questions": [
+        "Does the response explicitly stay within the follow-up audit boundary?",
+        "Does it avoid producing a speculative list of bugs or causes?",
+        "Does it redirect the user toward the right scope without losing helpfulness?"
+      ]
+    }
+  ]
+}

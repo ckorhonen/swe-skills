@@ -45,6 +45,9 @@ Use `npx skills install`.
 
 - Keep every skill name prefixed with `swe:` even though some generic external
   skill guides use unprefixed kebab-case examples.
+- Use `swe:create-skill` before creating or revising anything under `skills/`
+  and the matching `evals/` assets. It distills the Anthropic skill-building
+  guide into this repo's local authoring workflow.
 - Write frontmatter descriptions so they clearly state what the skill does, when
   to use it, and a few realistic trigger phrases.
 - Include explicit non-goals or negative triggers so skills do not overfire.
@@ -59,9 +62,30 @@ Use `npx skills install`.
 - `swe:capture-knowledge`: Finds repo conventions or architectural decisions
   missing from agent-facing guidance, drafts evidence-backed entries, and pauses
   for review before any write-back.
+- `swe:change-validation-planner`: Turns a scoped diff into the narrowest
+  trustworthy validation ladder, states what each step proves, and calls out
+  what remains unverified.
+- `swe:create-skill`: Distills Anthropic's skill-building guidance into this
+  repo's local workflow for authoring or revising `swe:` skills and matching
+  eval assets.
+- `swe:docs-drift-audit`: Audits human-facing and operational docs for drift
+  from code, config, interface, or workflow changes without turning into a
+  broad documentation rewrite.
+- `swe:incident-followup-audit`: Audits whether the engineering follow-up after
+  an incident actually happened, including tests, monitors, docs, ownership,
+  tickets, and the remaining backlog.
 - `swe:merged-pr-monitoring`: Reviews merged PRs, confirms production
   deployment, compares pre- and post-deploy signals, and summarizes observable
   production impact.
+- `swe:observability-gap-hunt`: Finds missing or weak logs, metrics, traces,
+  alerts, dashboards, and deployment-linked telemetry, then returns a ranked
+  backlog of observability blind spots.
+- `swe:ownership-risk-map`: Maps bus-factor and ownership risk from repo
+  evidence such as churn, CODEOWNERS coverage, test density, and orphaned or
+  unclear-owner surfaces.
+- `swe:pr-risk-review`: Reviews open or draft pull requests for merge risk,
+  focusing on missing validation, hidden coupling, rollout and rollback gaps,
+  migrations, and feature-flag issues.
 - `swe:repo-introspection`: Produces an evidence-backed repo orientation report
   covering structure, tooling, entry points, boundaries, and safe starting
   surfaces.

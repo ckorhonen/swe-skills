@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:pr-risk-review",
+  "cases": [
+    {
+      "id": "pr-risk-review-happy-path",
+      "title": "Balanced pre-merge review with visible evidence",
+      "tags": [
+        "happy-path",
+        "pre-merge"
+      ],
+      "user_request": "Review this open PR for merge risk and tell me what, if anything, still needs attention before I merge it.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The PR diff, title, and CI status are available.",
+          "The response should stay pre-merge and focus on engineering risk."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "PR diff",
+          "CI status",
+          "Changed files"
+        ]
+      },
+      "artifact_requirements": [
+        "scoped PR summary",
+        "risk surface mapping",
+        "ranked findings or clean report"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "instruction-adherence",
+        "actionable-output",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Keeps the review focused on merge risk rather than post-merge impact."
+      ],
+      "review_questions": [
+        "Does the response identify concrete PR surfaces rather than generic code review themes?",
+        "Does it distinguish merge risk from normal maintainability commentary?",
+        "Would the follow-up actions be small enough to execute before merge?"
+      ]
+    },
+    {
+      "id": "pr-risk-review-missing-validation",
+      "title": "Behavior change with weak or missing validation",
+      "tags": [
+        "edge-case",
+        "validation-gap"
+      ],
+      "user_request": "Is this PR safe to merge? I want the risk review to focus on missing tests or validation gaps.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The PR changes behavior in a visible way.",
+          "Validation signals are incomplete or do not cover the changed path well."
+        ],
+        "available_artifacts": [
+          "PR diff",
+          "Test files",
+          "CI checks",
+          "Local validation commands"
+        ]
+      },
+      "artifact_requirements": [
+        "validation assessment",
+        "missing-coverage finding or no-action call",
+        "small follow-up recommendation"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "honest-unknowns",
+        "instruction-adherence",
+        "scope-discipline"
+      ],
+      "static_checks": [
+        "Treats missing validation as a risk signal when the diff changes behavior."
+      ],
+      "review_questions": [
+        "Does the response explain why the validation is insufficient for the changed behavior?",
+        "Does it avoid turning a weak suspicion into a firm bug claim?",
+        "Does it recommend a targeted test or check instead of a broad rewrite?"
+      ]
+    },
+    {
+      "id": "pr-risk-review-rollout-gap",
+      "title": "Migration, flag, or rollback risk needs explicit handling",
+      "tags": [
+        "rollout",
+        "compatibility"
+      ],
+      "user_request": "Review the PR for rollout risk, especially migrations, feature flags, compatibility, and rollback safety.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The PR touches a rollout-sensitive surface such as a migration, config, or feature flag.",
+          "The response should call out missing ordering or fallback assumptions if they matter."
+        ],
+        "available_artifacts": [
+          "PR diff",
+          "Schema or migration files",
+          "Feature-flag or config changes",
+          "Rollback notes"
+        ]
+      },
+      "artifact_requirements": [
+        "rollout-risk assessment",
+        "compatibility or ordering note",
+        "recommended smallest safe next action"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "instruction-adherence",
+        "reviewable-structure",
+        "actionable-output"
+      ],
+      "static_checks": [
+        "Calls out rollout and rollback gaps instead of treating the PR as safe by default."
+      ],
+      "review_questions": [
+        "Does the response identify the rollout-sensitive surface clearly?",
+        "Does it mention ordering, compatibility, or rollback concerns where relevant?",
+        "Would the recommendation help the author make the PR safer without broadening scope?"
+      ]
+    }
+  ]
+}

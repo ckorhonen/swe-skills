@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:create-skill",
+  "cases": [
+    {
+      "id": "create-skill-new-repo-local-skill",
+      "title": "Create a new repo-local SWE skill with matching evals",
+      "tags": [
+        "happy-path",
+        "new-skill"
+      ],
+      "user_request": "Add a new `swe:` skill for a repeatable engineering workflow in this repo and include the matching eval assets.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository already contains several `swe:` skills and matching eval directories.",
+          "The response should follow the existing file and section conventions instead of inventing a new structure."
+        ],
+        "available_artifacts": [
+          "Existing `skills/*/SKILL.md` files",
+          "Existing `evals/*` assets",
+          "`README.md`",
+          "`AGENTS.md`"
+        ]
+      },
+      "artifact_requirements": [
+        "concrete use cases",
+        "repo-compliant skill package",
+        "matching eval scaffolding",
+        "guidance update plan"
+      ],
+      "shared_criteria": [
+        "instruction-adherence",
+        "actionable-output",
+        "reviewable-structure",
+        "scope-discipline"
+      ],
+      "static_checks": [
+        "Treats matching eval assets as part of the deliverable."
+      ],
+      "review_questions": [
+        "Does the response define the workflow boundary before drafting the skill?",
+        "Does it follow the repository's naming and file-layout conventions?",
+        "Would the resulting package be reviewable and ready for validation?"
+      ]
+    },
+    {
+      "id": "create-skill-overtriggering-revision",
+      "title": "Tighten an existing skill that currently over-triggers",
+      "tags": [
+        "revision",
+        "trigger-tuning"
+      ],
+      "user_request": "This skill keeps loading for unrelated requests. Revise it so the trigger boundary is tighter without rewriting the whole package.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The main problem is the frontmatter description and trigger scope, not the whole workflow body.",
+          "The revision should stay narrow and preserve the skill's core purpose."
+        ],
+        "available_artifacts": [
+          "Existing skill file",
+          "Matching eval assets",
+          "Nearby skill examples"
+        ]
+      },
+      "artifact_requirements": [
+        "over-trigger diagnosis",
+        "revised trigger strategy",
+        "minimal file touch plan",
+        "validation plan"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "instruction-adherence",
+        "actionable-output",
+        "concrete-evidence"
+      ],
+      "static_checks": [
+        "Prefers tightening the description and non-goals before broad structural rewrites."
+      ],
+      "review_questions": [
+        "Does the response focus on the trigger boundary instead of forcing a full rewrite?",
+        "Does it add realistic non-goals or negative triggers where appropriate?",
+        "Would the revised skill be less likely to load on unrelated requests?"
+      ]
+    },
+    {
+      "id": "create-skill-external-guide-distillation",
+      "title": "Distill an external guide into a repo-specific skill package",
+      "tags": [
+        "external-reference",
+        "distillation"
+      ],
+      "user_request": "Turn this external skill-building guide into a repo-local authoring skill that matches our conventions.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The external guide contains general best practices that must be adapted to this repository's conventions.",
+          "The response should distinguish imported best practices from repo-specific overrides."
+        ],
+        "available_artifacts": [
+          "External guide summary",
+          "Existing repo skills",
+          "Repo validator expectations"
+        ]
+      },
+      "artifact_requirements": [
+        "distilled authoring rules",
+        "repo-specific overrides",
+        "skill package structure",
+        "validation steps"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "instruction-adherence",
+        "reviewable-structure",
+        "actionable-output"
+      ],
+      "static_checks": [
+        "Adapts general guidance to repo-specific rules instead of copying it verbatim."
+      ],
+      "review_questions": [
+        "Does the response keep the external guidance useful while translating it into local repo rules?",
+        "Does it call out the important repo-specific overrides such as `swe:` names and matching eval directories?",
+        "Would a future agent have enough direction to author skills consistently from the distilled package?"
+      ]
+    }
+  ]
+}

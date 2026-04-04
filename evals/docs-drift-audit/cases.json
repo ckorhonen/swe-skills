@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:docs-drift-audit",
+  "cases": [
+    {
+      "id": "docs-drift-audit-recent-change-with-stale-readme",
+      "title": "Find stale README guidance after a repo change",
+      "tags": [
+        "happy-path",
+        "readme",
+        "recent-change"
+      ],
+      "user_request": "Audit the repo docs against this recent code or config change and tell me what is stale.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A recent change touched a workflow, command, or interface that should be reflected in human-facing docs.",
+          "The response should focus on the doc mismatch, not rewrite the whole README."
+        ],
+        "available_artifacts": [
+          "Recent commits or PR diff",
+          "Repo docs",
+          "Code/config/workflow surface"
+        ]
+      },
+      "artifact_requirements": [
+        "change surface",
+        "doc surface",
+        "evidence of drift",
+        "minimal fix"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Names the code or workflow surface before naming the stale doc."
+      ],
+      "review_questions": [
+        "Does the report tie the stale guidance to a concrete repo change?",
+        "Does it keep the fix narrowly scoped to the affected doc surface?",
+        "Would the user understand exactly what changed and why the doc is stale?"
+      ]
+    },
+    {
+      "id": "docs-drift-audit-ops-docs-drift",
+      "title": "Audit operational docs after a workflow or deployment change",
+      "tags": [
+        "operational-docs",
+        "runbook",
+        "workflow-drift"
+      ],
+      "user_request": "Check whether the operational docs and runbooks still match the current workflow after this change.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The inspected change touches an operational workflow, script, or deployment surface.",
+          "The most important docs may be a runbook, playbook, or setup guide rather than a README."
+        ],
+        "available_artifacts": [
+          "Runbooks",
+          "Operational docs",
+          "Workflow or deployment scripts",
+          "Recent history"
+        ]
+      },
+      "artifact_requirements": [
+        "operational doc inventory",
+        "drift ranking",
+        "smallest fix recommendation"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence"
+      ],
+      "static_checks": [
+        "Focuses on operational accuracy rather than style-only improvements."
+      ],
+      "review_questions": [
+        "Does the response include the docs that matter operationally, not just the most visible ones?",
+        "Does it avoid broad rewrite advice when a smaller fix would restore accuracy?",
+        "Would the result help someone operate or support the repo safely?"
+      ]
+    },
+    {
+      "id": "docs-drift-audit-no-confirmed-drift",
+      "title": "Stay honest when docs look stale but the evidence is weak",
+      "tags": [
+        "edge-case",
+        "honest-unknowns"
+      ],
+      "user_request": "Audit the docs drift for this repo, but only report concrete mismatches; call out anything uncertain.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository may have docs that look suspicious but lack a clear matching code change.",
+          "The response should distinguish confirmed drift from unverified suspicion."
+        ],
+        "available_artifacts": [
+          "Repo docs",
+          "Code and config",
+          "Recent history"
+        ]
+      },
+      "artifact_requirements": [
+        "confirmed findings or explicit no-drift result",
+        "uncertainty handling",
+        "follow-up evidence needs"
+      ],
+      "shared_criteria": [
+        "honest-unknowns",
+        "concrete-evidence",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Does not manufacture drift findings without a concrete mismatch."
+      ],
+      "review_questions": [
+        "Does the response clearly separate confirmed drift from suspicion?",
+        "Does it avoid turning uncertain issues into a concrete edit queue?",
+        "Would the user know whether any action is actually justified?"
+      ]
+    }
+  ]
+}

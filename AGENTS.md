@@ -22,6 +22,9 @@ This repository stores AI skill files and evaluation suites for SWE workflows.
 
 - Keep additions narrowly scoped.
 - Keep files small and reviewable.
+- Before creating or revising anything under `skills/` and the matching
+  `evals/` assets, use `swe:create-skill` first. It contains the repo-local,
+  distilled authoring guidance adapted from Anthropic's skill-building guide.
 - Co-locate related skill and eval assets in their feature directories.
 - Update `README.md` whenever repository structure, install flow, or skill/eval workflows change.
 - Do not land changes that make `README.md` materially inaccurate.

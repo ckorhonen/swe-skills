@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:ownership-risk-map",
+  "cases": [
+    {
+      "id": "ownership-risk-map-full-repo-hotspots",
+      "title": "Whole-repo pass with clear hot spots and follow-up actions",
+      "tags": [
+        "happy-path",
+        "hotspots"
+      ],
+      "user_request": "Map the ownership risk in this repo and tell me which surfaces are most likely to become a bus-factor problem.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Git history, tests, and repo documentation are available.",
+          "The response should rank the highest-risk surfaces and suggest small follow-up actions."
+        ],
+        "available_artifacts": [
+          "Git history",
+          "CODEOWNERS or similar metadata if present",
+          "Test files",
+          "Repo docs"
+        ]
+      },
+      "artifact_requirements": [
+        "scope statement",
+        "ranked ownership-risk surfaces",
+        "evidence-backed maintenance actions"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "The report distinguishes observed ownership signals from inferred risk."
+      ],
+      "review_questions": [
+        "Does the response rank risk surfaces instead of listing owners or contributors?",
+        "Does it use repo evidence like churn, tests, or ownership metadata?",
+        "Are the follow-up actions small and directly tied to ownership risk?"
+      ]
+    },
+    {
+      "id": "ownership-risk-map-bounded-scope",
+      "title": "Selected package scope with explicit boundaries",
+      "tags": [
+        "bounded-scope",
+        "selected-area"
+      ],
+      "user_request": "Only map ownership risk for the skill packages, not the whole repo.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The analysis should stay scoped to the selected directory.",
+          "The response should say what was intentionally left out of scope."
+        ],
+        "available_artifacts": [
+          "Selected folder files",
+          "Git history",
+          "Any ownership metadata in scope"
+        ]
+      },
+      "artifact_requirements": [
+        "explicit scope boundary",
+        "scoped risk ranking",
+        "out-of-scope note"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence"
+      ],
+      "static_checks": [
+        "The report does not broaden beyond the selected directory."
+      ],
+      "review_questions": [
+        "Does the response stay confined to the requested folder or package?",
+        "Does it avoid comments about unrelated surfaces?",
+        "Would the user understand why the selected scope was chosen?"
+      ]
+    },
+    {
+      "id": "ownership-risk-map-missing-ownership-signals",
+      "title": "Weak ownership metadata should produce honest unknowns",
+      "tags": [
+        "edge-case",
+        "missing-signals"
+      ],
+      "user_request": "Map ownership risk here, but ownership metadata is sparse and the commit history may not be enough to be confident.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "CODEOWNERS may be missing or incomplete.",
+          "The response should avoid inventing owners and should call out weak signals plainly."
+        ],
+        "available_artifacts": [
+          "Sparse git history",
+          "Partial ownership metadata",
+          "Repo docs and tests"
+        ]
+      },
+      "artifact_requirements": [
+        "honest unknowns",
+        "weak-signal section",
+        "small evidence-gathering suggestions"
+      ],
+      "shared_criteria": [
+        "honest-unknowns",
+        "concrete-evidence",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "The response does not fabricate a maintainer list when evidence is weak."
+      ],
+      "review_questions": [
+        "Does the response explicitly say when ownership evidence is insufficient?",
+        "Does it avoid overconfident claims about who owns a surface?",
+        "Does it suggest the smallest next evidence-gathering step?"
+      ]
+    }
+  ]
+}

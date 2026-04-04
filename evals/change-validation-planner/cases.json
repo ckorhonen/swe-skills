@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:change-validation-planner",
+  "cases": [
+    {
+      "id": "change-validation-planner-small-surface-ladder",
+      "title": "Plan a narrow validation ladder for a small local change",
+      "tags": [
+        "happy-path",
+        "narrow-surface"
+      ],
+      "user_request": "Given this small diff in one package, tell me the narrowest trustworthy validation plan and what it still does not prove.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The change touches one package and one visible contract.",
+          "Targeted tests and a package-level lint or typecheck command exist."
+        ],
+        "available_artifacts": [
+          "Changed files",
+          "Package scripts",
+          "Test files",
+          "CI config"
+        ]
+      },
+      "artifact_requirements": [
+        "change surface identification",
+        "ordered validation ladder",
+        "residual risk statement",
+        "recommended stopping point"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "honest-unknowns",
+        "actionable-output"
+      ],
+      "static_checks": [
+        "Starts with a narrow check before broader validation."
+      ],
+      "review_questions": [
+        "Does the plan stay bounded to the touched surface?",
+        "Does it explain what each command proves and why it is ordered that way?",
+        "Does it clearly say what remains unverified after the recommended checks?"
+      ]
+    },
+    {
+      "id": "change-validation-planner-cross-boundary-change",
+      "title": "Validate a change that crosses a package or service boundary",
+      "tags": [
+        "boundary-change",
+        "medium-scope"
+      ],
+      "user_request": "This diff crosses a boundary between a shared module and a consumer. Plan the validation from narrow to broad without overdoing it.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The change affects more than one surface, so a staged validation ladder is needed.",
+          "Broader checks may be justified, but only after the narrower ones."
+        ],
+        "available_artifacts": [
+          "Diff",
+          "Repository layout",
+          "Validation scripts",
+          "CI workflow"
+        ]
+      },
+      "artifact_requirements": [
+        "surface mapping",
+        "staged checks",
+        "confidence boundary",
+        "scope-limited recommendation"
+      ],
+      "shared_criteria": [
+        "instruction-adherence",
+        "honest-unknowns",
+        "reviewable-structure",
+        "actionable-output"
+      ],
+      "static_checks": [
+        "Does not jump directly to the broadest suite."
+      ],
+      "review_questions": [
+        "Does the plan acknowledge the cross-boundary risk without expanding into generic QA?",
+        "Are the validation steps staged so broader checks come only if needed?",
+        "Would a reviewer be able to see exactly what is and is not proven?"
+      ]
+    },
+    {
+      "id": "change-validation-planner-missing-validation-path",
+      "title": "Stay honest when the repo has no obvious validation path",
+      "tags": [
+        "edge-case",
+        "missing-signals"
+      ],
+      "user_request": "I changed some code, but I cannot find a good test or build command. Tell me what can still be validated and what is missing.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repo has limited or unclear validation scripts for the touched surface.",
+          "The answer should not invent confidence or recommend a fake substitute."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Package scripts",
+          "CI config",
+          "Changed files"
+        ]
+      },
+      "artifact_requirements": [
+        "honest unknowns",
+        "available checks summary",
+        "unverified items",
+        "fallback recommendation"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "honest-unknowns",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Does not pretend a strong validation path exists when it does not."
+      ],
+      "review_questions": [
+        "Does the response clearly separate real validation from missing evidence?",
+        "Does it avoid telling the user to run arbitrary broad checks just to sound complete?",
+        "Would the user know what additional validation or repo support is missing?"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:observability-gap-hunt",
+  "cases": [
+    {
+      "id": "observability-gap-hunt-full-surface-review",
+      "title": "Rank real telemetry blind spots on a service surface",
+      "tags": [
+        "happy-path",
+        "telemetry"
+      ],
+      "user_request": "Audit this repo for missing observability coverage and give me the best small backlog of fixes.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository contains several deployable surfaces with code, configs, and operational docs.",
+          "The response should stay focused on logs, metrics, traces, alerts, dashboards, and release-linked telemetry."
+        ],
+        "available_artifacts": [
+          "Application code",
+          "Service configuration",
+          "Observability configuration",
+          "Operational docs"
+        ]
+      },
+      "artifact_requirements": [
+        "audit units",
+        "evidence-backed gaps",
+        "ranked backlog",
+        "unknowns"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Stays on observability coverage instead of drifting into general performance tuning."
+      ],
+      "review_questions": [
+        "Does the response identify the specific service or workflow surfaces that matter most operationally?",
+        "Are the gaps grounded in visible repo or tooling evidence rather than generic telemetry advice?",
+        "Would the backlog be usable for a small follow-up pass?"
+      ]
+    },
+    {
+      "id": "observability-gap-hunt-missing-external-telemetry",
+      "title": "Stay honest when live telemetry tools are unavailable",
+      "tags": [
+        "edge-case",
+        "missing-signals"
+      ],
+      "user_request": "Find observability gaps in this repo, but tell me plainly if dashboards, alerts, or external metrics systems are not available.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repo has code and local configs, but external observability systems may not be connected.",
+          "The response should still rank likely gaps from repo evidence and call out what could not be verified."
+        ],
+        "available_artifacts": [
+          "Code",
+          "Config files",
+          "Runbooks",
+          "Partial or missing external telemetry access"
+        ]
+      },
+      "artifact_requirements": [
+        "available-signal summary",
+        "explicit limitations",
+        "ranked findings or clean report"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "honest-unknowns",
+        "instruction-adherence",
+        "scope-discipline"
+      ],
+      "static_checks": [
+        "States what could not be verified because telemetry sources were unavailable."
+      ],
+      "review_questions": [
+        "Does the response stay honest about missing observability sources?",
+        "Does it still extract useful evidence from the repo instead of giving up?",
+        "Are the conclusions clearly labeled as observed versus inferred?"
+      ]
+    },
+    {
+      "id": "observability-gap-hunt-recurring-incremental-pass",
+      "title": "Model the workflow as a repeatable scheduled pass",
+      "tags": [
+        "scheduled",
+        "incremental",
+        "parallel"
+      ],
+      "user_request": "Set up a recurring observability review that finds the top telemetry gaps, uses disjoint work only when safe, and leaves a backlog for next time.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The workspace is large enough that only a small batch should be handled in one pass.",
+          "Some services or packages may be separable, but shared telemetry helpers should not be split carelessly."
+        ],
+        "available_artifacts": [
+          "Repo layout",
+          "Observability configs",
+          "Operational docs",
+          "Recent change history"
+        ]
+      },
+      "artifact_requirements": [
+        "incremental batch policy",
+        "safe parallel plan",
+        "central ranking",
+        "remaining backlog"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "actionable-output",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Leaves a bounded backlog instead of pretending the entire workspace should be fixed at once."
+      ],
+      "review_questions": [
+        "Does the response keep the pass bounded enough to repeat on a schedule?",
+        "Does it use parallel work only where the write surfaces are clearly separated?",
+        "Would the resulting backlog help improve observability over time instead of just listing problems?"
+      ]
+    }
+  ]
+}
