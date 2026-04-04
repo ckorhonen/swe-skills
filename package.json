@@ -1,0 +1,21 @@
+{
+  "name": "swe-skills",
+  "private": true,
+  "scripts": {
+    "prepare": "simple-git-hooks",
+    "precommit": "lint-staged",
+    "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
+    "lint:md:fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\""
+  },
+  "devDependencies": {
+    "lint-staged": "^15.5.2",
+    "markdownlint-cli2": "^0.18.1",
+    "simple-git-hooks": "^2.13.1"
+  },
+  "lint-staged": {
+    "**/*.md": "markdownlint-cli2 --fix"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npm run precommit"
+  }
+}
