@@ -1,0 +1,1648 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "test-gap-hunt.synthetic",
+  "title": "swe:test-gap-hunt Synthetic Review Dataset",
+  "description": "Synthetic seed review items for swe:test-gap-hunt. Use these for UI smoke tests and rubric walk-throughs only.",
+  "generatedAt": "2026-04-05T19:08:59.828Z",
+  "source": {
+    "kind": "synthetic-seed",
+    "evalDirectory": "evals/test-gap-hunt"
+  },
+  "items": [
+    {
+      "itemId": "test-gap-hunt-coverage-and-weak-tests__synthetic-pass",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-coverage-and-weak-tests",
+      "title": "Rank real gaps when coverage and weak tests are both visible (likely pass)",
+      "variant": "pass",
+      "userRequest": "Find the highest-value test gaps in this workspace, fix the best small batch, and strengthen any obviously weak tests you touch.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Coverage artifacts and runnable tests exist.",
+          "Some code paths are technically covered by weak tests with shallow assertions."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage reports",
+          "Test files",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "detected test tooling",
+        "ranked gap list",
+        "bounded execution plan",
+        "validation results"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response distinguish missing coverage from weak existing tests?",
+        "Are the selected fixes or proposed changes small enough for an incremental pass?",
+        "Does the validation plan stay narrow and realistic for the touched surfaces?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Find the highest-value test gaps in this workspace, fix the best small batch, and strengthen any obviously weak tests you touch.\n- Primary boundary: Coverage artifacts and runnable tests exist.\n- Evidence reviewed: `Repo files`, `Coverage reports`, `Test files`\n\n## Draft swe:test-gap-hunt Output\n1. Detected test tooling: ground this in Repo files and keep it bounded to the requested surface.\n2. Ranked gap list: ground this in Coverage reports and keep it bounded to the requested surface.\n3. Bounded execution plan: ground this in Test files and keep it bounded to the requested surface.\n4. Validation results: ground this in Recent history and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- Some code paths are technically covered by weak tests with shallow assertions.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Treats weak tests as real gaps instead of only listing uncovered files."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Coverage reports",
+            "Test files",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-coverage-and-weak-tests__synthetic-nuanced-pass",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-coverage-and-weak-tests",
+      "title": "Rank real gaps when coverage and weak tests are both visible (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Find the highest-value test gaps in this workspace, fix the best small batch, and strengthen any obviously weak tests you touch.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Coverage artifacts and runnable tests exist.",
+          "Some code paths are technically covered by weak tests with shallow assertions."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage reports",
+          "Test files",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "detected test tooling",
+        "ranked gap list",
+        "bounded execution plan",
+        "validation results"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response distinguish missing coverage from weak existing tests?",
+        "Are the selected fixes or proposed changes small enough for an incremental pass?",
+        "Does the validation plan stay narrow and realistic for the touched surfaces?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Find the highest-value test gaps in this workspace, fix the best small batch, and strengthen any obviously weak tests you touch.\n- Reviewed first: `Repo files`, `Coverage reports`, `Test files`, `Recent history`\n\n## swe:test-gap-hunt Draft\n1. Detected test tooling: tie this to Repo files, then stop at the requested boundary.\n2. Ranked gap list: tie this to Coverage reports, then stop at the requested boundary.\n3. Bounded execution plan: tie this to Test files, then stop at the requested boundary.\n4. Validation results: tie this to Recent history, then stop at the requested boundary.\n\n## Labeled Unknowns\n- Coverage artifacts and runnable tests exist.\n- Some code paths are technically covered by weak tests with shallow assertions.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Treats weak tests as real gaps instead of only listing uncovered files."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Coverage reports",
+            "Test files",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-coverage-and-weak-tests__synthetic-fail",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-coverage-and-weak-tests",
+      "title": "Rank real gaps when coverage and weak tests are both visible (likely fail)",
+      "variant": "fail",
+      "userRequest": "Find the highest-value test gaps in this workspace, fix the best small batch, and strengthen any obviously weak tests you touch.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Coverage artifacts and runnable tests exist.",
+          "Some code paths are technically covered by weak tests with shallow assertions."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage reports",
+          "Test files",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "detected test tooling",
+        "ranked gap list",
+        "bounded execution plan",
+        "validation results"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response distinguish missing coverage from weak existing tests?",
+        "Are the selected fixes or proposed changes small enough for an incremental pass?",
+        "Does the validation plan stay narrow and realistic for the touched surfaces?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:test-gap-hunt is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"Coverage artifacts and runnable tests exist.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Treats weak tests as real gaps instead of only listing uncovered files."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Coverage reports",
+            "Test files",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-coverage-and-weak-tests__synthetic-evidence-thin",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-coverage-and-weak-tests",
+      "title": "Rank real gaps when coverage and weak tests are both visible (evidence thin fail)",
+      "variant": "evidence-thin",
+      "userRequest": "Find the highest-value test gaps in this workspace, fix the best small batch, and strengthen any obviously weak tests you touch.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Coverage artifacts and runnable tests exist.",
+          "Some code paths are technically covered by weak tests with shallow assertions."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage reports",
+          "Test files",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "detected test tooling",
+        "ranked gap list",
+        "bounded execution plan",
+        "validation results"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response distinguish missing coverage from weak existing tests?",
+        "Are the selected fixes or proposed changes small enough for an incremental pass?",
+        "Does the validation plan stay narrow and realistic for the touched surfaces?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Draft Findings\n1. Detected test tooling: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n2. Ranked gap list: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n3. Bounded execution plan: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n4. Validation results: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n\n## Confidence\n- I am treating the likely repo patterns as sufficient evidence and would not slow this down by checking exact files or commands."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Treats weak tests as real gaps instead of only listing uncovered files."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Coverage reports",
+            "Test files",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-coverage-and-weak-tests__synthetic-vague-output",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-coverage-and-weak-tests",
+      "title": "Rank real gaps when coverage and weak tests are both visible (vague output fail)",
+      "variant": "vague-output",
+      "userRequest": "Find the highest-value test gaps in this workspace, fix the best small batch, and strengthen any obviously weak tests you touch.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Coverage artifacts and runnable tests exist.",
+          "Some code paths are technically covered by weak tests with shallow assertions."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage reports",
+          "Test files",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "detected test tooling",
+        "ranked gap list",
+        "bounded execution plan",
+        "validation results"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response distinguish missing coverage from weak existing tests?",
+        "Are the selected fixes or proposed changes small enough for an incremental pass?",
+        "Does the validation plan stay narrow and realistic for the touched surfaces?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "There is probably a reasonable swe:test-gap-hunt response somewhere in this area, but I would keep the next step broad. The main recommendation is to review the available artifacts, think through the situation, and decide later whether a more detailed pass is worth doing. I would avoid committing to a concrete stopping point, validation plan, or ranked backlog until after a larger follow-up review."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Treats weak tests as real gaps instead of only listing uncovered files."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Coverage reports",
+            "Test files",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-no-coverage-report__synthetic-pass",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-no-coverage-report",
+      "title": "Stay honest when coverage reports are unavailable (likely pass)",
+      "variant": "pass",
+      "userRequest": "Improve test coverage in this repo, but use what's already here and don't invent a new framework.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "No trusted coverage artifact is available.",
+          "The repository has established test naming, helpers, and package scripts."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Test files",
+          "Package scripts",
+          "CI config"
+        ]
+      },
+      "artifactRequirements": [
+        "tooling detection",
+        "evidence-backed prioritization despite missing coverage report",
+        "honest unknowns",
+        "report or execution plan"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response reuse local test conventions instead of suggesting a new framework?",
+        "Does it stay honest about the missing coverage signal while still ranking plausible opportunities?",
+        "Are the proposed improvements grounded in the inspected repo surface rather than generic test advice?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Improve test coverage in this repo, but use what's already here and don't invent a new framework.\n- Primary boundary: No trusted coverage artifact is available.\n- Evidence reviewed: `Repo files`, `Test files`, `Package scripts`\n\n## Draft swe:test-gap-hunt Output\n1. Tooling detection: ground this in Repo files and keep it bounded to the requested surface.\n2. Evidence-backed prioritization despite missing coverage report: ground this in Test files and keep it bounded to the requested surface.\n3. Honest unknowns: ground this in Package scripts and keep it bounded to the requested surface.\n4. Report or execution plan: ground this in CI config and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- The repository has established test naming, helpers, and package scripts.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not pretend a coverage percentage exists when the artifact is missing."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Test files",
+            "Package scripts",
+            "CI config"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-no-coverage-report__synthetic-nuanced-pass",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-no-coverage-report",
+      "title": "Stay honest when coverage reports are unavailable (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Improve test coverage in this repo, but use what's already here and don't invent a new framework.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "No trusted coverage artifact is available.",
+          "The repository has established test naming, helpers, and package scripts."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Test files",
+          "Package scripts",
+          "CI config"
+        ]
+      },
+      "artifactRequirements": [
+        "tooling detection",
+        "evidence-backed prioritization despite missing coverage report",
+        "honest unknowns",
+        "report or execution plan"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response reuse local test conventions instead of suggesting a new framework?",
+        "Does it stay honest about the missing coverage signal while still ranking plausible opportunities?",
+        "Are the proposed improvements grounded in the inspected repo surface rather than generic test advice?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Improve test coverage in this repo, but use what's already here and don't invent a new framework.\n- Reviewed first: `Repo files`, `Test files`, `Package scripts`, `CI config`\n\n## swe:test-gap-hunt Draft\n1. Tooling detection: tie this to Repo files, then stop at the requested boundary.\n2. Evidence-backed prioritization despite missing coverage report: tie this to Test files, then stop at the requested boundary.\n3. Honest unknowns: tie this to Package scripts, then stop at the requested boundary.\n4. Report or execution plan: tie this to CI config, then stop at the requested boundary.\n\n## Labeled Unknowns\n- No trusted coverage artifact is available.\n- The repository has established test naming, helpers, and package scripts.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not pretend a coverage percentage exists when the artifact is missing."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Test files",
+            "Package scripts",
+            "CI config"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-no-coverage-report__synthetic-fail",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-no-coverage-report",
+      "title": "Stay honest when coverage reports are unavailable (likely fail)",
+      "variant": "fail",
+      "userRequest": "Improve test coverage in this repo, but use what's already here and don't invent a new framework.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "No trusted coverage artifact is available.",
+          "The repository has established test naming, helpers, and package scripts."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Test files",
+          "Package scripts",
+          "CI config"
+        ]
+      },
+      "artifactRequirements": [
+        "tooling detection",
+        "evidence-backed prioritization despite missing coverage report",
+        "honest unknowns",
+        "report or execution plan"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response reuse local test conventions instead of suggesting a new framework?",
+        "Does it stay honest about the missing coverage signal while still ranking plausible opportunities?",
+        "Are the proposed improvements grounded in the inspected repo surface rather than generic test advice?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:test-gap-hunt is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"No trusted coverage artifact is available.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not pretend a coverage percentage exists when the artifact is missing."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Test files",
+            "Package scripts",
+            "CI config"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-no-coverage-report__synthetic-scope-drift",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-no-coverage-report",
+      "title": "Stay honest when coverage reports are unavailable (scope drift fail)",
+      "variant": "scope-drift",
+      "userRequest": "Improve test coverage in this repo, but use what's already here and don't invent a new framework.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "No trusted coverage artifact is available.",
+          "The repository has established test naming, helpers, and package scripts."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Test files",
+          "Package scripts",
+          "CI config"
+        ]
+      },
+      "artifactRequirements": [
+        "tooling detection",
+        "evidence-backed prioritization despite missing coverage report",
+        "honest unknowns",
+        "report or execution plan"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response reuse local test conventions instead of suggesting a new framework?",
+        "Does it stay honest about the missing coverage signal while still ranking plausible opportunities?",
+        "Are the proposed improvements grounded in the inspected repo surface rather than generic test advice?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "I reviewed `Repo files`, `Test files`, `Package scripts` and there is probably a broader swe:test-gap-hunt cleanup to do. Beyond the requested task, I would expand this into a wider repo sweep, rewrite adjacent guidance, and plan follow-on work for unrelated surfaces before validating the original request. That larger sweep is likely more valuable than staying inside the bounded task the user asked for."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not pretend a coverage percentage exists when the artifact is missing."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Test files",
+            "Package scripts",
+            "CI config"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-no-coverage-report__synthetic-evidence-thin",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-no-coverage-report",
+      "title": "Stay honest when coverage reports are unavailable (evidence thin fail)",
+      "variant": "evidence-thin",
+      "userRequest": "Improve test coverage in this repo, but use what's already here and don't invent a new framework.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "No trusted coverage artifact is available.",
+          "The repository has established test naming, helpers, and package scripts."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Test files",
+          "Package scripts",
+          "CI config"
+        ]
+      },
+      "artifactRequirements": [
+        "tooling detection",
+        "evidence-backed prioritization despite missing coverage report",
+        "honest unknowns",
+        "report or execution plan"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response reuse local test conventions instead of suggesting a new framework?",
+        "Does it stay honest about the missing coverage signal while still ranking plausible opportunities?",
+        "Are the proposed improvements grounded in the inspected repo surface rather than generic test advice?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Draft Findings\n1. Tooling detection: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n2. Evidence-backed prioritization despite missing coverage report: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n3. Honest unknowns: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n4. Report or execution plan: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n\n## Confidence\n- I am treating the likely repo patterns as sufficient evidence and would not slow this down by checking exact files or commands."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not pretend a coverage percentage exists when the artifact is missing."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Test files",
+            "Package scripts",
+            "CI config"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-scheduled-incremental-pass__synthetic-pass",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-scheduled-incremental-pass",
+      "title": "Model the workflow as a recurring incremental pass (likely pass)",
+      "variant": "pass",
+      "userRequest": "Set up the workflow I could run weekly: find the top test gaps, use subagents where safe, and leave a ranked backlog for the next pass.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The workspace is large enough that only a small batch should be touched in one run.",
+          "Some packages are cleanly separable, but others share helpers and fixtures."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage or CI signals",
+          "Test files",
+          "Workspace structure"
+        ]
+      },
+      "artifactRequirements": [
+        "incremental batch policy",
+        "safe subagent plan",
+        "central validation strategy",
+        "remaining backlog"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response keep the run bounded enough for a recurring schedule?",
+        "Does it use parallel or subagent work only where write boundaries are clearly separated?",
+        "Would the resulting workflow improve confidence over time instead of just inflating coverage metrics?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Set up the workflow I could run weekly: find the top test gaps, use subagents where safe, and leave a ranked backlog for the next pass.\n- Primary boundary: The workspace is large enough that only a small batch should be touched in one run.\n- Evidence reviewed: `Repo files`, `Coverage or CI signals`, `Test files`\n\n## Draft swe:test-gap-hunt Output\n1. Incremental batch policy: ground this in Repo files and keep it bounded to the requested surface.\n2. Safe subagent plan: ground this in Coverage or CI signals and keep it bounded to the requested surface.\n3. Central validation strategy: ground this in Test files and keep it bounded to the requested surface.\n4. Remaining backlog: ground this in Workspace structure and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- Some packages are cleanly separable, but others share helpers and fixtures.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Leaves a ranked backlog instead of pretending the whole workspace should be fixed in one pass."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Coverage or CI signals",
+            "Test files",
+            "Workspace structure"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-scheduled-incremental-pass__synthetic-nuanced-pass",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-scheduled-incremental-pass",
+      "title": "Model the workflow as a recurring incremental pass (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Set up the workflow I could run weekly: find the top test gaps, use subagents where safe, and leave a ranked backlog for the next pass.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The workspace is large enough that only a small batch should be touched in one run.",
+          "Some packages are cleanly separable, but others share helpers and fixtures."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage or CI signals",
+          "Test files",
+          "Workspace structure"
+        ]
+      },
+      "artifactRequirements": [
+        "incremental batch policy",
+        "safe subagent plan",
+        "central validation strategy",
+        "remaining backlog"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response keep the run bounded enough for a recurring schedule?",
+        "Does it use parallel or subagent work only where write boundaries are clearly separated?",
+        "Would the resulting workflow improve confidence over time instead of just inflating coverage metrics?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Set up the workflow I could run weekly: find the top test gaps, use subagents where safe, and leave a ranked backlog for the next pass.\n- Reviewed first: `Repo files`, `Coverage or CI signals`, `Test files`, `Workspace structure`\n\n## swe:test-gap-hunt Draft\n1. Incremental batch policy: tie this to Repo files, then stop at the requested boundary.\n2. Safe subagent plan: tie this to Coverage or CI signals, then stop at the requested boundary.\n3. Central validation strategy: tie this to Test files, then stop at the requested boundary.\n4. Remaining backlog: tie this to Workspace structure, then stop at the requested boundary.\n\n## Labeled Unknowns\n- The workspace is large enough that only a small batch should be touched in one run.\n- Some packages are cleanly separable, but others share helpers and fixtures.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Leaves a ranked backlog instead of pretending the whole workspace should be fixed in one pass."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Coverage or CI signals",
+            "Test files",
+            "Workspace structure"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-scheduled-incremental-pass__synthetic-fail",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-scheduled-incremental-pass",
+      "title": "Model the workflow as a recurring incremental pass (likely fail)",
+      "variant": "fail",
+      "userRequest": "Set up the workflow I could run weekly: find the top test gaps, use subagents where safe, and leave a ranked backlog for the next pass.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The workspace is large enough that only a small batch should be touched in one run.",
+          "Some packages are cleanly separable, but others share helpers and fixtures."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage or CI signals",
+          "Test files",
+          "Workspace structure"
+        ]
+      },
+      "artifactRequirements": [
+        "incremental batch policy",
+        "safe subagent plan",
+        "central validation strategy",
+        "remaining backlog"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response keep the run bounded enough for a recurring schedule?",
+        "Does it use parallel or subagent work only where write boundaries are clearly separated?",
+        "Would the resulting workflow improve confidence over time instead of just inflating coverage metrics?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:test-gap-hunt is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"The workspace is large enough that only a small batch should be touched in one run.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Leaves a ranked backlog instead of pretending the whole workspace should be fixed in one pass."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Coverage or CI signals",
+            "Test files",
+            "Workspace structure"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-scheduled-incremental-pass__synthetic-scope-drift",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-scheduled-incremental-pass",
+      "title": "Model the workflow as a recurring incremental pass (scope drift fail)",
+      "variant": "scope-drift",
+      "userRequest": "Set up the workflow I could run weekly: find the top test gaps, use subagents where safe, and leave a ranked backlog for the next pass.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The workspace is large enough that only a small batch should be touched in one run.",
+          "Some packages are cleanly separable, but others share helpers and fixtures."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage or CI signals",
+          "Test files",
+          "Workspace structure"
+        ]
+      },
+      "artifactRequirements": [
+        "incremental batch policy",
+        "safe subagent plan",
+        "central validation strategy",
+        "remaining backlog"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response keep the run bounded enough for a recurring schedule?",
+        "Does it use parallel or subagent work only where write boundaries are clearly separated?",
+        "Would the resulting workflow improve confidence over time instead of just inflating coverage metrics?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "I reviewed `Repo files`, `Coverage or CI signals`, `Test files` and there is probably a broader swe:test-gap-hunt cleanup to do. Beyond the requested task, I would expand this into a wider repo sweep, rewrite adjacent guidance, and plan follow-on work for unrelated surfaces before validating the original request. That larger sweep is likely more valuable than staying inside the bounded task the user asked for."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Leaves a ranked backlog instead of pretending the whole workspace should be fixed in one pass."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Coverage or CI signals",
+            "Test files",
+            "Workspace structure"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "test-gap-hunt-scheduled-incremental-pass__synthetic-vague-output",
+      "skill": "swe:test-gap-hunt",
+      "caseId": "test-gap-hunt-scheduled-incremental-pass",
+      "title": "Model the workflow as a recurring incremental pass (vague output fail)",
+      "variant": "vague-output",
+      "userRequest": "Set up the workflow I could run weekly: find the top test gaps, use subagents where safe, and leave a ranked backlog for the next pass.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The workspace is large enough that only a small batch should be touched in one run.",
+          "Some packages are cleanly separable, but others share helpers and fixtures."
+        ],
+        "available_artifacts": [
+          "Repo files",
+          "Coverage or CI signals",
+          "Test files",
+          "Workspace structure"
+        ]
+      },
+      "artifactRequirements": [
+        "incremental batch policy",
+        "safe subagent plan",
+        "central validation strategy",
+        "remaining backlog"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response keep the run bounded enough for a recurring schedule?",
+        "Does it use parallel or subagent work only where write boundaries are clearly separated?",
+        "Would the resulting workflow improve confidence over time instead of just inflating coverage metrics?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Detects or honestly infers the local test runner, coverage signals, and test conventions before proposing changes.",
+          "Ranks opportunities using concrete evidence about coverage, churn, weak tests, or validation cost instead of raw percentage alone.",
+          "Keeps the batch bounded, favors behavior-focused tests, and avoids heavy framework or production rewrites.",
+          "Uses subagent or parallel work only on disjoint surfaces and keeps final validation centralized."
+        ],
+        "failConditions": [
+          "Introduces a new test stack or migration plan without repo evidence or user request.",
+          "Optimizes for raw coverage numbers while ignoring weak tests, brittleness, or runtime cost.",
+          "Suggests broad rewrites, vague test ideas, or overlapping parallel work.",
+          "Claims validation confidence without noting missing baseline or coverage evidence."
+        ],
+        "commonFailureModes": [
+          "Treating uncovered but low-value code as the top priority while stronger regression or weak-test targets exist.",
+          "Adding broad snapshots or over-mocked tests that inflate coverage but weaken confidence.",
+          "Ignoring existing fixtures, helpers, or test layout and inventing a parallel structure.",
+          "Recommending a one-shot workspace-wide campaign instead of a repeatable incremental pass."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "There is probably a reasonable swe:test-gap-hunt response somewhere in this area, but I would keep the next step broad. The main recommendation is to review the available artifacts, think through the situation, and decide later whether a more detailed pass is worth doing. I would avoid committing to a concrete stopping point, validation plan, or ranked backlog until after a larger follow-up review."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Leaves a ranked backlog instead of pretending the whole workspace should be fixed in one pass."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo files",
+            "Coverage or CI signals",
+            "Test files",
+            "Workspace structure"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    }
+  ]
+}

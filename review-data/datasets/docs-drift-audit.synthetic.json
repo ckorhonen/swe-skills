@@ -1,0 +1,1635 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "docs-drift-audit.synthetic",
+  "title": "swe:docs-drift-audit Synthetic Review Dataset",
+  "description": "Synthetic seed review items for swe:docs-drift-audit. Use these for UI smoke tests and rubric walk-throughs only.",
+  "generatedAt": "2026-04-05T19:08:59.813Z",
+  "source": {
+    "kind": "synthetic-seed",
+    "evalDirectory": "evals/docs-drift-audit"
+  },
+  "items": [
+    {
+      "itemId": "docs-drift-audit-recent-change-with-stale-readme__synthetic-pass",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-recent-change-with-stale-readme",
+      "title": "Find stale README guidance after a repo change (likely pass)",
+      "variant": "pass",
+      "userRequest": "Audit the repo docs against this recent code or config change and tell me what is stale.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A recent change touched a workflow, command, or interface that should be reflected in human-facing docs.",
+          "The response should focus on the doc mismatch, not rewrite the whole README."
+        ],
+        "available_artifacts": [
+          "Recent commits or PR diff",
+          "Repo docs",
+          "Code/config/workflow surface"
+        ]
+      },
+      "artifactRequirements": [
+        "change surface",
+        "doc surface",
+        "evidence of drift",
+        "minimal fix"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the report tie the stale guidance to a concrete repo change?",
+        "Does it keep the fix narrowly scoped to the affected doc surface?",
+        "Would the user understand exactly what changed and why the doc is stale?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Audit the repo docs against this recent code or config change and tell me what is stale.\n- Primary boundary: A recent change touched a workflow, command, or interface that should be reflected in human-facing docs.\n- Evidence reviewed: `Recent commits or PR diff`, `Repo docs`, `Code/config/workflow surface`\n\n## Draft swe:docs-drift-audit Output\n1. Change surface: ground this in Recent commits or PR diff and keep it bounded to the requested surface.\n2. Doc surface: ground this in Repo docs and keep it bounded to the requested surface.\n3. Evidence of drift: ground this in Code/config/workflow surface and keep it bounded to the requested surface.\n4. Minimal fix: ground this in Recent commits or PR diff and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- The response should focus on the doc mismatch, not rewrite the whole README.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Names the code or workflow surface before naming the stale doc."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Recent commits or PR diff",
+            "Repo docs",
+            "Code/config/workflow surface"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-recent-change-with-stale-readme__synthetic-nuanced-pass",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-recent-change-with-stale-readme",
+      "title": "Find stale README guidance after a repo change (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Audit the repo docs against this recent code or config change and tell me what is stale.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A recent change touched a workflow, command, or interface that should be reflected in human-facing docs.",
+          "The response should focus on the doc mismatch, not rewrite the whole README."
+        ],
+        "available_artifacts": [
+          "Recent commits or PR diff",
+          "Repo docs",
+          "Code/config/workflow surface"
+        ]
+      },
+      "artifactRequirements": [
+        "change surface",
+        "doc surface",
+        "evidence of drift",
+        "minimal fix"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the report tie the stale guidance to a concrete repo change?",
+        "Does it keep the fix narrowly scoped to the affected doc surface?",
+        "Would the user understand exactly what changed and why the doc is stale?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Audit the repo docs against this recent code or config change and tell me what is stale.\n- Reviewed first: `Recent commits or PR diff`, `Repo docs`, `Code/config/workflow surface`\n\n## swe:docs-drift-audit Draft\n1. Change surface: tie this to Recent commits or PR diff, then stop at the requested boundary.\n2. Doc surface: tie this to Repo docs, then stop at the requested boundary.\n3. Evidence of drift: tie this to Code/config/workflow surface, then stop at the requested boundary.\n4. Minimal fix: tie this to Recent commits or PR diff, then stop at the requested boundary.\n\n## Labeled Unknowns\n- A recent change touched a workflow, command, or interface that should be reflected in human-facing docs.\n- The response should focus on the doc mismatch, not rewrite the whole README.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Names the code or workflow surface before naming the stale doc."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Recent commits or PR diff",
+            "Repo docs",
+            "Code/config/workflow surface"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-recent-change-with-stale-readme__synthetic-fail",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-recent-change-with-stale-readme",
+      "title": "Find stale README guidance after a repo change (likely fail)",
+      "variant": "fail",
+      "userRequest": "Audit the repo docs against this recent code or config change and tell me what is stale.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A recent change touched a workflow, command, or interface that should be reflected in human-facing docs.",
+          "The response should focus on the doc mismatch, not rewrite the whole README."
+        ],
+        "available_artifacts": [
+          "Recent commits or PR diff",
+          "Repo docs",
+          "Code/config/workflow surface"
+        ]
+      },
+      "artifactRequirements": [
+        "change surface",
+        "doc surface",
+        "evidence of drift",
+        "minimal fix"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the report tie the stale guidance to a concrete repo change?",
+        "Does it keep the fix narrowly scoped to the affected doc surface?",
+        "Would the user understand exactly what changed and why the doc is stale?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:docs-drift-audit is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"A recent change touched a workflow, command, or interface that should be reflected in human-facing docs.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Names the code or workflow surface before naming the stale doc."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Recent commits or PR diff",
+            "Repo docs",
+            "Code/config/workflow surface"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-recent-change-with-stale-readme__synthetic-evidence-thin",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-recent-change-with-stale-readme",
+      "title": "Find stale README guidance after a repo change (evidence thin fail)",
+      "variant": "evidence-thin",
+      "userRequest": "Audit the repo docs against this recent code or config change and tell me what is stale.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A recent change touched a workflow, command, or interface that should be reflected in human-facing docs.",
+          "The response should focus on the doc mismatch, not rewrite the whole README."
+        ],
+        "available_artifacts": [
+          "Recent commits or PR diff",
+          "Repo docs",
+          "Code/config/workflow surface"
+        ]
+      },
+      "artifactRequirements": [
+        "change surface",
+        "doc surface",
+        "evidence of drift",
+        "minimal fix"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the report tie the stale guidance to a concrete repo change?",
+        "Does it keep the fix narrowly scoped to the affected doc surface?",
+        "Would the user understand exactly what changed and why the doc is stale?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Draft Findings\n1. Change surface: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n2. Doc surface: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n3. Evidence of drift: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n4. Minimal fix: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n\n## Confidence\n- I am treating the likely repo patterns as sufficient evidence and would not slow this down by checking exact files or commands."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Names the code or workflow surface before naming the stale doc."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Recent commits or PR diff",
+            "Repo docs",
+            "Code/config/workflow surface"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-recent-change-with-stale-readme__synthetic-vague-output",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-recent-change-with-stale-readme",
+      "title": "Find stale README guidance after a repo change (vague output fail)",
+      "variant": "vague-output",
+      "userRequest": "Audit the repo docs against this recent code or config change and tell me what is stale.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A recent change touched a workflow, command, or interface that should be reflected in human-facing docs.",
+          "The response should focus on the doc mismatch, not rewrite the whole README."
+        ],
+        "available_artifacts": [
+          "Recent commits or PR diff",
+          "Repo docs",
+          "Code/config/workflow surface"
+        ]
+      },
+      "artifactRequirements": [
+        "change surface",
+        "doc surface",
+        "evidence of drift",
+        "minimal fix"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the report tie the stale guidance to a concrete repo change?",
+        "Does it keep the fix narrowly scoped to the affected doc surface?",
+        "Would the user understand exactly what changed and why the doc is stale?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "There is probably a reasonable swe:docs-drift-audit response somewhere in this area, but I would keep the next step broad. The main recommendation is to review the available artifacts, think through the situation, and decide later whether a more detailed pass is worth doing. I would avoid committing to a concrete stopping point, validation plan, or ranked backlog until after a larger follow-up review."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Names the code or workflow surface before naming the stale doc."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Recent commits or PR diff",
+            "Repo docs",
+            "Code/config/workflow surface"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-ops-docs-drift__synthetic-pass",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-ops-docs-drift",
+      "title": "Audit operational docs after a workflow or deployment change (likely pass)",
+      "variant": "pass",
+      "userRequest": "Check whether the operational docs and runbooks still match the current workflow after this change.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The inspected change touches an operational workflow, script, or deployment surface.",
+          "The most important docs may be a runbook, playbook, or setup guide rather than a README."
+        ],
+        "available_artifacts": [
+          "Runbooks",
+          "Operational docs",
+          "Workflow or deployment scripts",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "operational doc inventory",
+        "drift ranking",
+        "smallest fix recommendation"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response include the docs that matter operationally, not just the most visible ones?",
+        "Does it avoid broad rewrite advice when a smaller fix would restore accuracy?",
+        "Would the result help someone operate or support the repo safely?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Check whether the operational docs and runbooks still match the current workflow after this change.\n- Primary boundary: The inspected change touches an operational workflow, script, or deployment surface.\n- Evidence reviewed: `Runbooks`, `Operational docs`, `Workflow or deployment scripts`\n\n## Draft swe:docs-drift-audit Output\n1. Operational doc inventory: ground this in Runbooks and keep it bounded to the requested surface.\n2. Drift ranking: ground this in Operational docs and keep it bounded to the requested surface.\n3. Smallest fix recommendation: ground this in Workflow or deployment scripts and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- The most important docs may be a runbook, playbook, or setup guide rather than a README.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Focuses on operational accuracy rather than style-only improvements."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Runbooks",
+            "Operational docs",
+            "Workflow or deployment scripts",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-ops-docs-drift__synthetic-nuanced-pass",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-ops-docs-drift",
+      "title": "Audit operational docs after a workflow or deployment change (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Check whether the operational docs and runbooks still match the current workflow after this change.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The inspected change touches an operational workflow, script, or deployment surface.",
+          "The most important docs may be a runbook, playbook, or setup guide rather than a README."
+        ],
+        "available_artifacts": [
+          "Runbooks",
+          "Operational docs",
+          "Workflow or deployment scripts",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "operational doc inventory",
+        "drift ranking",
+        "smallest fix recommendation"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response include the docs that matter operationally, not just the most visible ones?",
+        "Does it avoid broad rewrite advice when a smaller fix would restore accuracy?",
+        "Would the result help someone operate or support the repo safely?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Check whether the operational docs and runbooks still match the current workflow after this change.\n- Reviewed first: `Runbooks`, `Operational docs`, `Workflow or deployment scripts`, `Recent history`\n\n## swe:docs-drift-audit Draft\n1. Operational doc inventory: tie this to Runbooks, then stop at the requested boundary.\n2. Drift ranking: tie this to Operational docs, then stop at the requested boundary.\n3. Smallest fix recommendation: tie this to Workflow or deployment scripts, then stop at the requested boundary.\n\n## Labeled Unknowns\n- The inspected change touches an operational workflow, script, or deployment surface.\n- The most important docs may be a runbook, playbook, or setup guide rather than a README.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Focuses on operational accuracy rather than style-only improvements."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Runbooks",
+            "Operational docs",
+            "Workflow or deployment scripts",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-ops-docs-drift__synthetic-fail",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-ops-docs-drift",
+      "title": "Audit operational docs after a workflow or deployment change (likely fail)",
+      "variant": "fail",
+      "userRequest": "Check whether the operational docs and runbooks still match the current workflow after this change.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The inspected change touches an operational workflow, script, or deployment surface.",
+          "The most important docs may be a runbook, playbook, or setup guide rather than a README."
+        ],
+        "available_artifacts": [
+          "Runbooks",
+          "Operational docs",
+          "Workflow or deployment scripts",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "operational doc inventory",
+        "drift ranking",
+        "smallest fix recommendation"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response include the docs that matter operationally, not just the most visible ones?",
+        "Does it avoid broad rewrite advice when a smaller fix would restore accuracy?",
+        "Would the result help someone operate or support the repo safely?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:docs-drift-audit is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"The inspected change touches an operational workflow, script, or deployment surface.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Focuses on operational accuracy rather than style-only improvements."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Runbooks",
+            "Operational docs",
+            "Workflow or deployment scripts",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-ops-docs-drift__synthetic-scope-drift",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-ops-docs-drift",
+      "title": "Audit operational docs after a workflow or deployment change (scope drift fail)",
+      "variant": "scope-drift",
+      "userRequest": "Check whether the operational docs and runbooks still match the current workflow after this change.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The inspected change touches an operational workflow, script, or deployment surface.",
+          "The most important docs may be a runbook, playbook, or setup guide rather than a README."
+        ],
+        "available_artifacts": [
+          "Runbooks",
+          "Operational docs",
+          "Workflow or deployment scripts",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "operational doc inventory",
+        "drift ranking",
+        "smallest fix recommendation"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response include the docs that matter operationally, not just the most visible ones?",
+        "Does it avoid broad rewrite advice when a smaller fix would restore accuracy?",
+        "Would the result help someone operate or support the repo safely?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "I reviewed `Runbooks`, `Operational docs`, `Workflow or deployment scripts` and there is probably a broader swe:docs-drift-audit cleanup to do. Beyond the requested task, I would expand this into a wider repo sweep, rewrite adjacent guidance, and plan follow-on work for unrelated surfaces before validating the original request. That larger sweep is likely more valuable than staying inside the bounded task the user asked for."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Focuses on operational accuracy rather than style-only improvements."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Runbooks",
+            "Operational docs",
+            "Workflow or deployment scripts",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-ops-docs-drift__synthetic-evidence-thin",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-ops-docs-drift",
+      "title": "Audit operational docs after a workflow or deployment change (evidence thin fail)",
+      "variant": "evidence-thin",
+      "userRequest": "Check whether the operational docs and runbooks still match the current workflow after this change.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The inspected change touches an operational workflow, script, or deployment surface.",
+          "The most important docs may be a runbook, playbook, or setup guide rather than a README."
+        ],
+        "available_artifacts": [
+          "Runbooks",
+          "Operational docs",
+          "Workflow or deployment scripts",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "operational doc inventory",
+        "drift ranking",
+        "smallest fix recommendation"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response include the docs that matter operationally, not just the most visible ones?",
+        "Does it avoid broad rewrite advice when a smaller fix would restore accuracy?",
+        "Would the result help someone operate or support the repo safely?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Draft Findings\n1. Operational doc inventory: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n2. Drift ranking: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n3. Smallest fix recommendation: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n\n## Confidence\n- I am treating the likely repo patterns as sufficient evidence and would not slow this down by checking exact files or commands."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Focuses on operational accuracy rather than style-only improvements."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Runbooks",
+            "Operational docs",
+            "Workflow or deployment scripts",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-ops-docs-drift__synthetic-vague-output",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-ops-docs-drift",
+      "title": "Audit operational docs after a workflow or deployment change (vague output fail)",
+      "variant": "vague-output",
+      "userRequest": "Check whether the operational docs and runbooks still match the current workflow after this change.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The inspected change touches an operational workflow, script, or deployment surface.",
+          "The most important docs may be a runbook, playbook, or setup guide rather than a README."
+        ],
+        "available_artifacts": [
+          "Runbooks",
+          "Operational docs",
+          "Workflow or deployment scripts",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "operational doc inventory",
+        "drift ranking",
+        "smallest fix recommendation"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response include the docs that matter operationally, not just the most visible ones?",
+        "Does it avoid broad rewrite advice when a smaller fix would restore accuracy?",
+        "Would the result help someone operate or support the repo safely?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "There is probably a reasonable swe:docs-drift-audit response somewhere in this area, but I would keep the next step broad. The main recommendation is to review the available artifacts, think through the situation, and decide later whether a more detailed pass is worth doing. I would avoid committing to a concrete stopping point, validation plan, or ranked backlog until after a larger follow-up review."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Focuses on operational accuracy rather than style-only improvements."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Runbooks",
+            "Operational docs",
+            "Workflow or deployment scripts",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-no-confirmed-drift__synthetic-pass",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-no-confirmed-drift",
+      "title": "Stay honest when docs look stale but the evidence is weak (likely pass)",
+      "variant": "pass",
+      "userRequest": "Audit the docs drift for this repo, but only report concrete mismatches; call out anything uncertain.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository may have docs that look suspicious but lack a clear matching code change.",
+          "The response should distinguish confirmed drift from unverified suspicion."
+        ],
+        "available_artifacts": [
+          "Repo docs",
+          "Code and config",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "confirmed findings or explicit no-drift result",
+        "uncertainty handling",
+        "follow-up evidence needs"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response clearly separate confirmed drift from suspicion?",
+        "Does it avoid turning uncertain issues into a concrete edit queue?",
+        "Would the user know whether any action is actually justified?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Audit the docs drift for this repo, but only report concrete mismatches; call out anything uncertain.\n- Primary boundary: The repository may have docs that look suspicious but lack a clear matching code change.\n- Evidence reviewed: `Repo docs`, `Code and config`, `Recent history`\n\n## Draft swe:docs-drift-audit Output\n1. Confirmed findings or explicit no-drift result: ground this in Repo docs and keep it bounded to the requested surface.\n2. Uncertainty handling: ground this in Code and config and keep it bounded to the requested surface.\n3. Follow-up evidence needs: ground this in Recent history and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- The response should distinguish confirmed drift from unverified suspicion.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not manufacture drift findings without a concrete mismatch."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo docs",
+            "Code and config",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-no-confirmed-drift__synthetic-nuanced-pass",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-no-confirmed-drift",
+      "title": "Stay honest when docs look stale but the evidence is weak (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Audit the docs drift for this repo, but only report concrete mismatches; call out anything uncertain.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository may have docs that look suspicious but lack a clear matching code change.",
+          "The response should distinguish confirmed drift from unverified suspicion."
+        ],
+        "available_artifacts": [
+          "Repo docs",
+          "Code and config",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "confirmed findings or explicit no-drift result",
+        "uncertainty handling",
+        "follow-up evidence needs"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response clearly separate confirmed drift from suspicion?",
+        "Does it avoid turning uncertain issues into a concrete edit queue?",
+        "Would the user know whether any action is actually justified?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Audit the docs drift for this repo, but only report concrete mismatches; call out anything uncertain.\n- Reviewed first: `Repo docs`, `Code and config`, `Recent history`\n\n## swe:docs-drift-audit Draft\n1. Confirmed findings or explicit no-drift result: tie this to Repo docs, then stop at the requested boundary.\n2. Uncertainty handling: tie this to Code and config, then stop at the requested boundary.\n3. Follow-up evidence needs: tie this to Recent history, then stop at the requested boundary.\n\n## Labeled Unknowns\n- The repository may have docs that look suspicious but lack a clear matching code change.\n- The response should distinguish confirmed drift from unverified suspicion.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not manufacture drift findings without a concrete mismatch."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo docs",
+            "Code and config",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-no-confirmed-drift__synthetic-fail",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-no-confirmed-drift",
+      "title": "Stay honest when docs look stale but the evidence is weak (likely fail)",
+      "variant": "fail",
+      "userRequest": "Audit the docs drift for this repo, but only report concrete mismatches; call out anything uncertain.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository may have docs that look suspicious but lack a clear matching code change.",
+          "The response should distinguish confirmed drift from unverified suspicion."
+        ],
+        "available_artifacts": [
+          "Repo docs",
+          "Code and config",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "confirmed findings or explicit no-drift result",
+        "uncertainty handling",
+        "follow-up evidence needs"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response clearly separate confirmed drift from suspicion?",
+        "Does it avoid turning uncertain issues into a concrete edit queue?",
+        "Would the user know whether any action is actually justified?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:docs-drift-audit is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"The repository may have docs that look suspicious but lack a clear matching code change.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not manufacture drift findings without a concrete mismatch."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo docs",
+            "Code and config",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "docs-drift-audit-no-confirmed-drift__synthetic-evidence-thin",
+      "skill": "swe:docs-drift-audit",
+      "caseId": "docs-drift-audit-no-confirmed-drift",
+      "title": "Stay honest when docs look stale but the evidence is weak (evidence thin fail)",
+      "variant": "evidence-thin",
+      "userRequest": "Audit the docs drift for this repo, but only report concrete mismatches; call out anything uncertain.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository may have docs that look suspicious but lack a clear matching code change.",
+          "The response should distinguish confirmed drift from unverified suspicion."
+        ],
+        "available_artifacts": [
+          "Repo docs",
+          "Code and config",
+          "Recent history"
+        ]
+      },
+      "artifactRequirements": [
+        "confirmed findings or explicit no-drift result",
+        "uncertainty handling",
+        "follow-up evidence needs"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response clearly separate confirmed drift from suspicion?",
+        "Does it avoid turning uncertain issues into a concrete edit queue?",
+        "Would the user know whether any action is actually justified?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Identifies the relevant change surface before comparing docs.",
+          "Checks human-facing or operational docs that should plausibly reflect the change.",
+          "Grounds every drift finding in concrete evidence from code, config, workflows, or recent history.",
+          "Avoids agent-guidance updates, style-only rewrites, and speculation.",
+          "Ranks findings by operational importance and recommends the smallest fix."
+        ],
+        "failConditions": [
+          "Treats generic documentation quality as drift without evidence of staleness.",
+          "Drifts into updating `AGENTS.md`, `CLAUDE.md`, or other agent-facing guidance.",
+          "Invents documentation gaps that are not tied to the inspected change surface.",
+          "Returns a broad rewrite plan instead of a narrow evidence-backed edit queue."
+        ],
+        "commonFailureModes": [
+          "Flagging stale docs without naming the changed code or workflow surface.",
+          "Confusing missing docs with stale docs and mixing them together.",
+          "Including cosmetic mismatches that do not materially affect correctness or operations.",
+          "Recommending unrelated documentation cleanup beyond the observed drift."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Draft Findings\n1. Confirmed findings or explicit no-drift result: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n2. Uncertainty handling: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n3. Follow-up evidence needs: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n\n## Confidence\n- I am treating the likely repo patterns as sufficient evidence and would not slow this down by checking exact files or commands."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not manufacture drift findings without a concrete mismatch."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo docs",
+            "Code and config",
+            "Recent history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    }
+  ]
+}

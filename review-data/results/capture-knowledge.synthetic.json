@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "capture-knowledge.synthetic",
+  "reviews": {
+    "capture-knowledge-review-packet__synthetic-pass": {
+      "status": "Pass",
+      "notes": "The packet clearly separates existing guidance from missing entries, gives concrete proposed additions with destinations, and explicitly keeps the work at the review stage. It also skips a weaker CI idea instead of overstating it.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "concrete-evidence": "Pass",
+        "instruction-adherence": "Pass",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Pass",
+        "1": "Pass",
+        "2": "Pass"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "capture-knowledge-review-packet__synthetic-fail": {
+      "status": "Fail",
+      "notes": "It argues for broad documentation changes and immediate write-back without separating existing guidance from missing entries or citing concrete evidence for the proposed conventions.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "concrete-evidence": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "capture-knowledge-narrow-guidance-gap__synthetic-pass": {
+      "status": "Pass",
+      "notes": "It stays within install and workflow guidance, proposes concrete missing entries with plausible destinations, and avoids broad repo-rewrite advice. The skipped weak-signal note shows good scope discipline.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "concrete-evidence": "Pass",
+        "honest-unknowns": "Pass",
+        "actionable-output": "Pass"
+      },
+      "questions": {
+        "0": "Pass",
+        "1": "Pass",
+        "2": "Pass"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "capture-knowledge-narrow-guidance-gap__synthetic-fail": {
+      "status": "Fail",
+      "notes": "It argues for broad documentation changes and immediate write-back without separating existing guidance from missing entries or citing concrete evidence for the proposed conventions.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "concrete-evidence": "Fail",
+        "honest-unknowns": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "capture-knowledge-ambiguous-evidence__synthetic-pass": {
+      "status": "Pass",
+      "notes": "It proposes only evidence-backed conventions and explicitly skips weaker signals, so the reviewer can see both what should be added and what was rejected. The result is careful, scoped, and reviewable.",
+      "criteria": {
+        "concrete-evidence": "Pass",
+        "honest-unknowns": "Pass",
+        "instruction-adherence": "Pass",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Pass",
+        "1": "Pass",
+        "2": "Pass"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "capture-knowledge-ambiguous-evidence__synthetic-fail": {
+      "status": "Fail",
+      "notes": "It argues for broad documentation changes and immediate write-back without separating existing guidance from missing entries or citing concrete evidence for the proposed conventions.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "honest-unknowns": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "capture-knowledge-review-packet__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "concrete-evidence": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "capture-knowledge-review-packet__synthetic-scope-drift": {
+      "status": "Fail",
+      "notes": "The response names a few artifacts, then pivots into a broader cleanup outside the requested surface. That scope drift leaves the user without a concrete answer to the actual task.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "concrete-evidence": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "capture-knowledge-review-packet__synthetic-evidence-thin": {
+      "status": "Fail",
+      "notes": "The response lists the right headings, but it openly relies on what is “probably true” from repo shape instead of concrete artifacts, outputs, or commands. That leaves the report structured but unsupported.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "concrete-evidence": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "capture-knowledge-narrow-guidance-gap__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "concrete-evidence": "Fail",
+        "honest-unknowns": "Pass",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "capture-knowledge-narrow-guidance-gap__synthetic-scope-drift": {
+      "status": "Fail",
+      "notes": "The response names a few artifacts, then pivots into a broader cleanup outside the requested surface. That scope drift leaves the user without a concrete answer to the actual task.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "concrete-evidence": "Fail",
+        "honest-unknowns": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "capture-knowledge-narrow-guidance-gap__synthetic-evidence-thin": {
+      "status": "Fail",
+      "notes": "The response lists the right headings, but it openly relies on what is “probably true” from repo shape instead of concrete artifacts, outputs, or commands. That leaves the report structured but unsupported.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "concrete-evidence": "Fail",
+        "honest-unknowns": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "capture-knowledge-narrow-guidance-gap__synthetic-vague-output": {
+      "status": "Fail",
+      "notes": "The response stays vague about what should happen next and defers the real judgment to a later pass. It does not leave behind a concrete report, evidence trail, or bounded follow-up.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "concrete-evidence": "Fail",
+        "honest-unknowns": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "capture-knowledge-ambiguous-evidence__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "honest-unknowns": "Pass",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "capture-knowledge-ambiguous-evidence__synthetic-evidence-thin": {
+      "status": "Fail",
+      "notes": "The response lists the right headings, but it openly relies on what is “probably true” from repo shape instead of concrete artifacts, outputs, or commands. That leaves the report structured but unsupported.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "honest-unknowns": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    }
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "refactor-opportunities.synthetic",
+  "reviews": {
+    "refactor-opportunities-small-ticket-backlog__synthetic-pass": {
+      "status": "Pass",
+      "notes": "The list is made of small, independently assignable tickets with concrete file surfaces and validation paths. It stays away from architecture churn and reads like a usable handoff backlog.",
+      "criteria": {
+        "concrete-evidence": "Pass",
+        "actionable-output": "Pass",
+        "instruction-adherence": "Pass",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Pass",
+        "1": "Pass",
+        "2": "Pass"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-small-ticket-backlog__synthetic-fail": {
+      "status": "Fail",
+      "notes": "It proposes architecture reshaping and large renames instead of a small, low-risk ticket backlog with bounded write surfaces.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-tailored-contributor__synthetic-pass": {
+      "status": "Fail",
+      "notes": "The tickets are small and concrete, but they are not tied back to the contributor's recent surfaces even though that history is available and explicitly requested. The missing fit-to-contributor rationale is material here.",
+      "criteria": {
+        "concrete-evidence": "Pass",
+        "actionable-output": "Pass",
+        "honest-unknowns": "Fail",
+        "instruction-adherence": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Pass"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-tailored-contributor__synthetic-fail": {
+      "status": "Fail",
+      "notes": "It proposes architecture reshaping and large renames instead of a small, low-risk ticket backlog with bounded write surfaces.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "honest-unknowns": "Fail",
+        "instruction-adherence": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-thin-surface__synthetic-pass": {
+      "status": "Pass",
+      "notes": "The shortlist stays small and safe enough to hand off directly, which fits a thin surface where only a few refactors are worth proposing. It would be stronger with explicit exclusion reasoning, but the core ticket quality is still solid.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "honest-unknowns": "Pass",
+        "instruction-adherence": "Pass",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Pass",
+        "1": "Fail",
+        "2": "Pass"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-thin-surface__synthetic-fail": {
+      "status": "Fail",
+      "notes": "It proposes architecture reshaping and large renames instead of a small, low-risk ticket backlog with bounded write surfaces.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "honest-unknowns": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-small-ticket-backlog__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-small-ticket-backlog__synthetic-evidence-thin": {
+      "status": "Fail",
+      "notes": "The response lists the right headings, but it openly relies on what is “probably true” from repo shape instead of concrete artifacts, outputs, or commands. That leaves the report structured but unsupported.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-small-ticket-backlog__synthetic-vague-output": {
+      "status": "Fail",
+      "notes": "The response stays vague about what should happen next and defers the real judgment to a later pass. It does not leave behind a concrete report, evidence trail, or bounded follow-up.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-tailored-contributor__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "honest-unknowns": "Pass",
+        "instruction-adherence": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-tailored-contributor__synthetic-evidence-thin": {
+      "status": "Fail",
+      "notes": "The response lists the right headings, but it openly relies on what is “probably true” from repo shape instead of concrete artifacts, outputs, or commands. That leaves the report structured but unsupported.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "honest-unknowns": "Fail",
+        "instruction-adherence": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-tailored-contributor__synthetic-vague-output": {
+      "status": "Fail",
+      "notes": "The response stays vague about what should happen next and defers the real judgment to a later pass. It does not leave behind a concrete report, evidence trail, or bounded follow-up.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "honest-unknowns": "Fail",
+        "instruction-adherence": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-thin-surface__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "honest-unknowns": "Pass",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "refactor-opportunities-thin-surface__synthetic-scope-drift": {
+      "status": "Fail",
+      "notes": "The response names a few artifacts, then pivots into a broader cleanup outside the requested surface. That scope drift leaves the user without a concrete answer to the actual task.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "honest-unknowns": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    }
+  }
+}

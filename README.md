@@ -40,6 +40,9 @@ Use `npx skills install ckorhonen/swe-skills`.
   examples for each draft judge from local review results.
 - Run `npm run review:build-dataset` to generate local review datasets from the
   current eval cases.
+- Run `npm run review:sync-results` after labeling `all-skills.synthetic` to
+  copy aggregate labels into the per-skill result files used by coverage and
+  judge export.
 - Run `npm run review:coverage` to inspect overall, criterion, and
   review-question label coverage plus judge-readiness gaps.
 - Run `npm run review:serve` to start the zero-dependency local review server
@@ -136,6 +139,9 @@ Use `npx skills install ckorhonen/swe-skills`.
   `__synthetic-fail` items, then adds additional targeted variants such as
   nuanced-pass, scope-drift, evidence-thin, and vague-output to increase the
   label pool without changing the review format.
+- `npm run review:sync-results` fans `all-skills.synthetic` labels back out to
+  the matching per-skill result files so coverage and judge export see the work
+  done in the aggregate review app.
 - `npm run review:coverage` shows which items still need explicit criterion or
   review-question labels.
 - `npm run review:serve` starts a small local server for the browser review app.
