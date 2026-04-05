@@ -10,6 +10,11 @@ This directory stores local JSON files for the review workflow.
 - `judges/` contains local exported judge-calibration datasets derived from
   reviewed items.
 - `results/` contains local saved annotations from the review app.
+- Aggregate labels saved under `results/all-skills.synthetic.json` can be fanned
+  back out to the per-skill result files with `npm run review:sync-results`.
+
+Prompt assets for producing or auditing those labels live in
+`review-agents/`, not in this directory.
 
 ## Git Rules
 

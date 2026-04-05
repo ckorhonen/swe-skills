@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "init.synthetic",
+  "reviews": {
+    "init-interview-local-preferences__synthetic-pass": {
+      "status": "Fail",
+      "notes": "The response stays inside the named surface and lays out the expected sections, but it never turns those placeholders into actual findings, commands, or decisions. That makes it readable but not directly usable as the requested output.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "init-interview-local-preferences__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "init-interview-local-preferences__synthetic-fail": {
+      "status": "Fail",
+      "notes": "The response explicitly broadens into a repo-wide investigation and says it will assume missing details instead of checking the requested artifacts. That breaks both the scope boundary and the evidence bar.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "init-interview-local-preferences__synthetic-scope-drift": {
+      "status": "Fail",
+      "notes": "The response names a few artifacts, then pivots into a broader cleanup outside the requested surface. That scope drift leaves the user without a concrete answer to the actual task.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "init-interview-local-preferences__synthetic-vague-output": {
+      "status": "Fail",
+      "notes": "The response stays vague about what should happen next and defers the real judgment to a later pass. It does not leave behind a concrete report, evidence trail, or bounded follow-up.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "init-quick-defaults-no-gitignore__synthetic-pass": {
+      "status": "Fail",
+      "notes": "The response stays inside the named surface and lays out the expected sections, but it never turns those placeholders into actual findings, commands, or decisions. That makes it readable but not directly usable as the requested output.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "init-quick-defaults-no-gitignore__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "init-quick-defaults-no-gitignore__synthetic-fail": {
+      "status": "Fail",
+      "notes": "The response explicitly broadens into a repo-wide investigation and says it will assume missing details instead of checking the requested artifacts. That breaks both the scope boundary and the evidence bar.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "init-quick-defaults-no-gitignore__synthetic-scope-drift": {
+      "status": "Fail",
+      "notes": "The response names a few artifacts, then pivots into a broader cleanup outside the requested surface. That scope drift leaves the user without a concrete answer to the actual task.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "init-quick-defaults-no-gitignore__synthetic-vague-output": {
+      "status": "Fail",
+      "notes": "The response stays vague about what should happen next and defers the real judgment to a later pass. It does not leave behind a concrete report, evidence trail, or bounded follow-up.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "init-existing-file-protection__synthetic-pass": {
+      "status": "Fail",
+      "notes": "The response stays inside the named surface and lays out the expected sections, but it never turns those placeholders into actual findings, commands, or decisions. That makes it readable but not directly usable as the requested output.",
+      "criteria": {
+        "instruction-adherence": "Fail",
+        "honest-unknowns": "Pass",
+        "actionable-output": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "init-existing-file-protection__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "instruction-adherence": "Fail",
+        "honest-unknowns": "Pass",
+        "actionable-output": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "init-existing-file-protection__synthetic-fail": {
+      "status": "Fail",
+      "notes": "The response explicitly broadens into a repo-wide investigation and says it will assume missing details instead of checking the requested artifacts. That breaks both the scope boundary and the evidence bar.",
+      "criteria": {
+        "instruction-adherence": "Fail",
+        "honest-unknowns": "Fail",
+        "actionable-output": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "init-existing-file-protection__synthetic-vague-output": {
+      "status": "Fail",
+      "notes": "The response stays vague about what should happen next and defers the real judgment to a later pass. It does not leave behind a concrete report, evidence trail, or bounded follow-up.",
+      "criteria": {
+        "instruction-adherence": "Fail",
+        "honest-unknowns": "Fail",
+        "actionable-output": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "init-non-trigger-project-bootstrap__synthetic-pass": {
+      "status": "Fail",
+      "notes": "The response stays inside the named surface and lays out the expected sections, but it never turns those placeholders into actual findings, commands, or decisions. That makes it readable but not directly usable as the requested output.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "init-non-trigger-project-bootstrap__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "init-non-trigger-project-bootstrap__synthetic-fail": {
+      "status": "Fail",
+      "notes": "The response explicitly broadens into a repo-wide investigation and says it will assume missing details instead of checking the requested artifacts. That breaks both the scope boundary and the evidence bar.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "init-non-trigger-project-bootstrap__synthetic-scope-drift": {
+      "status": "Fail",
+      "notes": "The response names a few artifacts, then pivots into a broader cleanup outside the requested surface. That scope drift leaves the user without a concrete answer to the actual task.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "init-non-trigger-project-bootstrap__synthetic-vague-output": {
+      "status": "Fail",
+      "notes": "The response stays vague about what should happen next and defers the real judgment to a later pass. It does not leave behind a concrete report, evidence trail, or bounded follow-up.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "instruction-adherence": "Fail",
+        "actionable-output": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    }
+  }
+}

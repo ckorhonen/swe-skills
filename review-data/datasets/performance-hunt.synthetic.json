@@ -1,0 +1,1668 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "performance-hunt.synthetic",
+  "title": "swe:performance-hunt Synthetic Review Dataset",
+  "description": "Synthetic seed review items for swe:performance-hunt. Use these for UI smoke tests and rubric walk-throughs only.",
+  "generatedAt": "2026-04-05T19:08:59.820Z",
+  "source": {
+    "kind": "synthetic-seed",
+    "evalDirectory": "evals/performance-hunt"
+  },
+  "items": [
+    {
+      "itemId": "performance-hunt-measured-bottleneck-review__synthetic-pass",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-measured-bottleneck-review",
+      "title": "Rank bottlenecks on a scoped flow using strong evidence (likely pass)",
+      "variant": "pass",
+      "userRequest": "Find the main performance bottlenecks in this repo and give me the smallest high-value fixes to try first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository contains one or more performance-sensitive flows with code and supporting artifacts.",
+          "Profiler output, benchmarks, traces, query plans, or bundle analysis may be available for at least part of the scoped surface."
+        ],
+        "available_artifacts": [
+          "Application code",
+          "Benchmark or profiler artifacts",
+          "Performance-related configuration",
+          "Operational notes"
+        ]
+      },
+      "artifactRequirements": [
+        "scoped surface and metric",
+        "ranked bottlenecks",
+        "evidence-backed next steps",
+        "weak-signal section"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response identify the specific flow or surface being optimized and the metric that matters?",
+        "Are the bottlenecks tied to concrete performance evidence or clearly labeled repo-grounded inference?",
+        "Would the proposed next steps be small enough to validate quickly?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Find the main performance bottlenecks in this repo and give me the smallest high-value fixes to try first.\n- Primary boundary: The repository contains one or more performance-sensitive flows with code and supporting artifacts.\n- Evidence reviewed: `Application code`, `Benchmark or profiler artifacts`, `Performance-related configuration`\n\n## Draft swe:performance-hunt Output\n1. Scoped surface and metric: ground this in Application code and keep it bounded to the requested surface.\n2. Ranked bottlenecks: ground this in Benchmark or profiler artifacts and keep it bounded to the requested surface.\n3. Evidence-backed next steps: ground this in Performance-related configuration and keep it bounded to the requested surface.\n4. Weak-signal section: ground this in Operational notes and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- Profiler output, benchmarks, traces, query plans, or bundle analysis may be available for at least part of the scoped surface.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Stays focused on performance bottlenecks instead of drifting into a broad code review."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Application code",
+            "Benchmark or profiler artifacts",
+            "Performance-related configuration",
+            "Operational notes"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-measured-bottleneck-review__synthetic-nuanced-pass",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-measured-bottleneck-review",
+      "title": "Rank bottlenecks on a scoped flow using strong evidence (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Find the main performance bottlenecks in this repo and give me the smallest high-value fixes to try first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository contains one or more performance-sensitive flows with code and supporting artifacts.",
+          "Profiler output, benchmarks, traces, query plans, or bundle analysis may be available for at least part of the scoped surface."
+        ],
+        "available_artifacts": [
+          "Application code",
+          "Benchmark or profiler artifacts",
+          "Performance-related configuration",
+          "Operational notes"
+        ]
+      },
+      "artifactRequirements": [
+        "scoped surface and metric",
+        "ranked bottlenecks",
+        "evidence-backed next steps",
+        "weak-signal section"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response identify the specific flow or surface being optimized and the metric that matters?",
+        "Are the bottlenecks tied to concrete performance evidence or clearly labeled repo-grounded inference?",
+        "Would the proposed next steps be small enough to validate quickly?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Find the main performance bottlenecks in this repo and give me the smallest high-value fixes to try first.\n- Reviewed first: `Application code`, `Benchmark or profiler artifacts`, `Performance-related configuration`, `Operational notes`\n\n## swe:performance-hunt Draft\n1. Scoped surface and metric: tie this to Application code, then stop at the requested boundary.\n2. Ranked bottlenecks: tie this to Benchmark or profiler artifacts, then stop at the requested boundary.\n3. Evidence-backed next steps: tie this to Performance-related configuration, then stop at the requested boundary.\n4. Weak-signal section: tie this to Operational notes, then stop at the requested boundary.\n\n## Labeled Unknowns\n- The repository contains one or more performance-sensitive flows with code and supporting artifacts.\n- Profiler output, benchmarks, traces, query plans, or bundle analysis may be available for at least part of the scoped surface.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Stays focused on performance bottlenecks instead of drifting into a broad code review."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Application code",
+            "Benchmark or profiler artifacts",
+            "Performance-related configuration",
+            "Operational notes"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-measured-bottleneck-review__synthetic-fail",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-measured-bottleneck-review",
+      "title": "Rank bottlenecks on a scoped flow using strong evidence (likely fail)",
+      "variant": "fail",
+      "userRequest": "Find the main performance bottlenecks in this repo and give me the smallest high-value fixes to try first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository contains one or more performance-sensitive flows with code and supporting artifacts.",
+          "Profiler output, benchmarks, traces, query plans, or bundle analysis may be available for at least part of the scoped surface."
+        ],
+        "available_artifacts": [
+          "Application code",
+          "Benchmark or profiler artifacts",
+          "Performance-related configuration",
+          "Operational notes"
+        ]
+      },
+      "artifactRequirements": [
+        "scoped surface and metric",
+        "ranked bottlenecks",
+        "evidence-backed next steps",
+        "weak-signal section"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response identify the specific flow or surface being optimized and the metric that matters?",
+        "Are the bottlenecks tied to concrete performance evidence or clearly labeled repo-grounded inference?",
+        "Would the proposed next steps be small enough to validate quickly?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:performance-hunt is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"The repository contains one or more performance-sensitive flows with code and supporting artifacts.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Stays focused on performance bottlenecks instead of drifting into a broad code review."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Application code",
+            "Benchmark or profiler artifacts",
+            "Performance-related configuration",
+            "Operational notes"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-measured-bottleneck-review__synthetic-evidence-thin",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-measured-bottleneck-review",
+      "title": "Rank bottlenecks on a scoped flow using strong evidence (evidence thin fail)",
+      "variant": "evidence-thin",
+      "userRequest": "Find the main performance bottlenecks in this repo and give me the smallest high-value fixes to try first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository contains one or more performance-sensitive flows with code and supporting artifacts.",
+          "Profiler output, benchmarks, traces, query plans, or bundle analysis may be available for at least part of the scoped surface."
+        ],
+        "available_artifacts": [
+          "Application code",
+          "Benchmark or profiler artifacts",
+          "Performance-related configuration",
+          "Operational notes"
+        ]
+      },
+      "artifactRequirements": [
+        "scoped surface and metric",
+        "ranked bottlenecks",
+        "evidence-backed next steps",
+        "weak-signal section"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response identify the specific flow or surface being optimized and the metric that matters?",
+        "Are the bottlenecks tied to concrete performance evidence or clearly labeled repo-grounded inference?",
+        "Would the proposed next steps be small enough to validate quickly?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Draft Findings\n1. Scoped surface and metric: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n2. Ranked bottlenecks: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n3. Evidence-backed next steps: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n4. Weak-signal section: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n\n## Confidence\n- I am treating the likely repo patterns as sufficient evidence and would not slow this down by checking exact files or commands."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Stays focused on performance bottlenecks instead of drifting into a broad code review."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Application code",
+            "Benchmark or profiler artifacts",
+            "Performance-related configuration",
+            "Operational notes"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-measured-bottleneck-review__synthetic-vague-output",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-measured-bottleneck-review",
+      "title": "Rank bottlenecks on a scoped flow using strong evidence (vague output fail)",
+      "variant": "vague-output",
+      "userRequest": "Find the main performance bottlenecks in this repo and give me the smallest high-value fixes to try first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repository contains one or more performance-sensitive flows with code and supporting artifacts.",
+          "Profiler output, benchmarks, traces, query plans, or bundle analysis may be available for at least part of the scoped surface."
+        ],
+        "available_artifacts": [
+          "Application code",
+          "Benchmark or profiler artifacts",
+          "Performance-related configuration",
+          "Operational notes"
+        ]
+      },
+      "artifactRequirements": [
+        "scoped surface and metric",
+        "ranked bottlenecks",
+        "evidence-backed next steps",
+        "weak-signal section"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response identify the specific flow or surface being optimized and the metric that matters?",
+        "Are the bottlenecks tied to concrete performance evidence or clearly labeled repo-grounded inference?",
+        "Would the proposed next steps be small enough to validate quickly?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "There is probably a reasonable swe:performance-hunt response somewhere in this area, but I would keep the next step broad. The main recommendation is to review the available artifacts, think through the situation, and decide later whether a more detailed pass is worth doing. I would avoid committing to a concrete stopping point, validation plan, or ranked backlog until after a larger follow-up review."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Stays focused on performance bottlenecks instead of drifting into a broad code review."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Application code",
+            "Benchmark or profiler artifacts",
+            "Performance-related configuration",
+            "Operational notes"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-report-only-no-runtime-data__synthetic-pass",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-report-only-no-runtime-data",
+      "title": "Stay honest when runtime evidence is weak or missing (likely pass)",
+      "variant": "pass",
+      "userRequest": "Do a report-only performance hunt on this codebase. If you do not have profiler or runtime data, say that clearly and tell me the smallest measurements to add first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repo has code and configs, but live profiler data, traces, or benchmark output may be missing.",
+          "The response should extract useful repo-grounded hotspots without overstating confidence."
+        ],
+        "available_artifacts": [
+          "Code",
+          "Config files",
+          "Partial or missing performance artifacts"
+        ]
+      },
+      "artifactRequirements": [
+        "available evidence summary",
+        "explicit limitations",
+        "ranked hotspots or clean report",
+        "measurement plan"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response stay honest about missing profiler or runtime evidence?",
+        "Does it still extract useful repo-based hotspots without pretending they are measured bottlenecks?",
+        "Are the recommended next measurements small and specific enough to remove uncertainty?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Do a report-only performance hunt on this codebase. If you do not have profiler or runtime data, say that clearly and tell me the smallest measurements to add first.\n- Primary boundary: The repo has code and configs, but live profiler data, traces, or benchmark output may be missing.\n- Evidence reviewed: `Code`, `Config files`, `Partial or missing performance artifacts`\n\n## Draft swe:performance-hunt Output\n1. Available evidence summary: ground this in Code and keep it bounded to the requested surface.\n2. Explicit limitations: ground this in Config files and keep it bounded to the requested surface.\n3. Ranked hotspots or clean report: ground this in Partial or missing performance artifacts and keep it bounded to the requested surface.\n4. Measurement plan: ground this in Code and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- The response should extract useful repo-grounded hotspots without overstating confidence.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "States what could not be verified because runtime evidence was missing."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Code",
+            "Config files",
+            "Partial or missing performance artifacts"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-report-only-no-runtime-data__synthetic-nuanced-pass",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-report-only-no-runtime-data",
+      "title": "Stay honest when runtime evidence is weak or missing (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Do a report-only performance hunt on this codebase. If you do not have profiler or runtime data, say that clearly and tell me the smallest measurements to add first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repo has code and configs, but live profiler data, traces, or benchmark output may be missing.",
+          "The response should extract useful repo-grounded hotspots without overstating confidence."
+        ],
+        "available_artifacts": [
+          "Code",
+          "Config files",
+          "Partial or missing performance artifacts"
+        ]
+      },
+      "artifactRequirements": [
+        "available evidence summary",
+        "explicit limitations",
+        "ranked hotspots or clean report",
+        "measurement plan"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response stay honest about missing profiler or runtime evidence?",
+        "Does it still extract useful repo-based hotspots without pretending they are measured bottlenecks?",
+        "Are the recommended next measurements small and specific enough to remove uncertainty?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Do a report-only performance hunt on this codebase. If you do not have profiler or runtime data, say that clearly and tell me the smallest measurements to add first.\n- Reviewed first: `Code`, `Config files`, `Partial or missing performance artifacts`\n\n## swe:performance-hunt Draft\n1. Available evidence summary: tie this to Code, then stop at the requested boundary.\n2. Explicit limitations: tie this to Config files, then stop at the requested boundary.\n3. Ranked hotspots or clean report: tie this to Partial or missing performance artifacts, then stop at the requested boundary.\n4. Measurement plan: tie this to Code, then stop at the requested boundary.\n\n## Labeled Unknowns\n- The repo has code and configs, but live profiler data, traces, or benchmark output may be missing.\n- The response should extract useful repo-grounded hotspots without overstating confidence.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "States what could not be verified because runtime evidence was missing."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Code",
+            "Config files",
+            "Partial or missing performance artifacts"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-report-only-no-runtime-data__synthetic-fail",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-report-only-no-runtime-data",
+      "title": "Stay honest when runtime evidence is weak or missing (likely fail)",
+      "variant": "fail",
+      "userRequest": "Do a report-only performance hunt on this codebase. If you do not have profiler or runtime data, say that clearly and tell me the smallest measurements to add first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repo has code and configs, but live profiler data, traces, or benchmark output may be missing.",
+          "The response should extract useful repo-grounded hotspots without overstating confidence."
+        ],
+        "available_artifacts": [
+          "Code",
+          "Config files",
+          "Partial or missing performance artifacts"
+        ]
+      },
+      "artifactRequirements": [
+        "available evidence summary",
+        "explicit limitations",
+        "ranked hotspots or clean report",
+        "measurement plan"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response stay honest about missing profiler or runtime evidence?",
+        "Does it still extract useful repo-based hotspots without pretending they are measured bottlenecks?",
+        "Are the recommended next measurements small and specific enough to remove uncertainty?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:performance-hunt is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"The repo has code and configs, but live profiler data, traces, or benchmark output may be missing.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "States what could not be verified because runtime evidence was missing."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Code",
+            "Config files",
+            "Partial or missing performance artifacts"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-report-only-no-runtime-data__synthetic-scope-drift",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-report-only-no-runtime-data",
+      "title": "Stay honest when runtime evidence is weak or missing (scope drift fail)",
+      "variant": "scope-drift",
+      "userRequest": "Do a report-only performance hunt on this codebase. If you do not have profiler or runtime data, say that clearly and tell me the smallest measurements to add first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repo has code and configs, but live profiler data, traces, or benchmark output may be missing.",
+          "The response should extract useful repo-grounded hotspots without overstating confidence."
+        ],
+        "available_artifacts": [
+          "Code",
+          "Config files",
+          "Partial or missing performance artifacts"
+        ]
+      },
+      "artifactRequirements": [
+        "available evidence summary",
+        "explicit limitations",
+        "ranked hotspots or clean report",
+        "measurement plan"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response stay honest about missing profiler or runtime evidence?",
+        "Does it still extract useful repo-based hotspots without pretending they are measured bottlenecks?",
+        "Are the recommended next measurements small and specific enough to remove uncertainty?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "I reviewed `Code`, `Config files`, `Partial or missing performance artifacts` and there is probably a broader swe:performance-hunt cleanup to do. Beyond the requested task, I would expand this into a wider repo sweep, rewrite adjacent guidance, and plan follow-on work for unrelated surfaces before validating the original request. That larger sweep is likely more valuable than staying inside the bounded task the user asked for."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "States what could not be verified because runtime evidence was missing."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Code",
+            "Config files",
+            "Partial or missing performance artifacts"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-report-only-no-runtime-data__synthetic-evidence-thin",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-report-only-no-runtime-data",
+      "title": "Stay honest when runtime evidence is weak or missing (evidence thin fail)",
+      "variant": "evidence-thin",
+      "userRequest": "Do a report-only performance hunt on this codebase. If you do not have profiler or runtime data, say that clearly and tell me the smallest measurements to add first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The repo has code and configs, but live profiler data, traces, or benchmark output may be missing.",
+          "The response should extract useful repo-grounded hotspots without overstating confidence."
+        ],
+        "available_artifacts": [
+          "Code",
+          "Config files",
+          "Partial or missing performance artifacts"
+        ]
+      },
+      "artifactRequirements": [
+        "available evidence summary",
+        "explicit limitations",
+        "ranked hotspots or clean report",
+        "measurement plan"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response stay honest about missing profiler or runtime evidence?",
+        "Does it still extract useful repo-based hotspots without pretending they are measured bottlenecks?",
+        "Are the recommended next measurements small and specific enough to remove uncertainty?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Draft Findings\n1. Available evidence summary: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n2. Explicit limitations: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n3. Ranked hotspots or clean report: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n4. Measurement plan: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n\n## Confidence\n- I am treating the likely repo patterns as sufficient evidence and would not slow this down by checking exact files or commands."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "States what could not be verified because runtime evidence was missing."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Code",
+            "Config files",
+            "Partial or missing performance artifacts"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-bounded-first-pass__synthetic-pass",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-bounded-first-pass",
+      "title": "Bound an overbroad optimization request to one first pass (likely pass)",
+      "variant": "pass",
+      "userRequest": "Make this app fast. I want a performance hunt that finds the first bottlenecks to attack without turning into a massive rewrite plan.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The request is intentionally broad and should be narrowed to one performance surface and one target metric for a first pass.",
+          "The best response should leave a bounded follow-up backlog instead of pretending the whole app can be optimized at once."
+        ],
+        "available_artifacts": [
+          "Repo layout",
+          "Performance-sensitive code paths",
+          "Build or benchmark configuration",
+          "Recent change history"
+        ]
+      },
+      "artifactRequirements": [
+        "bounded first-pass scope",
+        "target metric",
+        "ranked first-pass backlog",
+        "remaining backlog"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response narrow the optimization request to a usable first pass?",
+        "Does it focus on one critical metric and surface rather than the whole app at once?",
+        "Would the resulting backlog support iterative performance work instead of an open-ended rewrite?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Make this app fast. I want a performance hunt that finds the first bottlenecks to attack without turning into a massive rewrite plan.\n- Primary boundary: The request is intentionally broad and should be narrowed to one performance surface and one target metric for a first pass.\n- Evidence reviewed: `Repo layout`, `Performance-sensitive code paths`, `Build or benchmark configuration`\n\n## Draft swe:performance-hunt Output\n1. Bounded first-pass scope: ground this in Repo layout and keep it bounded to the requested surface.\n2. Target metric: ground this in Performance-sensitive code paths and keep it bounded to the requested surface.\n3. Ranked first-pass backlog: ground this in Build or benchmark configuration and keep it bounded to the requested surface.\n4. Remaining backlog: ground this in Recent change history and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- The best response should leave a bounded follow-up backlog instead of pretending the whole app can be optimized at once.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Leaves a bounded next backlog instead of proposing a broad rewrite program."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo layout",
+            "Performance-sensitive code paths",
+            "Build or benchmark configuration",
+            "Recent change history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-bounded-first-pass__synthetic-nuanced-pass",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-bounded-first-pass",
+      "title": "Bound an overbroad optimization request to one first pass (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Make this app fast. I want a performance hunt that finds the first bottlenecks to attack without turning into a massive rewrite plan.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The request is intentionally broad and should be narrowed to one performance surface and one target metric for a first pass.",
+          "The best response should leave a bounded follow-up backlog instead of pretending the whole app can be optimized at once."
+        ],
+        "available_artifacts": [
+          "Repo layout",
+          "Performance-sensitive code paths",
+          "Build or benchmark configuration",
+          "Recent change history"
+        ]
+      },
+      "artifactRequirements": [
+        "bounded first-pass scope",
+        "target metric",
+        "ranked first-pass backlog",
+        "remaining backlog"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response narrow the optimization request to a usable first pass?",
+        "Does it focus on one critical metric and surface rather than the whole app at once?",
+        "Would the resulting backlog support iterative performance work instead of an open-ended rewrite?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Make this app fast. I want a performance hunt that finds the first bottlenecks to attack without turning into a massive rewrite plan.\n- Reviewed first: `Repo layout`, `Performance-sensitive code paths`, `Build or benchmark configuration`, `Recent change history`\n\n## swe:performance-hunt Draft\n1. Bounded first-pass scope: tie this to Repo layout, then stop at the requested boundary.\n2. Target metric: tie this to Performance-sensitive code paths, then stop at the requested boundary.\n3. Ranked first-pass backlog: tie this to Build or benchmark configuration, then stop at the requested boundary.\n4. Remaining backlog: tie this to Recent change history, then stop at the requested boundary.\n\n## Labeled Unknowns\n- The request is intentionally broad and should be narrowed to one performance surface and one target metric for a first pass.\n- The best response should leave a bounded follow-up backlog instead of pretending the whole app can be optimized at once.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Leaves a bounded next backlog instead of proposing a broad rewrite program."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo layout",
+            "Performance-sensitive code paths",
+            "Build or benchmark configuration",
+            "Recent change history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-bounded-first-pass__synthetic-fail",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-bounded-first-pass",
+      "title": "Bound an overbroad optimization request to one first pass (likely fail)",
+      "variant": "fail",
+      "userRequest": "Make this app fast. I want a performance hunt that finds the first bottlenecks to attack without turning into a massive rewrite plan.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The request is intentionally broad and should be narrowed to one performance surface and one target metric for a first pass.",
+          "The best response should leave a bounded follow-up backlog instead of pretending the whole app can be optimized at once."
+        ],
+        "available_artifacts": [
+          "Repo layout",
+          "Performance-sensitive code paths",
+          "Build or benchmark configuration",
+          "Recent change history"
+        ]
+      },
+      "artifactRequirements": [
+        "bounded first-pass scope",
+        "target metric",
+        "ranked first-pass backlog",
+        "remaining backlog"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response narrow the optimization request to a usable first pass?",
+        "Does it focus on one critical metric and surface rather than the whole app at once?",
+        "Would the resulting backlog support iterative performance work instead of an open-ended rewrite?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:performance-hunt is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"The request is intentionally broad and should be narrowed to one performance surface and one target metric for a first pass.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Leaves a bounded next backlog instead of proposing a broad rewrite program."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo layout",
+            "Performance-sensitive code paths",
+            "Build or benchmark configuration",
+            "Recent change history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-bounded-first-pass__synthetic-scope-drift",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-bounded-first-pass",
+      "title": "Bound an overbroad optimization request to one first pass (scope drift fail)",
+      "variant": "scope-drift",
+      "userRequest": "Make this app fast. I want a performance hunt that finds the first bottlenecks to attack without turning into a massive rewrite plan.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The request is intentionally broad and should be narrowed to one performance surface and one target metric for a first pass.",
+          "The best response should leave a bounded follow-up backlog instead of pretending the whole app can be optimized at once."
+        ],
+        "available_artifacts": [
+          "Repo layout",
+          "Performance-sensitive code paths",
+          "Build or benchmark configuration",
+          "Recent change history"
+        ]
+      },
+      "artifactRequirements": [
+        "bounded first-pass scope",
+        "target metric",
+        "ranked first-pass backlog",
+        "remaining backlog"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response narrow the optimization request to a usable first pass?",
+        "Does it focus on one critical metric and surface rather than the whole app at once?",
+        "Would the resulting backlog support iterative performance work instead of an open-ended rewrite?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "I reviewed `Repo layout`, `Performance-sensitive code paths`, `Build or benchmark configuration` and there is probably a broader swe:performance-hunt cleanup to do. Beyond the requested task, I would expand this into a wider repo sweep, rewrite adjacent guidance, and plan follow-on work for unrelated surfaces before validating the original request. That larger sweep is likely more valuable than staying inside the bounded task the user asked for."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Leaves a bounded next backlog instead of proposing a broad rewrite program."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo layout",
+            "Performance-sensitive code paths",
+            "Build or benchmark configuration",
+            "Recent change history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "performance-hunt-bounded-first-pass__synthetic-vague-output",
+      "skill": "swe:performance-hunt",
+      "caseId": "performance-hunt-bounded-first-pass",
+      "title": "Bound an overbroad optimization request to one first pass (vague output fail)",
+      "variant": "vague-output",
+      "userRequest": "Make this app fast. I want a performance hunt that finds the first bottlenecks to attack without turning into a massive rewrite plan.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The request is intentionally broad and should be narrowed to one performance surface and one target metric for a first pass.",
+          "The best response should leave a bounded follow-up backlog instead of pretending the whole app can be optimized at once."
+        ],
+        "available_artifacts": [
+          "Repo layout",
+          "Performance-sensitive code paths",
+          "Build or benchmark configuration",
+          "Recent change history"
+        ]
+      },
+      "artifactRequirements": [
+        "bounded first-pass scope",
+        "target metric",
+        "ranked first-pass backlog",
+        "remaining backlog"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response narrow the optimization request to a usable first pass?",
+        "Does it focus on one critical metric and surface rather than the whole app at once?",
+        "Would the resulting backlog support iterative performance work instead of an open-ended rewrite?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Names the specific surface and target metric under review.",
+          "Uses profiler data, benchmarks, query plans, traces, bundle analysis, or concrete repo evidence to support each bottleneck.",
+          "Separates strong or moderate bottlenecks from weak suspicions that still need measurement.",
+          "Recommends only small, validation-tight experiments or fixes.",
+          "States missing runtime evidence and unknowns explicitly."
+        ],
+        "failConditions": [
+          "Turns the request into generic cleanup or architecture advice.",
+          "Invents bottlenecks with no measured or repo-grounded support.",
+          "Treats every suspicion as an optimization task.",
+          "Proposes broad rewrites instead of narrow next steps.",
+          "Hides the fact that runtime or profiler evidence was unavailable."
+        ],
+        "commonFailureModes": [
+          "Optimizing code that is not on the scoped critical path.",
+          "Repeating performance folklore without tying it to evidence.",
+          "Forgetting to name the validation path for the proposed next step.",
+          "Expanding into observability audits or incident response instead of bottleneck hunting."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "There is probably a reasonable swe:performance-hunt response somewhere in this area, but I would keep the next step broad. The main recommendation is to review the available artifacts, think through the situation, and decide later whether a more detailed pass is worth doing. I would avoid committing to a concrete stopping point, validation plan, or ranked backlog until after a larger follow-up review."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Leaves a bounded next backlog instead of proposing a broad rewrite program."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "Repo layout",
+            "Performance-sensitive code paths",
+            "Build or benchmark configuration",
+            "Recent change history"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    }
+  ]
+}

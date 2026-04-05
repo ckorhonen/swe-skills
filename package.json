@@ -12,6 +12,7 @@
     "lint:md:fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\"",
     "review:build-dataset": "node scripts/build-review-dataset.mjs",
     "review:coverage": "node scripts/review-coverage.mjs",
+    "review:sync-results": "node scripts/sync-review-results.mjs",
     "review:serve": "node scripts/review-server.mjs"
   },
   "devDependencies": {

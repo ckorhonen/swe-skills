@@ -307,6 +307,25 @@
 
             <article class="skill-card skill-full" data-reveal>
               <div class="skill-meta">
+                <h3><code>swe:babysit-pr</code></h3>
+                <p class="skill-role">Watch one PR in a live loop and handle comments, review requests, scores, and CI until it is ready to merge.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Babysit PR #247 until reviewers are happy and CI is green.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-label">Loop</span> Polling PR #247 every 60s</p>
+                  <p><span class="t-ok">Ack</span> Reacted to new review thread with <span class="t-dim">eyes</span></p>
+                  <p><span class="t-ok">Fix</span> Pushed follow-up for failing auth test + reviewer note</p>
+                  <p><span class="t-label">Score</span> 4/5 &rarr; 5/5 after second revision</p>
+                  <p><span class="t-ok">Ready</span> CI green, no unresolved feedback, safe to merge</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
                 <h3><code>swe:change-validation-planner</code></h3>
                 <p class="skill-role">Plan the narrowest trustworthy validation path for a scoped code change.</p>
               </div>
@@ -521,6 +540,25 @@
             </article>
 
             <article class="skill-card skill-full" data-reveal>
+              <div class="skill-meta">
+                <h3><code>swe:init</code></h3>
+                <p class="skill-role">Create a small repo-local <code>.ai/swe.json</code> so later swe: skills match how you like to work.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Run swe:init --quick --gitignore for this repo.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-ok">Wrote</span> <span class="t-dim">.ai/swe.json</span> with quick defaults</p>
+                  <p><span class="t-ok">Ignored</span> Added <span class="t-dim">.ai/swe.json</span> to <span class="t-dim">.gitignore</span></p>
+                  <p><span class="t-label">Mode</span> quick --gitignore</p>
+                  <p><span class="t-label">Saved</span> Only non-default overrides</p>
+                  <p><span class="t-ok">Rule</span> Explicit user requests still outrank local prefs</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
               <div class="skill-meta">
                 <h3><code>swe:refactor-opportunities</code></h3>
                 <p class="skill-role">Find small, parallelizable refactor tickets with clear boundaries.</p>

@@ -119,6 +119,123 @@ function buildGenericFailOutput(slug, testCase) {
   ].join(" ");
 }
 
+function buildNuancedPassOutput(slug, testCase) {
+  const availableArtifacts = testCase.context.available_artifacts ?? [];
+  const notes = testCase.context.notes ?? [];
+  const artifactRequirements = testCase.artifact_requirements ?? [];
+
+  const requirementLines = artifactRequirements.map((requirement, index) => {
+    const artifact = availableArtifacts[index % Math.max(availableArtifacts.length, 1)] ??
+      "visible repo evidence";
+    return `${index + 1}. ${sentenceCase(requirement)}: tie this to ${artifact}, then stop at the requested boundary.`;
+  });
+
+  return [
+    "## Scoped Readout",
+    `- User request: ${testCase.user_request}`,
+    availableArtifacts.length > 0
+      ? `- Reviewed first: ${quotedList(availableArtifacts.slice(0, 4))}`
+      : "- Reviewed first: visible repo artifacts only.",
+    "",
+    `## ${slugToSkillName(slug)} Draft`,
+    ...requirementLines,
+    "",
+    "## Labeled Unknowns",
+    ...(notes.length > 0
+      ? notes.map((note) => `- ${note}`)
+      : ["- Anything not directly shown in the available artifacts stays labeled as an inference."]),
+    "",
+    "## Smallest Next Step",
+    "- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+  ].join("\n");
+}
+
+function buildScopeDriftFailOutput(slug, testCase) {
+  const availableArtifacts = testCase.context.available_artifacts ?? [];
+
+  return [
+    `I reviewed ${availableArtifacts.length > 0 ? quotedList(availableArtifacts.slice(0, 3)) : "the repo surface"} and there is probably a broader ${slugToSkillName(slug)} cleanup to do.`,
+    "Beyond the requested task, I would expand this into a wider repo sweep, rewrite adjacent guidance, and plan follow-on work for unrelated surfaces before validating the original request.",
+    "That larger sweep is likely more valuable than staying inside the bounded task the user asked for."
+  ].join(" ");
+}
+
+function buildEvidenceThinFailOutput(slug, testCase) {
+  const artifactRequirements = testCase.artifact_requirements ?? [];
+
+  return [
+    "## Draft Findings",
+    ...artifactRequirements.map((requirement, index) =>
+      `${index + 1}. ${sentenceCase(requirement)}: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.`
+    ),
+    "",
+    "## Confidence",
+    "- I am treating the likely repo patterns as sufficient evidence and would not slow this down by checking exact files or commands."
+  ].join("\n");
+}
+
+function buildVagueOutputFailOutput(slug, testCase) {
+  return [
+    `There is probably a reasonable ${slugToSkillName(slug)} response somewhere in this area, but I would keep the next step broad.`,
+    "The main recommendation is to review the available artifacts, think through the situation, and decide later whether a more detailed pass is worth doing.",
+    "I would avoid committing to a concrete stopping point, validation plan, or ranked backlog until after a larger follow-up review."
+  ].join(" ");
+}
+
+function buildVariantDefinitions(slug, testCase) {
+  const variants = [
+    {
+      idSuffix: "pass",
+      titleLabel: "likely pass",
+      verdict: "Pass",
+      output: null
+    },
+    {
+      idSuffix: "nuanced-pass",
+      titleLabel: "nuanced pass",
+      verdict: "Pass",
+      output: { format: "markdown", content: buildNuancedPassOutput(slug, testCase) }
+    },
+    {
+      idSuffix: "fail",
+      titleLabel: "likely fail",
+      verdict: "Fail",
+      output: null
+    }
+  ];
+
+  const criteria = new Set(testCase.shared_criteria ?? []);
+
+  if (criteria.has("scope-discipline")) {
+    variants.push({
+      idSuffix: "scope-drift",
+      titleLabel: "scope drift fail",
+      verdict: "Fail",
+      output: { format: "markdown", content: buildScopeDriftFailOutput(slug, testCase) }
+    });
+  }
+
+  if (criteria.has("concrete-evidence")) {
+    variants.push({
+      idSuffix: "evidence-thin",
+      titleLabel: "evidence thin fail",
+      verdict: "Fail",
+      output: { format: "markdown", content: buildEvidenceThinFailOutput(slug, testCase) }
+    });
+  }
+
+  if (criteria.has("actionable-output")) {
+    variants.push({
+      idSuffix: "vague-output",
+      titleLabel: "vague output fail",
+      verdict: "Fail",
+      output: { format: "markdown", content: buildVagueOutputFailOutput(slug, testCase) }
+    });
+  }
+
+  return variants;
+}
+
 function buildCandidateOutput(slug, verdict, testCase) {
   const outputs = {
     "capture-knowledge": {
@@ -172,14 +289,14 @@ function buildDataset(slug, allCriteria) {
 
   const items = [];
   for (const testCase of casesDocument.cases) {
-    for (const verdict of ["pass", "fail"]) {
-      const itemId = `${testCase.id}__synthetic-${verdict}`;
+    for (const variant of buildVariantDefinitions(slug, testCase)) {
+      const itemId = `${testCase.id}__synthetic-${variant.idSuffix}`;
       items.push({
         itemId,
         skill: casesDocument.skill,
         caseId: testCase.id,
-        title: `${testCase.title} (${verdict === "pass" ? "likely pass" : "likely fail"})`,
-        variant: verdict === "pass" ? "likely-pass" : "likely-fail",
+        title: `${testCase.title} (${variant.titleLabel})`,
+        variant: variant.idSuffix,
         userRequest: testCase.user_request,
         context: testCase.context,
         artifactRequirements: testCase.artifact_requirements,
@@ -188,7 +305,8 @@ function buildDataset(slug, allCriteria) {
         ),
         reviewQuestions: testCase.review_questions,
         rubric,
-        candidateOutput: buildCandidateOutput(slug, verdict, testCase),
+        candidateOutput: variant.output ??
+          buildCandidateOutput(slug, variant.verdict.toLowerCase(), testCase),
         artifacts: [
           {
             title: "Static checks",
@@ -202,8 +320,8 @@ function buildDataset(slug, allCriteria) {
           }
         ],
         reference: {
-          expectedOverall: verdict === "pass" ? "Pass" : "Fail",
-          notes: verdict === "pass"
+          expectedOverall: variant.verdict,
+          notes: variant.verdict === "Pass"
             ? "Synthetic seed output intended to satisfy most rubric expectations."
             : "Synthetic seed output intended to violate one or more core rubric expectations."
         }

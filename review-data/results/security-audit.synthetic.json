@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "security-audit.synthetic",
+  "reviews": {
+    "security-audit-full-package-surface__synthetic-pass": {
+      "status": "Pass",
+      "notes": "The response defines the audited package surface, names the native audit check, and keeps the findings scoped to dependency and package-surface risk. For a clean report, that is enough to drive a follow-on decision.",
+      "criteria": {
+        "concrete-evidence": "Pass",
+        "actionable-output": "Pass",
+        "instruction-adherence": "Pass",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Pass",
+        "1": "Pass",
+        "2": "Pass"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-full-package-surface__synthetic-fail": {
+      "status": "Fail",
+      "notes": "It declares the repo reasonably secure without naming the audited package surface, executed checks, or remaining coverage limits.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-selected-scope__synthetic-pass": {
+      "status": "Pass",
+      "notes": "It stays on the root package surface, names the audit unit and check, and makes the out-of-scope boundary explicit. The user can tell what was covered and what was not.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "concrete-evidence": "Pass",
+        "actionable-output": "Pass",
+        "instruction-adherence": "Pass"
+      },
+      "questions": {
+        "0": "Pass",
+        "1": "Pass",
+        "2": "Pass"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-selected-scope__synthetic-fail": {
+      "status": "Fail",
+      "notes": "It declares the repo reasonably secure without naming the audited package surface, executed checks, or remaining coverage limits.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-tooling-gap__synthetic-pass": {
+      "status": "Fail",
+      "notes": "The report never tells the user that best-in-class tooling and license coverage are missing even though this case explicitly asks for that limitation to be called out. The dependency summary may be structured, but the coverage story is incomplete.",
+      "criteria": {
+        "concrete-evidence": "Pass",
+        "honest-unknowns": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Pass"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-tooling-gap__synthetic-fail": {
+      "status": "Fail",
+      "notes": "It declares the repo reasonably secure without naming the audited package surface, executed checks, or remaining coverage limits.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "honest-unknowns": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-full-package-surface__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-full-package-surface__synthetic-evidence-thin": {
+      "status": "Fail",
+      "notes": "The response lists the right headings, but it openly relies on what is “probably true” from repo shape instead of concrete artifacts, outputs, or commands. That leaves the report structured but unsupported.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-full-package-surface__synthetic-vague-output": {
+      "status": "Fail",
+      "notes": "The response stays vague about what should happen next and defers the real judgment to a later pass. It does not leave behind a concrete report, evidence trail, or bounded follow-up.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-selected-scope__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "security-audit-selected-scope__synthetic-scope-drift": {
+      "status": "Fail",
+      "notes": "The response names a few artifacts, then pivots into a broader cleanup outside the requested surface. That scope drift leaves the user without a concrete answer to the actual task.",
+      "criteria": {
+        "scope-discipline": "Fail",
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-selected-scope__synthetic-evidence-thin": {
+      "status": "Fail",
+      "notes": "The response lists the right headings, but it openly relies on what is “probably true” from repo shape instead of concrete artifacts, outputs, or commands. That leaves the report structured but unsupported.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-selected-scope__synthetic-vague-output": {
+      "status": "Fail",
+      "notes": "The response stays vague about what should happen next and defers the real judgment to a later pass. It does not leave behind a concrete report, evidence trail, or bounded follow-up.",
+      "criteria": {
+        "scope-discipline": "Pass",
+        "concrete-evidence": "Fail",
+        "actionable-output": "Fail",
+        "instruction-adherence": "Fail"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    },
+    "security-audit-tooling-gap__synthetic-nuanced-pass": {
+      "status": "Fail",
+      "notes": "The response preserves scope and labels unknowns, but it remains a draft outline rather than a real report or decision. The user still does not get the concrete findings, backlog, or recommendation the case requires.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "honest-unknowns": "Pass",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T19:00:59.742Z"
+    },
+    "security-audit-tooling-gap__synthetic-evidence-thin": {
+      "status": "Fail",
+      "notes": "The response lists the right headings, but it openly relies on what is “probably true” from repo shape instead of concrete artifacts, outputs, or commands. That leaves the report structured but unsupported.",
+      "criteria": {
+        "concrete-evidence": "Fail",
+        "honest-unknowns": "Fail",
+        "instruction-adherence": "Fail",
+        "reviewable-structure": "Pass"
+      },
+      "questions": {
+        "0": "Fail",
+        "1": "Fail",
+        "2": "Fail"
+      },
+      "updatedAt": "2026-04-05T18:57:11.406Z"
+    }
+  }
+}

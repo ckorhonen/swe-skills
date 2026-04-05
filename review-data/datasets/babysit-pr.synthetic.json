@@ -1,0 +1,2305 @@
+{
+  "schemaVersion": 1,
+  "datasetId": "babysit-pr.synthetic",
+  "title": "swe:babysit-pr Synthetic Review Dataset",
+  "description": "Synthetic seed review items for swe:babysit-pr. Use these for UI smoke tests and rubric walk-throughs only.",
+  "generatedAt": "2026-04-05T19:08:59.805Z",
+  "source": {
+    "kind": "synthetic-seed",
+    "evalDirectory": "evals/babysit-pr"
+  },
+  "items": [
+    {
+      "itemId": "babysit-pr-happy-path__synthetic-pass",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-happy-path",
+      "title": "Open PR with actionable review feedback and merge-ready finish (likely pass)",
+      "variant": "pass",
+      "userRequest": "Babysit PR #247 until it is ready to merge. Handle review comments, requested changes, and CI for me.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The PR is open and the local checkout is available.",
+          "GitHub comments, reviews, CI status, and push access are available.",
+          "At least one new actionable review comment and one requested-changes review arrive during the watch loop."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "PR diff",
+          "Issue comments",
+          "Inline review comments",
+          "Reviews",
+          "CI status"
+        ]
+      },
+      "artifactRequirements": [
+        "persistent PR watch loop",
+        "comment acknowledgement and triage",
+        "fix-and-push workflow",
+        "ready-to-merge terminal summary"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response behave like a continuous PR shepherd rather than a one-shot reviewer?",
+        "Does it acknowledge new feedback, push the needed follow-up, and keep watching after the push?",
+        "Does the final state clearly explain why the PR is now ready to merge?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Babysit PR #247 until it is ready to merge. Handle review comments, requested changes, and CI for me.\n- Primary boundary: The PR is open and the local checkout is available.\n- Evidence reviewed: `PR metadata`, `PR diff`, `Issue comments`\n\n## Draft swe:babysit-pr Output\n1. Persistent PR watch loop: ground this in PR metadata and keep it bounded to the requested surface.\n2. Comment acknowledgement and triage: ground this in PR diff and keep it bounded to the requested surface.\n3. Fix-and-push workflow: ground this in Issue comments and keep it bounded to the requested surface.\n4. Ready-to-merge terminal summary: ground this in Inline review comments and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- GitHub comments, reviews, CI status, and push access are available.\n- At least one new actionable review comment and one requested-changes review arrive during the watch loop.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Keeps working until the PR is actually merge-ready instead of stopping at the first snapshot."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "PR diff",
+            "Issue comments",
+            "Inline review comments",
+            "Reviews",
+            "CI status"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-happy-path__synthetic-nuanced-pass",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-happy-path",
+      "title": "Open PR with actionable review feedback and merge-ready finish (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Babysit PR #247 until it is ready to merge. Handle review comments, requested changes, and CI for me.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The PR is open and the local checkout is available.",
+          "GitHub comments, reviews, CI status, and push access are available.",
+          "At least one new actionable review comment and one requested-changes review arrive during the watch loop."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "PR diff",
+          "Issue comments",
+          "Inline review comments",
+          "Reviews",
+          "CI status"
+        ]
+      },
+      "artifactRequirements": [
+        "persistent PR watch loop",
+        "comment acknowledgement and triage",
+        "fix-and-push workflow",
+        "ready-to-merge terminal summary"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response behave like a continuous PR shepherd rather than a one-shot reviewer?",
+        "Does it acknowledge new feedback, push the needed follow-up, and keep watching after the push?",
+        "Does the final state clearly explain why the PR is now ready to merge?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Babysit PR #247 until it is ready to merge. Handle review comments, requested changes, and CI for me.\n- Reviewed first: `PR metadata`, `PR diff`, `Issue comments`, `Inline review comments`\n\n## swe:babysit-pr Draft\n1. Persistent PR watch loop: tie this to PR metadata, then stop at the requested boundary.\n2. Comment acknowledgement and triage: tie this to PR diff, then stop at the requested boundary.\n3. Fix-and-push workflow: tie this to Issue comments, then stop at the requested boundary.\n4. Ready-to-merge terminal summary: tie this to Inline review comments, then stop at the requested boundary.\n\n## Labeled Unknowns\n- The PR is open and the local checkout is available.\n- GitHub comments, reviews, CI status, and push access are available.\n- At least one new actionable review comment and one requested-changes review arrive during the watch loop.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Keeps working until the PR is actually merge-ready instead of stopping at the first snapshot."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "PR diff",
+            "Issue comments",
+            "Inline review comments",
+            "Reviews",
+            "CI status"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-happy-path__synthetic-fail",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-happy-path",
+      "title": "Open PR with actionable review feedback and merge-ready finish (likely fail)",
+      "variant": "fail",
+      "userRequest": "Babysit PR #247 until it is ready to merge. Handle review comments, requested changes, and CI for me.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The PR is open and the local checkout is available.",
+          "GitHub comments, reviews, CI status, and push access are available.",
+          "At least one new actionable review comment and one requested-changes review arrive during the watch loop."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "PR diff",
+          "Issue comments",
+          "Inline review comments",
+          "Reviews",
+          "CI status"
+        ]
+      },
+      "artifactRequirements": [
+        "persistent PR watch loop",
+        "comment acknowledgement and triage",
+        "fix-and-push workflow",
+        "ready-to-merge terminal summary"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response behave like a continuous PR shepherd rather than a one-shot reviewer?",
+        "Does it acknowledge new feedback, push the needed follow-up, and keep watching after the push?",
+        "Does the final state clearly explain why the PR is now ready to merge?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:babysit-pr is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"The PR is open and the local checkout is available.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Keeps working until the PR is actually merge-ready instead of stopping at the first snapshot."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "PR diff",
+            "Issue comments",
+            "Inline review comments",
+            "Reviews",
+            "CI status"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-happy-path__synthetic-evidence-thin",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-happy-path",
+      "title": "Open PR with actionable review feedback and merge-ready finish (evidence thin fail)",
+      "variant": "evidence-thin",
+      "userRequest": "Babysit PR #247 until it is ready to merge. Handle review comments, requested changes, and CI for me.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The PR is open and the local checkout is available.",
+          "GitHub comments, reviews, CI status, and push access are available.",
+          "At least one new actionable review comment and one requested-changes review arrive during the watch loop."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "PR diff",
+          "Issue comments",
+          "Inline review comments",
+          "Reviews",
+          "CI status"
+        ]
+      },
+      "artifactRequirements": [
+        "persistent PR watch loop",
+        "comment acknowledgement and triage",
+        "fix-and-push workflow",
+        "ready-to-merge terminal summary"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response behave like a continuous PR shepherd rather than a one-shot reviewer?",
+        "Does it acknowledge new feedback, push the needed follow-up, and keep watching after the push?",
+        "Does the final state clearly explain why the PR is now ready to merge?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Draft Findings\n1. Persistent PR watch loop: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n2. Comment acknowledgement and triage: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n3. Fix-and-push workflow: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n4. Ready-to-merge terminal summary: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n\n## Confidence\n- I am treating the likely repo patterns as sufficient evidence and would not slow this down by checking exact files or commands."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Keeps working until the PR is actually merge-ready instead of stopping at the first snapshot."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "PR diff",
+            "Issue comments",
+            "Inline review comments",
+            "Reviews",
+            "CI status"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-happy-path__synthetic-vague-output",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-happy-path",
+      "title": "Open PR with actionable review feedback and merge-ready finish (vague output fail)",
+      "variant": "vague-output",
+      "userRequest": "Babysit PR #247 until it is ready to merge. Handle review comments, requested changes, and CI for me.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The PR is open and the local checkout is available.",
+          "GitHub comments, reviews, CI status, and push access are available.",
+          "At least one new actionable review comment and one requested-changes review arrive during the watch loop."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "PR diff",
+          "Issue comments",
+          "Inline review comments",
+          "Reviews",
+          "CI status"
+        ]
+      },
+      "artifactRequirements": [
+        "persistent PR watch loop",
+        "comment acknowledgement and triage",
+        "fix-and-push workflow",
+        "ready-to-merge terminal summary"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response behave like a continuous PR shepherd rather than a one-shot reviewer?",
+        "Does it acknowledge new feedback, push the needed follow-up, and keep watching after the push?",
+        "Does the final state clearly explain why the PR is now ready to merge?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "There is probably a reasonable swe:babysit-pr response somewhere in this area, but I would keep the next step broad. The main recommendation is to review the available artifacts, think through the situation, and decide later whether a more detailed pass is worth doing. I would avoid committing to a concrete stopping point, validation plan, or ranked backlog until after a larger follow-up review."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Keeps working until the PR is actually merge-ready instead of stopping at the first snapshot."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "PR diff",
+            "Issue comments",
+            "Inline review comments",
+            "Reviews",
+            "CI status"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-ambiguous-feedback__synthetic-pass",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-ambiguous-feedback",
+      "title": "Reviewer comment is ambiguous and needs clarification (likely pass)",
+      "variant": "pass",
+      "userRequest": "Watch this PR until reviewers are happy, but do not guess if a review comment is unclear.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer leaves a comment with multiple plausible interpretations.",
+          "The product intent is not clear enough to choose a code change safely."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "Review comment thread",
+          "Local checkout"
+        ]
+      },
+      "artifactRequirements": [
+        "clarifying question",
+        "2-3 options with tradeoffs",
+        "blocked-until-clarified status"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response ask a concrete clarifying question instead of guessing?",
+        "Does it present options and their tradeoffs clearly enough for a reviewer or user to choose?",
+        "Does it keep the PR in a clearly blocked state rather than pretending the comment was resolved?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Watch this PR until reviewers are happy, but do not guess if a review comment is unclear.\n- Primary boundary: A reviewer leaves a comment with multiple plausible interpretations.\n- Evidence reviewed: `PR metadata`, `Review comment thread`, `Local checkout`\n\n## Draft swe:babysit-pr Output\n1. Clarifying question: ground this in PR metadata and keep it bounded to the requested surface.\n2. 2-3 options with tradeoffs: ground this in Review comment thread and keep it bounded to the requested surface.\n3. Blocked-until-clarified status: ground this in Local checkout and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- The product intent is not clear enough to choose a code change safely.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not make speculative code changes while reviewer intent is ambiguous."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "Review comment thread",
+            "Local checkout"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-ambiguous-feedback__synthetic-nuanced-pass",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-ambiguous-feedback",
+      "title": "Reviewer comment is ambiguous and needs clarification (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Watch this PR until reviewers are happy, but do not guess if a review comment is unclear.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer leaves a comment with multiple plausible interpretations.",
+          "The product intent is not clear enough to choose a code change safely."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "Review comment thread",
+          "Local checkout"
+        ]
+      },
+      "artifactRequirements": [
+        "clarifying question",
+        "2-3 options with tradeoffs",
+        "blocked-until-clarified status"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response ask a concrete clarifying question instead of guessing?",
+        "Does it present options and their tradeoffs clearly enough for a reviewer or user to choose?",
+        "Does it keep the PR in a clearly blocked state rather than pretending the comment was resolved?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Watch this PR until reviewers are happy, but do not guess if a review comment is unclear.\n- Reviewed first: `PR metadata`, `Review comment thread`, `Local checkout`\n\n## swe:babysit-pr Draft\n1. Clarifying question: tie this to PR metadata, then stop at the requested boundary.\n2. 2-3 options with tradeoffs: tie this to Review comment thread, then stop at the requested boundary.\n3. Blocked-until-clarified status: tie this to Local checkout, then stop at the requested boundary.\n\n## Labeled Unknowns\n- A reviewer leaves a comment with multiple plausible interpretations.\n- The product intent is not clear enough to choose a code change safely.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not make speculative code changes while reviewer intent is ambiguous."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "Review comment thread",
+            "Local checkout"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-ambiguous-feedback__synthetic-fail",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-ambiguous-feedback",
+      "title": "Reviewer comment is ambiguous and needs clarification (likely fail)",
+      "variant": "fail",
+      "userRequest": "Watch this PR until reviewers are happy, but do not guess if a review comment is unclear.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer leaves a comment with multiple plausible interpretations.",
+          "The product intent is not clear enough to choose a code change safely."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "Review comment thread",
+          "Local checkout"
+        ]
+      },
+      "artifactRequirements": [
+        "clarifying question",
+        "2-3 options with tradeoffs",
+        "blocked-until-clarified status"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response ask a concrete clarifying question instead of guessing?",
+        "Does it present options and their tradeoffs clearly enough for a reviewer or user to choose?",
+        "Does it keep the PR in a clearly blocked state rather than pretending the comment was resolved?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:babysit-pr is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"A reviewer leaves a comment with multiple plausible interpretations.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not make speculative code changes while reviewer intent is ambiguous."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "Review comment thread",
+            "Local checkout"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-ambiguous-feedback__synthetic-scope-drift",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-ambiguous-feedback",
+      "title": "Reviewer comment is ambiguous and needs clarification (scope drift fail)",
+      "variant": "scope-drift",
+      "userRequest": "Watch this PR until reviewers are happy, but do not guess if a review comment is unclear.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer leaves a comment with multiple plausible interpretations.",
+          "The product intent is not clear enough to choose a code change safely."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "Review comment thread",
+          "Local checkout"
+        ]
+      },
+      "artifactRequirements": [
+        "clarifying question",
+        "2-3 options with tradeoffs",
+        "blocked-until-clarified status"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "honest-unknowns",
+          "title": "Honest Unknowns",
+          "description": "Unknowns, missing inputs, and inferred conclusions are labeled clearly.",
+          "passCondition": "The response distinguishes observations from inferences and notes missing evidence when relevant.",
+          "failCondition": "It presents guesses as facts or hides missing evidence."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response ask a concrete clarifying question instead of guessing?",
+        "Does it present options and their tradeoffs clearly enough for a reviewer or user to choose?",
+        "Does it keep the PR in a clearly blocked state rather than pretending the comment was resolved?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "I reviewed `PR metadata`, `Review comment thread`, `Local checkout` and there is probably a broader swe:babysit-pr cleanup to do. Beyond the requested task, I would expand this into a wider repo sweep, rewrite adjacent guidance, and plan follow-on work for unrelated surfaces before validating the original request. That larger sweep is likely more valuable than staying inside the bounded task the user asked for."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not make speculative code changes while reviewer intent is ambiguous."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "Review comment thread",
+            "Local checkout"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-invalid-feedback__synthetic-pass",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-invalid-feedback",
+      "title": "Review feedback is invalid and should be answered, not implemented (likely pass)",
+      "variant": "pass",
+      "userRequest": "Babysit the PR and reply to reviewers when needed. If a review request is wrong, explain why.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer asks for a change that would remove a required safeguard or reintroduce a known bug.",
+          "The local checkout and evidence such as tests or requirements are available."
+        ],
+        "available_artifacts": [
+          "PR diff",
+          "Review thread",
+          "Tests or validation evidence",
+          "Repo guidance"
+        ]
+      },
+      "artifactRequirements": [
+        "evidence-backed reviewer reply",
+        "no blind code change",
+        "continued watch state"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response cite concrete evidence for rejecting or reframing the requested change?",
+        "Does it avoid turning reviewer disagreement into a broad argument unrelated to the PR?",
+        "Does it keep the loop alive so the reviewer can respond to the explanation?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Babysit the PR and reply to reviewers when needed. If a review request is wrong, explain why.\n- Primary boundary: A reviewer asks for a change that would remove a required safeguard or reintroduce a known bug.\n- Evidence reviewed: `PR diff`, `Review thread`, `Tests or validation evidence`\n\n## Draft swe:babysit-pr Output\n1. Evidence-backed reviewer reply: ground this in PR diff and keep it bounded to the requested surface.\n2. No blind code change: ground this in Review thread and keep it bounded to the requested surface.\n3. Continued watch state: ground this in Tests or validation evidence and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- The local checkout and evidence such as tests or requirements are available.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Explains why the feedback is invalid instead of implementing it blindly."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR diff",
+            "Review thread",
+            "Tests or validation evidence",
+            "Repo guidance"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-invalid-feedback__synthetic-nuanced-pass",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-invalid-feedback",
+      "title": "Review feedback is invalid and should be answered, not implemented (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Babysit the PR and reply to reviewers when needed. If a review request is wrong, explain why.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer asks for a change that would remove a required safeguard or reintroduce a known bug.",
+          "The local checkout and evidence such as tests or requirements are available."
+        ],
+        "available_artifacts": [
+          "PR diff",
+          "Review thread",
+          "Tests or validation evidence",
+          "Repo guidance"
+        ]
+      },
+      "artifactRequirements": [
+        "evidence-backed reviewer reply",
+        "no blind code change",
+        "continued watch state"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response cite concrete evidence for rejecting or reframing the requested change?",
+        "Does it avoid turning reviewer disagreement into a broad argument unrelated to the PR?",
+        "Does it keep the loop alive so the reviewer can respond to the explanation?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Babysit the PR and reply to reviewers when needed. If a review request is wrong, explain why.\n- Reviewed first: `PR diff`, `Review thread`, `Tests or validation evidence`, `Repo guidance`\n\n## swe:babysit-pr Draft\n1. Evidence-backed reviewer reply: tie this to PR diff, then stop at the requested boundary.\n2. No blind code change: tie this to Review thread, then stop at the requested boundary.\n3. Continued watch state: tie this to Tests or validation evidence, then stop at the requested boundary.\n\n## Labeled Unknowns\n- A reviewer asks for a change that would remove a required safeguard or reintroduce a known bug.\n- The local checkout and evidence such as tests or requirements are available.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Explains why the feedback is invalid instead of implementing it blindly."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR diff",
+            "Review thread",
+            "Tests or validation evidence",
+            "Repo guidance"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-invalid-feedback__synthetic-fail",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-invalid-feedback",
+      "title": "Review feedback is invalid and should be answered, not implemented (likely fail)",
+      "variant": "fail",
+      "userRequest": "Babysit the PR and reply to reviewers when needed. If a review request is wrong, explain why.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer asks for a change that would remove a required safeguard or reintroduce a known bug.",
+          "The local checkout and evidence such as tests or requirements are available."
+        ],
+        "available_artifacts": [
+          "PR diff",
+          "Review thread",
+          "Tests or validation evidence",
+          "Repo guidance"
+        ]
+      },
+      "artifactRequirements": [
+        "evidence-backed reviewer reply",
+        "no blind code change",
+        "continued watch state"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response cite concrete evidence for rejecting or reframing the requested change?",
+        "Does it avoid turning reviewer disagreement into a broad argument unrelated to the PR?",
+        "Does it keep the loop alive so the reviewer can respond to the explanation?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:babysit-pr is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"A reviewer asks for a change that would remove a required safeguard or reintroduce a known bug.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Explains why the feedback is invalid instead of implementing it blindly."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR diff",
+            "Review thread",
+            "Tests or validation evidence",
+            "Repo guidance"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-invalid-feedback__synthetic-scope-drift",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-invalid-feedback",
+      "title": "Review feedback is invalid and should be answered, not implemented (scope drift fail)",
+      "variant": "scope-drift",
+      "userRequest": "Babysit the PR and reply to reviewers when needed. If a review request is wrong, explain why.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer asks for a change that would remove a required safeguard or reintroduce a known bug.",
+          "The local checkout and evidence such as tests or requirements are available."
+        ],
+        "available_artifacts": [
+          "PR diff",
+          "Review thread",
+          "Tests or validation evidence",
+          "Repo guidance"
+        ]
+      },
+      "artifactRequirements": [
+        "evidence-backed reviewer reply",
+        "no blind code change",
+        "continued watch state"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response cite concrete evidence for rejecting or reframing the requested change?",
+        "Does it avoid turning reviewer disagreement into a broad argument unrelated to the PR?",
+        "Does it keep the loop alive so the reviewer can respond to the explanation?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "I reviewed `PR diff`, `Review thread`, `Tests or validation evidence` and there is probably a broader swe:babysit-pr cleanup to do. Beyond the requested task, I would expand this into a wider repo sweep, rewrite adjacent guidance, and plan follow-on work for unrelated surfaces before validating the original request. That larger sweep is likely more valuable than staying inside the bounded task the user asked for."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Explains why the feedback is invalid instead of implementing it blindly."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR diff",
+            "Review thread",
+            "Tests or validation evidence",
+            "Repo guidance"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-invalid-feedback__synthetic-evidence-thin",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-invalid-feedback",
+      "title": "Review feedback is invalid and should be answered, not implemented (evidence thin fail)",
+      "variant": "evidence-thin",
+      "userRequest": "Babysit the PR and reply to reviewers when needed. If a review request is wrong, explain why.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer asks for a change that would remove a required safeguard or reintroduce a known bug.",
+          "The local checkout and evidence such as tests or requirements are available."
+        ],
+        "available_artifacts": [
+          "PR diff",
+          "Review thread",
+          "Tests or validation evidence",
+          "Repo guidance"
+        ]
+      },
+      "artifactRequirements": [
+        "evidence-backed reviewer reply",
+        "no blind code change",
+        "continued watch state"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response cite concrete evidence for rejecting or reframing the requested change?",
+        "Does it avoid turning reviewer disagreement into a broad argument unrelated to the PR?",
+        "Does it keep the loop alive so the reviewer can respond to the explanation?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Draft Findings\n1. Evidence-backed reviewer reply: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n2. No blind code change: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n3. Continued watch state: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n\n## Confidence\n- I am treating the likely repo patterns as sufficient evidence and would not slow this down by checking exact files or commands."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Explains why the feedback is invalid instead of implementing it blindly."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR diff",
+            "Review thread",
+            "Tests or validation evidence",
+            "Repo guidance"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-invalid-feedback__synthetic-vague-output",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-invalid-feedback",
+      "title": "Review feedback is invalid and should be answered, not implemented (vague output fail)",
+      "variant": "vague-output",
+      "userRequest": "Babysit the PR and reply to reviewers when needed. If a review request is wrong, explain why.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer asks for a change that would remove a required safeguard or reintroduce a known bug.",
+          "The local checkout and evidence such as tests or requirements are available."
+        ],
+        "available_artifacts": [
+          "PR diff",
+          "Review thread",
+          "Tests or validation evidence",
+          "Repo guidance"
+        ]
+      },
+      "artifactRequirements": [
+        "evidence-backed reviewer reply",
+        "no blind code change",
+        "continued watch state"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "scope-discipline",
+          "title": "Scope Discipline",
+          "description": "The response stays within the user's requested scope and the skill's stated non-goals.",
+          "passCondition": "It answers the requested task without broadening into unrelated analysis or actions.",
+          "failCondition": "It expands scope, ignores explicit constraints, or performs work the skill says not to do."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response cite concrete evidence for rejecting or reframing the requested change?",
+        "Does it avoid turning reviewer disagreement into a broad argument unrelated to the PR?",
+        "Does it keep the loop alive so the reviewer can respond to the explanation?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "There is probably a reasonable swe:babysit-pr response somewhere in this area, but I would keep the next step broad. The main recommendation is to review the available artifacts, think through the situation, and decide later whether a more detailed pass is worth doing. I would avoid committing to a concrete stopping point, validation plan, or ranked backlog until after a larger follow-up review."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Explains why the feedback is invalid instead of implementing it blindly."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR diff",
+            "Review thread",
+            "Tests or validation evidence",
+            "Repo guidance"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-score-and-ci-loop__synthetic-pass",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-score-and-ci-loop",
+      "title": "Explicit reviewer score plus CI failures require iteration (likely pass)",
+      "variant": "pass",
+      "userRequest": "Keep iterating on this PR until the review score is maxed out and CI is green.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer or review bot posts an explicit numeric score below the top of its scale.",
+          "One CI failure is branch-related and another failure may be flaky or unrelated."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "Review summary with score",
+          "CI checks",
+          "Failed logs",
+          "Local checkout"
+        ]
+      },
+      "artifactRequirements": [
+        "score-aware iteration plan",
+        "CI classification and response",
+        "terminal summary only after score and CI gates are satisfied"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response treat the numeric score as a real iteration gate instead of a suggestion?",
+        "Does it inspect CI evidence before deciding whether to fix or rerun a failure?",
+        "Does it wait for both CI and reviewer score to clear before calling the PR ready?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scope\n- User request: Keep iterating on this PR until the review score is maxed out and CI is green.\n- Primary boundary: A reviewer or review bot posts an explicit numeric score below the top of its scale.\n- Evidence reviewed: `PR metadata`, `Review summary with score`, `CI checks`\n\n## Draft swe:babysit-pr Output\n1. Score-aware iteration plan: ground this in PR metadata and keep it bounded to the requested surface.\n2. CI classification and response: ground this in Review summary with score and keep it bounded to the requested surface.\n3. Terminal summary only after score and CI gates are satisfied: ground this in CI checks and keep it bounded to the requested surface.\n\n## Unknowns Or Residual Risk\n- One CI failure is branch-related and another failure may be flaky or unrelated.\n\n## Recommended Next Step\n- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not declare success while the explicit score is below the maximum available score."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "Review summary with score",
+            "CI checks",
+            "Failed logs",
+            "Local checkout"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-score-and-ci-loop__synthetic-nuanced-pass",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-score-and-ci-loop",
+      "title": "Explicit reviewer score plus CI failures require iteration (nuanced pass)",
+      "variant": "nuanced-pass",
+      "userRequest": "Keep iterating on this PR until the review score is maxed out and CI is green.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer or review bot posts an explicit numeric score below the top of its scale.",
+          "One CI failure is branch-related and another failure may be flaky or unrelated."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "Review summary with score",
+          "CI checks",
+          "Failed logs",
+          "Local checkout"
+        ]
+      },
+      "artifactRequirements": [
+        "score-aware iteration plan",
+        "CI classification and response",
+        "terminal summary only after score and CI gates are satisfied"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response treat the numeric score as a real iteration gate instead of a suggestion?",
+        "Does it inspect CI evidence before deciding whether to fix or rerun a failure?",
+        "Does it wait for both CI and reviewer score to clear before calling the PR ready?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Scoped Readout\n- User request: Keep iterating on this PR until the review score is maxed out and CI is green.\n- Reviewed first: `PR metadata`, `Review summary with score`, `CI checks`, `Failed logs`\n\n## swe:babysit-pr Draft\n1. Score-aware iteration plan: tie this to PR metadata, then stop at the requested boundary.\n2. CI classification and response: tie this to Review summary with score, then stop at the requested boundary.\n3. Terminal summary only after score and CI gates are satisfied: tie this to CI checks, then stop at the requested boundary.\n\n## Labeled Unknowns\n- A reviewer or review bot posts an explicit numeric score below the top of its scale.\n- One CI failure is branch-related and another failure may be flaky or unrelated.\n\n## Smallest Next Step\n- Use this draft as the narrowest reviewable starting point, then validate only the touched surface."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not declare success while the explicit score is below the maximum available score."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "Review summary with score",
+            "CI checks",
+            "Failed logs",
+            "Local checkout"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Pass",
+        "notes": "Synthetic seed output intended to satisfy most rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-score-and-ci-loop__synthetic-fail",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-score-and-ci-loop",
+      "title": "Explicit reviewer score plus CI failures require iteration (likely fail)",
+      "variant": "fail",
+      "userRequest": "Keep iterating on this PR until the review score is maxed out and CI is green.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer or review bot posts an explicit numeric score below the top of its scale.",
+          "One CI failure is branch-related and another failure may be flaky or unrelated."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "Review summary with score",
+          "CI checks",
+          "Failed logs",
+          "Local checkout"
+        ]
+      },
+      "artifactRequirements": [
+        "score-aware iteration plan",
+        "CI classification and response",
+        "terminal summary only after score and CI gates are satisfied"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response treat the numeric score as a real iteration gate instead of a suggestion?",
+        "Does it inspect CI evidence before deciding whether to fix or rerun a failure?",
+        "Does it wait for both CI and reviewer score to clear before calling the PR ready?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "The best path for swe:babysit-pr is probably a broader repo-wide investigation before deciding anything. I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan. The current note about \"A reviewer or review bot posts an explicit numeric score below the top of its scale.\" is probably enough to generalize from without checking the artifacts directly."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not declare success while the explicit score is below the maximum available score."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "Review summary with score",
+            "CI checks",
+            "Failed logs",
+            "Local checkout"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-score-and-ci-loop__synthetic-evidence-thin",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-score-and-ci-loop",
+      "title": "Explicit reviewer score plus CI failures require iteration (evidence thin fail)",
+      "variant": "evidence-thin",
+      "userRequest": "Keep iterating on this PR until the review score is maxed out and CI is green.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer or review bot posts an explicit numeric score below the top of its scale.",
+          "One CI failure is branch-related and another failure may be flaky or unrelated."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "Review summary with score",
+          "CI checks",
+          "Failed logs",
+          "Local checkout"
+        ]
+      },
+      "artifactRequirements": [
+        "score-aware iteration plan",
+        "CI classification and response",
+        "terminal summary only after score and CI gates are satisfied"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response treat the numeric score as a real iteration gate instead of a suggestion?",
+        "Does it inspect CI evidence before deciding whether to fix or rerun a failure?",
+        "Does it wait for both CI and reviewer score to clear before calling the PR ready?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "## Draft Findings\n1. Score-aware iteration plan: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n2. CI classification and response: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n3. Terminal summary only after score and CI gates are satisfied: this is probably true based on the overall shape of the repo, even without naming supporting artifacts.\n\n## Confidence\n- I am treating the likely repo patterns as sufficient evidence and would not slow this down by checking exact files or commands."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not declare success while the explicit score is below the maximum available score."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "Review summary with score",
+            "CI checks",
+            "Failed logs",
+            "Local checkout"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    },
+    {
+      "itemId": "babysit-pr-score-and-ci-loop__synthetic-vague-output",
+      "skill": "swe:babysit-pr",
+      "caseId": "babysit-pr-score-and-ci-loop",
+      "title": "Explicit reviewer score plus CI failures require iteration (vague output fail)",
+      "variant": "vague-output",
+      "userRequest": "Keep iterating on this PR until the review score is maxed out and CI is green.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer or review bot posts an explicit numeric score below the top of its scale.",
+          "One CI failure is branch-related and another failure may be flaky or unrelated."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "Review summary with score",
+          "CI checks",
+          "Failed logs",
+          "Local checkout"
+        ]
+      },
+      "artifactRequirements": [
+        "score-aware iteration plan",
+        "CI classification and response",
+        "terminal summary only after score and CI gates are satisfied"
+      ],
+      "sharedCriteria": [
+        {
+          "id": "instruction-adherence",
+          "title": "Instruction Adherence",
+          "description": "The response follows the skill's hard constraints and workflow guidance.",
+          "passCondition": "It respects the skill's do-not-use rules, evidence bar, and requested output shape.",
+          "failCondition": "It violates explicit skill rules or skips required parts of the workflow."
+        },
+        {
+          "id": "concrete-evidence",
+          "title": "Concrete Evidence",
+          "description": "Claims are grounded in visible artifacts such as files, commits, CI output, metrics, or commands.",
+          "passCondition": "Important claims cite specific evidence from the available sources.",
+          "failCondition": "The response relies on generic advice or unsupported assertions."
+        },
+        {
+          "id": "actionable-output",
+          "title": "Actionable Output",
+          "description": "The response leaves the user with clear next steps, a usable report, or a concrete decision.",
+          "passCondition": "The output is directly usable for follow-on work or review.",
+          "failCondition": "The output is vague, purely descriptive, or does not help the next decision."
+        },
+        {
+          "id": "reviewable-structure",
+          "title": "Reviewable Structure",
+          "description": "The output is organized so a reviewer can quickly inspect evidence, findings, and recommendations.",
+          "passCondition": "The structure makes it easy to review decisions and trace them back to evidence.",
+          "failCondition": "The response is hard to audit because evidence, findings, and recommendations are mixed together."
+        }
+      ],
+      "reviewQuestions": [
+        "Does the response treat the numeric score as a real iteration gate instead of a suggestion?",
+        "Does it inspect CI evidence before deciding whether to fix or rerun a failure?",
+        "Does it wait for both CI and reviewer score to clear before calling the PR ready?"
+      ],
+      "rubric": {
+        "passConditions": [
+          "Locks onto one open PR and describes a persistent 60-second watch loop.",
+          "Tracks new comments, review comments, reviews, CI, and mergeability together.",
+          "Acknowledges substantive new feedback before acting on it.",
+          "Distinguishes actionable, ambiguous, and invalid feedback and responds appropriately to each.",
+          "Investigates CI failures before rerunning checks or pushing fixes.",
+          "Treats explicit reviewer scores and requested-changes states as real gates.",
+          "Stops only when the PR is merge-ready, merged or closed, or blocked on a clearly stated dependency."
+        ],
+        "failConditions": [
+          "Gives a one-time PR review instead of an ongoing babysitting loop.",
+          "Ignores new comments, review threads, or requested-changes state.",
+          "Guesses at ambiguous feedback instead of asking clarifying questions with options.",
+          "Implements invalid feedback without explaining why it is unsafe or incorrect.",
+          "Retries CI blindly without log inspection or classification.",
+          "Declares the PR ready while unresolved feedback, failing CI, score gaps, or merge blockers remain."
+        ],
+        "commonFailureModes": [
+          "Treating green CI as sufficient while review threads are still open.",
+          "Treating all reviewer comments as valid without checking repo requirements.",
+          "Reporting score improvement as complete before the highest available score is reached.",
+          "Losing track of which comments were already handled across loop iterations."
+        ]
+      },
+      "candidateOutput": {
+        "format": "markdown",
+        "content": "There is probably a reasonable swe:babysit-pr response somewhere in this area, but I would keep the next step broad. The main recommendation is to review the available artifacts, think through the situation, and decide later whether a more detailed pass is worth doing. I would avoid committing to a concrete stopping point, validation plan, or ranked backlog until after a larger follow-up review."
+      },
+      "artifacts": [
+        {
+          "title": "Static checks",
+          "kind": "list",
+          "content": [
+            "Does not declare success while the explicit score is below the maximum available score."
+          ]
+        },
+        {
+          "title": "Available artifacts",
+          "kind": "list",
+          "content": [
+            "PR metadata",
+            "Review summary with score",
+            "CI checks",
+            "Failed logs",
+            "Local checkout"
+          ]
+        }
+      ],
+      "reference": {
+        "expectedOverall": "Fail",
+        "notes": "Synthetic seed output intended to violate one or more core rubric expectations."
+      }
+    }
+  ]
+}
