@@ -37,10 +37,11 @@ This repository stores AI skill files and evaluation suites for SWE workflows.
   conditions, or output format, review `site/index.html` for accuracy.
   Update the skill card description, example prompt, or sample output if
   they no longer reflect the skill's behavior.
-- **Deploying changes**: After editing `site/`, copy the files to the
-  `cdd-site` repo's `public/skill/` directory, run `npx vite build`, and
-  deploy with `wrangler pages deploy dist --project-name=cdd-site` from
-  the `cdd-site` repo root.
+- **Deploying changes**: After editing `site/`, deploy with
+  `wrangler deploy --name swe-skills-site --assets site/ --compatibility-date 2024-12-01`
+  from this repo root. The site is served by the `swe-skills-site` Cloudflare
+  Worker (not the `cdd-site` Pages project). Verify with
+  `curl -s https://cdd.dev/skill/ | grep -c data-reveal` or similar.
 
 ## Workflow notes
 
