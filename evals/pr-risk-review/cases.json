@@ -124,6 +124,47 @@
         "Does it mention ordering, compatibility, or rollback concerns where relevant?",
         "Would the recommendation help the author make the PR safer without broadening scope?"
       ]
+    },
+    {
+      "id": "pr-risk-review-preference-aware-sensitive-surface",
+      "title": "Use local preferences to raise caution on sensitive PR surfaces",
+      "tags": [
+        "preference-aware",
+        "sensitive-path"
+      ],
+      "user_request": "Review this PR for merge risk and keep the follow-up actions small enough to finish before merge.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A local `.ai/swe.json` exists with `{\"v\":1,\"verify\":\"broad\",\"report\":\"full\",\"alts\":\"usually\",\"paths\":[\"migrations/\",\"flags/\"]}`.",
+          "The PR touches a migration file, so the response should raise caution and may include a fuller explanation or alternate next action, but it must stay pre-merge and evidence-led."
+        ],
+        "available_artifacts": [
+          ".ai/swe.json",
+          "PR diff",
+          "CI status",
+          "Migration files"
+        ]
+      },
+      "artifact_requirements": [
+        "sensitive-surface risk assessment",
+        "small next action",
+        "evidence-led finding or clean report"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "instruction-adherence",
+        "actionable-output",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Uses the local preference file to raise caution without turning it into a source of speculative risk."
+      ],
+      "review_questions": [
+        "Does the response use the sensitive-path preference to inspect the migration surface carefully without inventing unsupported findings?",
+        "Does it keep the recommendation small and pre-merge even if the report becomes more detailed?",
+        "Does it avoid treating `.ai/swe.json` as stronger than the visible PR evidence?"
+      ]
     }
   ]
 }

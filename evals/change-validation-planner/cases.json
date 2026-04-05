@@ -127,6 +127,48 @@
         "Does it avoid telling the user to run arbitrary broad checks just to sound complete?",
         "Would the user know what additional validation or repo support is missing?"
       ]
+    },
+    {
+      "id": "change-validation-planner-preference-aware-ladder",
+      "title": "Honor local validation preferences without overriding scope",
+      "tags": [
+        "preference-aware",
+        "local-defaults"
+      ],
+      "user_request": "Plan the validation for this scoped diff and keep the plan bounded to the touched package.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A local `.ai/swe.json` exists with `{\"v\":1,\"verify\":\"broad\",\"report\":\"full\",\"alts\":\"usually\",\"paths\":[\"payments/\"]}`.",
+          "The diff touches `payments/`, so the response should raise caution and may include a fuller ladder, but it must still stay inside the requested package scope."
+        ],
+        "available_artifacts": [
+          ".ai/swe.json",
+          "Changed files",
+          "Package scripts",
+          "CI config"
+        ]
+      },
+      "artifact_requirements": [
+        "preference-aware validation ladder",
+        "bounded scope",
+        "preserved required sections",
+        "explicit stopping point"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "instruction-adherence",
+        "actionable-output",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Uses the local preference file as a default layer rather than as permission to broaden scope."
+      ],
+      "review_questions": [
+        "Does the response use the local preferences to adjust caution, detail, or alternate ladders while still staying within the requested package scope?",
+        "Does it preserve the required report sections instead of replacing them with a free-form preference summary?",
+        "Does it avoid treating `.ai/swe.json` as stronger than the explicit user instruction to stay bounded?"
+      ]
     }
   ]
 }

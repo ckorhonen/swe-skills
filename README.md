@@ -55,6 +55,9 @@ Use `npx skills install ckorhonen/swe-skills`.
 - If a skill consults `.ai/swe.json`, treat it as an optional local preference
   layer only. Explicit user requests and repo guidance such as `AGENTS.md`
   still outrank it.
+- If a skill consults `.ai/swe.json`, name only the relevant keys for that
+  skill and do not let the file remove required sections, lower the evidence
+  bar, or widen the skill beyond its stated non-goals.
 - Write frontmatter descriptions so they clearly state what the skill does, when
   to use it, and a few realistic trigger phrases.
 - Include explicit non-goals or negative triggers so skills do not overfire.

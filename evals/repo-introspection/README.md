@@ -13,6 +13,7 @@ This eval set checks whether the skill:
 - `repo-introspection-whole-repo-orientation`
 - `repo-introspection-bounded-surface`
 - `repo-introspection-inference-boundary`
+- `repo-introspection-preference-aware-safe-start`
 
 ## Review Workflow
 

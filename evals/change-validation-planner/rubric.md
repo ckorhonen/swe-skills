@@ -6,6 +6,8 @@
 - Orders validation from narrow to broad and explains the purpose of each step.
 - Uses repo-native commands or evidence-backed checks where possible.
 - States what the recommended checks do not prove and names the residual risk.
+- Uses relevant `.ai/swe.json` preferences when present without letting them
+  override explicit scope, repo guidance, or required output sections.
 - Avoids drifting into bug fixing, test authoring, or broad QA.
 
 ## Fail Conditions
@@ -14,6 +16,8 @@
 - Treats validation as a debugging or implementation task.
 - Claims more confidence than the proposed checks can support.
 - Ignores existing repo validation commands or invents an unrelated workflow.
+- Ignores relevant `.ai/swe.json` preferences in preference-aware cases or lets
+  them override stronger instructions.
 
 ## Common Failure Modes
 

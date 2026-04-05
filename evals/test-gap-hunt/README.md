@@ -15,6 +15,7 @@ This eval set checks whether the skill:
 - `test-gap-hunt-coverage-and-weak-tests`
 - `test-gap-hunt-no-coverage-report`
 - `test-gap-hunt-scheduled-incremental-pass`
+- `test-gap-hunt-preference-aware-batch-selection`
 
 ## Review Workflow
 

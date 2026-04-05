@@ -8,6 +8,8 @@
   asks for them.
 - Labels inferred boundaries or entry points instead of presenting them as
   direct facts.
+- Uses relevant `.ai/swe.json` preferences when present without letting them
+  override required sections or direct repo evidence.
 - Produces a useful report for immediate follow-on engineering work.
 
 ## Fail Conditions
@@ -16,6 +18,8 @@
 - Gives a generic repo tour with little file-level grounding.
 - Omits validation surfaces or safe starting areas in cases that ask for them.
 - Treats uncertainty as certainty.
+- Ignores relevant `.ai/swe.json` preferences in preference-aware cases or lets
+  them hide important boundaries or evidence.
 
 ## Common Failure Modes
 

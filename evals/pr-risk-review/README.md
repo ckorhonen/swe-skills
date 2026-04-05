@@ -15,6 +15,7 @@ This eval set checks whether the skill:
 - `pr-risk-review-happy-path`
 - `pr-risk-review-missing-validation`
 - `pr-risk-review-rollout-gap`
+- `pr-risk-review-preference-aware-sensitive-surface`
 
 ## Review Workflow
 
