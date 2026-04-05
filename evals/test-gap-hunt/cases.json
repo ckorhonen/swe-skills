@@ -129,6 +129,48 @@
         "Does it use parallel or subagent work only where write boundaries are clearly separated?",
         "Would the resulting workflow improve confidence over time instead of just inflating coverage metrics?"
       ]
+    },
+    {
+      "id": "test-gap-hunt-preference-aware-batch-selection",
+      "title": "Use local preferences to keep the batch small and avoid sensitive paths",
+      "tags": [
+        "preference-aware",
+        "batch-selection"
+      ],
+      "user_request": "Run a small pass to improve test coverage in this workspace and tell me what you would touch first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A local `.ai/swe.json` exists with `{\"v\":1,\"scope\":\"minimal\",\"verify\":\"broad\",\"report\":\"evidence\",\"paths\":[\"billing/\"]}`.",
+          "There are viable test-gap opportunities both inside and outside `billing/`, so the response should keep the batch small and avoid the sensitive path by default unless the user overrides it."
+        ],
+        "available_artifacts": [
+          ".ai/swe.json",
+          "Coverage reports",
+          "Test files",
+          "Workspace structure"
+        ]
+      },
+      "artifact_requirements": [
+        "preference-aware batch selection",
+        "bounded execution plan",
+        "validation strategy",
+        "remaining backlog"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "instruction-adherence",
+        "actionable-output",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Uses the local preference file to avoid sensitive paths by default rather than to justify broader work."
+      ],
+      "review_questions": [
+        "Does the response keep the initial batch minimal when several plausible opportunities exist?",
+        "Does it avoid selecting the sensitive path by default unless there is a stronger explicit instruction to do so?",
+        "Does it keep validation narrow-to-broad and evidence-led even when the local preference asks for broader verification?"
+      ]
     }
   ]
 }

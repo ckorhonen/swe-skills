@@ -14,6 +14,7 @@ This eval set checks whether the skill:
 - `change-validation-planner-small-surface-ladder`
 - `change-validation-planner-cross-boundary-change`
 - `change-validation-planner-missing-validation-path`
+- `change-validation-planner-preference-aware-ladder`
 
 ## Review Workflow
 

@@ -7,6 +7,8 @@
 - Treats missing validation, compatibility gaps, rollout risk, and rollback
   issues as first-class signals.
 - Separates strong findings from weak suspicions and stays evidence-led.
+- Uses relevant `.ai/swe.json` preferences when present without letting them
+  override explicit PR scope, repo guidance, or the evidence bar.
 - Recommends the smallest safe next action for each meaningful risk.
 
 ## Fail Conditions
@@ -17,6 +19,8 @@
 - Ignores missing tests, migration ordering, feature-flag defaults, or rollback
   paths when they are relevant.
 - Proposes broad refactors instead of merge-focused follow-up actions.
+- Ignores relevant `.ai/swe.json` preferences in preference-aware cases or lets
+  them suppress concrete risk findings.
 
 ## Common Failure Modes
 

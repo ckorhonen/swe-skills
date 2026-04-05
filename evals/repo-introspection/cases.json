@@ -124,6 +124,47 @@
         "Does it clearly label which boundaries are observed and which are inferred?",
         "Would a reader understand what evidence is missing before making larger architectural assumptions?"
       ]
+    },
+    {
+      "id": "repo-introspection-preference-aware-safe-start",
+      "title": "Respect local report and sensitive-path preferences in safe-start guidance",
+      "tags": [
+        "preference-aware",
+        "safe-start"
+      ],
+      "user_request": "Help me understand this repo and tell me where I should start first.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A local `.ai/swe.json` exists with `{\"v\":1,\"report\":\"terse\",\"alts\":\"usually\",\"paths\":[\"infra/\",\"migrations/\"]}`.",
+          "The response should stay concise, may surface multiple safe entry points, and should avoid treating the listed sensitive paths as default safe starting areas."
+        ],
+        "available_artifacts": [
+          ".ai/swe.json",
+          "README.md",
+          "AGENTS.md",
+          "Repo files"
+        ]
+      },
+      "artifact_requirements": [
+        "concise orientation report",
+        "safe starting points",
+        "sensitive-path caution"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "instruction-adherence",
+        "actionable-output",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Keeps the required report sections even when the local preference asks for terse output."
+      ],
+      "review_questions": [
+        "Does the response stay concise without dropping the required orientation sections?",
+        "Does it avoid recommending the sensitive paths as default safe starting points unless the evidence or user request specifically calls for them?",
+        "Does it still ground the report in direct repo evidence rather than treating the preference file as evidence?"
+      ]
     }
   ]
 }

@@ -70,6 +70,36 @@ If the user does not specify a budget, default to a small incremental pass:
 - improve the top 1-3 opportunities
 - stop after targeted validation
 
+## Optional Local Preference Layer
+
+If `.ai/swe.json` exists and the current request or repo guidance does not
+override it, this skill may consult only these keys:
+
+- `plan`
+- `scope`
+- `verify`
+- `report`
+- `paths`
+
+Use them only to refine defaults:
+
+- `plan` can change how explicit the execution plan and backlog are
+- `scope` can nudge the batch toward a smaller or slightly broader incremental
+  pass when several options are viable
+- `verify` can change how quickly validation broadens after targeted checks
+- `report` can change detail level within the required report sections
+- `paths` can mark avoid-or-ask-first surfaces for default batch selection
+
+Apply preferences in this order:
+
+1. explicit user request
+2. repo guidance such as `AGENTS.md` or `README.md`
+3. `.ai/swe.json`
+4. this skill's defaults
+
+Do not let `.ai/swe.json` justify heavy rewrites, weaker evidence, or dropping
+the skill's incremental safety bar.
+
 ## Parallelization Rule
 
 Create one session per cleanly separated package, module, or service when the
@@ -302,5 +332,6 @@ test or leave the item in the backlog.
 - Reuse the repository's local test conventions before inventing new ones
 - Prioritize risk reduction and weak-test repair over raw coverage gain
 - Keep each pass small enough to run repeatedly or on a schedule
+- Use `.ai/swe.json` only as an optional local default layer for relevant keys
 - Use parallel sessions only on cleanly separated write surfaces
 - Optimize for readable, maintainable, and fast-running tests

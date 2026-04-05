@@ -67,6 +67,34 @@ Confirm or infer:
 If the request is vague, ask for the PR link or number and the intended review
 focus before proceeding.
 
+## Optional Local Preference Layer
+
+If `.ai/swe.json` exists and the current request or repo guidance does not
+override it, this skill may consult only these keys:
+
+- `verify`
+- `report`
+- `alts`
+- `paths`
+
+Use them only to refine defaults:
+
+- `verify` can change how much follow-up validation to recommend
+- `report` can change the detail level within the required report shape
+- `alts` can control whether multiple safe next actions are surfaced when
+  tradeoffs are real
+- `paths` can raise caution for matching diff surfaces
+
+Apply preferences in this order:
+
+1. explicit user request
+2. repo guidance such as `AGENTS.md` or `README.md`
+3. `.ai/swe.json`
+4. this skill's defaults
+
+Do not let `.ai/swe.json` suppress concrete risk findings, reduce the evidence
+bar, or override pre-merge scope.
+
 ## Tooling Stance
 
 This skill is tool agnostic.
@@ -185,5 +213,6 @@ For each weak-signal observation, include:
 - Stay pre-merge and do not drift into post-merge impact analysis
 - Use concrete PR and diff evidence rather than generic review language
 - Treat missing validation and rollout gaps as first-class risk signals
+- Use `.ai/swe.json` only as an optional local default layer for relevant keys
 - Keep the output short, prioritized, and directly actionable
 - Prefer the smallest safe follow-up over broad redesign advice

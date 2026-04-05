@@ -65,6 +65,36 @@ Confirm or infer:
 If the scope is missing, ask for the smallest additional detail needed to bound
 the validation plan.
 
+## Optional Local Preference Layer
+
+If `.ai/swe.json` exists and the current request or repo guidance does not
+override it, this skill may consult only these keys:
+
+- `plan`
+- `verify`
+- `report`
+- `alts`
+- `paths`
+
+Use them only to refine defaults:
+
+- `plan` can change how much detail to include in the validation ladder
+- `verify` can change how quickly the plan broadens after narrow checks
+- `report` can change concision, but not the required report sections
+- `alts` can control whether alternate ladders are surfaced when tradeoffs are
+  material
+- `paths` can raise caution for sensitive paths without expanding scope
+
+Apply preferences in this order:
+
+1. explicit user request
+2. repo guidance such as `AGENTS.md` or `README.md`
+3. `.ai/swe.json`
+4. this skill's defaults
+
+Do not let `.ai/swe.json` remove required sections, lower the evidence bar, or
+replace missing scope information that must still be clarified.
+
 ## Tooling Stance
 
 This skill is tool agnostic.
@@ -189,5 +219,6 @@ what evidence is missing.
 - Prefer repo-native commands and local conventions.
 - Order checks from narrow to broad.
 - Be explicit about residual risk and unknowns.
+- Use `.ai/swe.json` only as an optional local default layer for relevant keys.
 - Do not turn the skill into a generic test-writing or debugging assistant.
 - Make the plan usable immediately by an engineer or agent.

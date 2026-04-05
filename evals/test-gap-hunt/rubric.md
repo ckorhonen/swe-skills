@@ -8,6 +8,8 @@
   or validation cost instead of raw percentage alone.
 - Keeps the batch bounded, favors behavior-focused tests, and avoids heavy
   framework or production rewrites.
+- Uses relevant `.ai/swe.json` preferences when present without letting them
+  weaken the incremental safety bar or override repo guidance.
 - Uses subagent or parallel work only on disjoint surfaces and keeps final
   validation centralized.
 
@@ -20,6 +22,8 @@
 - Suggests broad rewrites, vague test ideas, or overlapping parallel work.
 - Claims validation confidence without noting missing baseline or coverage
   evidence.
+- Ignores relevant `.ai/swe.json` preferences in preference-aware cases or lets
+  them justify risky batch selection or weaker validation discipline.
 
 ## Common Failure Modes
 

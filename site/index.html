@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SWE Skills &mdash; AI Engineering Skills for Code Health, Safety &amp; Maintenance</title>
+    <meta
+      name="description"
+      content="15 AI skills that turn coding assistants into careful senior engineers. Evidence-based code review, change validation, maintenance, and improvement across any codebase."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://cdd.dev/skill/" />
+    <meta name="theme-color" content="#0f1117" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
+    <meta property="og:title" content="SWE Skills &mdash; AI Engineering Skills for Code Health, Safety &amp; Maintenance" />
+    <meta property="og:description" content="15 AI skills that turn coding assistants into careful senior engineers. Evidence-based validation, maintenance, and improvement." />
+    <meta property="og:url" content="https://cdd.dev/skill/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="SWE Skills &mdash; AI Engineering Skills" />
+    <meta name="twitter:description" content="15 AI skills that turn coding assistants into careful senior engineers." />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "swe-skills",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "url": "https://cdd.dev/skill/",
+        "description": "15 AI skills for software engineering: code review, change validation, maintenance, and improvement.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>document.documentElement.classList.add("js");</script>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="#top" aria-label="swe-skills home">
+          <span class="brand-mark" aria-hidden="true">/&gt;_</span>
+          <span class="brand-wordmark">
+            <span class="brand-name">swe</span><span class="brand-domain">-skills</span>
+          </span>
+        </a>
+        <nav class="top-nav" aria-label="Primary">
+          <a href="#story">Story</a>
+          <a href="#framework">Framework</a>
+          <a href="#skills">Skills</a>
+          <a href="#schedules">Schedules</a>
+          <a href="#install">Install</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-shell">
+      <main id="main">
+
+        <!-- HERO -->
+        <section class="hero section" id="top" data-reveal>
+          <div class="hero-copy">
+            <p class="eyebrow">Engineering rigor for AI assistants</p>
+            <h1>Ship with confidence.</h1>
+            <p class="lede">
+              15 skills that turn AI coding assistants into careful senior
+              engineers &mdash; catching bugs, validating changes, and
+              maintaining code health with concrete, repo-grounded evidence.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#install">Get Started</a>
+              <a class="button button-secondary" href="#skills">Explore Skills</a>
+            </div>
+            <div class="works-with" aria-label="Works with">
+              <span>Works with</span>
+              <ul>
+                <li>Claude</li>
+                <li>Codex</li>
+                <li>Cursor</li>
+                <li>Gemini CLI</li>
+                <li>GitHub Copilot</li>
+                <li>OpenClaw</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true" data-parallax>
+            <div class="terminal-window">
+              <div class="terminal-chrome">
+                <span class="terminal-dot"></span>
+                <span class="terminal-dot"></span>
+                <span class="terminal-dot"></span>
+                <span class="terminal-title">swe:pr-risk-review #247</span>
+              </div>
+              <div class="terminal-body">
+                <p><span class="t-dim">$</span> <span class="t-green">swe:pr-risk-review</span> <span class="t-cyan">#247</span></p>
+                <p class="t-dim">&nbsp;</p>
+                <p><span class="t-label">Scope</span> 12 files changed across <span class="t-cyan">api/</span> and <span class="t-cyan">lib/</span></p>
+                <p class="t-dim">&nbsp;</p>
+                <p><span class="t-warn">Risk</span> Missing validation on new endpoint</p>
+                <p class="t-dim">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-cyan">api/users.ts</span>:<span class="t-amber">47</span></p>
+                <p><span class="t-warn">Risk</span> Schema migration has no rollback</p>
+                <p class="t-dim">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-cyan">db/migrate/20260401.sql</span></p>
+                <p class="t-dim">&nbsp;</p>
+                <p><span class="t-ok">Action</span> Add input validation + write rollback</p>
+                <p><span class="t-ok">Action</span> Add integration test for <span class="t-cyan">POST /users</span></p>
+              </div>
+            </div>
+            <div class="hero-card hero-card-1">
+              <span class="hero-card-label">Evidence-led</span>
+              <span class="hero-card-detail">Concrete file paths, not vague advice</span>
+            </div>
+            <div class="hero-card hero-card-2">
+              <span class="hero-card-label">Actionable</span>
+              <span class="hero-card-detail">Smallest next step, not a rewrite</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- BEFORE / AFTER -->
+        <section class="comparison section numbered" id="story" data-reveal>
+          <div class="section-heading">
+            <span class="section-number">01</span>
+            <div>
+              <p class="eyebrow">The upgrade</p>
+              <h2>From vague suggestions to evidence-backed action.</h2>
+            </div>
+          </div>
+
+          <div class="comparison-grid">
+            <article class="comparison-card before">
+              <p class="comparison-label">Before</p>
+              <h3>Generic AI Output</h3>
+              <ul>
+                <li>Looks fine to me, maybe add some tests.</li>
+                <li>Consider refactoring this function.</li>
+                <li>You might want to check for edge cases.</li>
+                <li>This could have performance implications.</li>
+                <li>Make sure to update the docs.</li>
+              </ul>
+            </article>
+
+            <article class="comparison-card after">
+              <p class="comparison-label">After</p>
+              <h3>With swe-skills</h3>
+              <ul>
+                <li>Missing null check at <code>lib/auth.ts:34</code> &mdash; will crash on expired tokens.</li>
+                <li>Migration <code>20260401.sql</code> adds NOT NULL with no default &mdash; will fail on existing rows.</li>
+                <li>Bus factor 1 on <code>billing/</code> &mdash; only contributor inactive 4 months.</li>
+                <li>p99 latency +180ms since PR #231 merged &mdash; N+1 query in <code>fetchOrders</code>.</li>
+                <li>README install section references removed <code>--legacy</code> flag.</li>
+              </ul>
+              <p class="approved-badge">Concrete. Grounded. Actionable.</p>
+            </article>
+          </div>
+          <div class="comparison-track" aria-hidden="true">
+            <span>generic advice</span>
+            <span class="track-line"></span>
+            <span>evidence-backed action</span>
+          </div>
+        </section>
+
+        <!-- FRAMEWORK -->
+        <section class="framework section numbered" id="framework" data-reveal>
+          <div class="section-heading">
+            <span class="section-number">02</span>
+            <div>
+              <p class="eyebrow">The framework</p>
+              <h2>15 skills across the full engineering lifecycle.</h2>
+            </div>
+          </div>
+
+          <div class="framework-panel">
+            <div class="framework-banner">
+              <p>Run one at a time, schedule them to run continuously, or let your AI assistant pick the right one.</p>
+            </div>
+
+            <div class="phase-grid">
+              <article class="phase-card">
+                <span>Understand</span>
+                <p class="phase-count">2 skills</p>
+                <p>Map unfamiliar repos and capture implicit knowledge before making changes.</p>
+              </article>
+              <article class="phase-card">
+                <span>Validate</span>
+                <p class="phase-count">3 skills</p>
+                <p>Review PRs for risk, hunt bugs in recent commits, plan validation paths.</p>
+              </article>
+              <article class="phase-card">
+                <span>Maintain</span>
+                <p class="phase-count">7 skills</p>
+                <p>Monitor deploys, audit dependencies, find observability gaps, track ownership risk.</p>
+              </article>
+              <article class="phase-card">
+                <span>Improve</span>
+                <p class="phase-count">3 skills</p>
+                <p>Close test gaps, find refactor opportunities, and build new skills.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="skills section numbered" id="skills" data-reveal>
+          <div class="section-heading">
+            <span class="section-number">03</span>
+            <div>
+              <p class="eyebrow">The skill set</p>
+              <h2>Every skill, with example prompts and output.</h2>
+            </div>
+          </div>
+
+          <div class="skill-stack">
+
+            <!-- UNDERSTAND -->
+            <p class="skill-group-label">Understand</p>
+
+            <article class="skill-card skill-full skill-featured">
+              <div class="skill-meta">
+                <p class="eyebrow">Start here</p>
+                <h3><code>swe:repo-introspection</code></h3>
+                <p class="skill-role">Map unfamiliar codebases before editing &mdash; structure, tooling, entry points, boundaries, and safe places to start.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Help me understand this repo before I start working on it.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-label">Structure</span> Monorepo &mdash; 3 services + shared lib</p>
+                  <p><span class="t-label">Entry</span> api/src/server.ts, worker/index.ts</p>
+                  <p><span class="t-label">Tests</span> Jest (unit), Playwright (e2e), 94% passing</p>
+                  <p><span class="t-label">CI</span> GitHub Actions &mdash; lint, test, deploy on merge</p>
+                  <p><span class="t-ok">Safe start</span> api/src/routes/ &mdash; well-tested, active area</p>
+                  <p><span class="t-warn">Caution</span> worker/ &mdash; no tests, single contributor</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:capture-knowledge</code></h3>
+                <p class="skill-role">Convert implicit repo patterns into explicit agent-facing guidance.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>What conventions should agents know before working here?</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-warn">Missing</span> No AGENTS.md &mdash; 3 implicit conventions found</p>
+                  <p><span class="t-label">Convention</span> All API routes use zod validation middleware</p>
+                  <p><span class="t-label">Convention</span> DB migrations must have matching rollback</p>
+                  <p><span class="t-label">Convention</span> Feature flags via LaunchDarkly, not env vars</p>
+                  <p><span class="t-ok">Draft</span> 3 entries ready for review &rarr; approve to write</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- VALIDATE -->
+            <p class="skill-group-label">Validate</p>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:pr-risk-review</code></h3>
+                <p class="skill-role">Review open PRs for engineering risk before merge &mdash; missing validation, hidden coupling, rollout gaps.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Review PR #247 for risk before I merge it.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-label">Scope</span> 12 files across api/ and lib/</p>
+                  <p><span class="t-warn">Risk</span> No input validation on POST /users (api/users.ts:47)</p>
+                  <p><span class="t-warn">Risk</span> Migration adds NOT NULL, no default &mdash; will fail</p>
+                  <p><span class="t-label">Note</span> Feature flag present but no rollback documented</p>
+                  <p><span class="t-ok">Action</span> Add zod schema + write rollback migration</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:change-validation-planner</code></h3>
+                <p class="skill-role">Plan the narrowest trustworthy validation path for a scoped code change.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>What's the minimum I should run to validate this diff?</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-label">Changed</span> api/users.ts, lib/validate.ts, 1 migration</p>
+                  <p><span class="t-ok">Step 1</span> <span class="t-dim">npm test -- users.test.ts</span> (proves route logic)</p>
+                  <p><span class="t-ok">Step 2</span> <span class="t-dim">npm run lint</span> (catches import errors)</p>
+                  <p><span class="t-ok">Step 3</span> <span class="t-dim">npx migrate:dry-run</span> (proves migration)</p>
+                  <p><span class="t-warn">Unverified</span> No e2e test covers POST /users flow</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:recent-commit-bug-hunt</code></h3>
+                <p class="skill-role">Scan recent commits for likely bugs using concrete repo evidence.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Scan the last 3 days of commits for regressions.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-warn">Strong</span> PR #231 removed null guard at lib/auth.ts:34</p>
+                  <p class="t-dim">&nbsp;&nbsp;Will throw TypeError on expired tokens in prod</p>
+                  <p><span class="t-label">Moderate</span> PR #228 changed status enum values</p>
+                  <p class="t-dim">&nbsp;&nbsp;No migration for 12k existing rows with old values</p>
+                  <p><span class="t-ok">Fix</span> Restore guard + add enum migration script</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- MAINTAIN -->
+            <p class="skill-group-label">Maintain</p>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:merged-pr-monitoring</code></h3>
+                <p class="skill-role">Check whether merged PRs reached production and compare pre/post-deploy signals.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Did yesterday's merges cause any production issues?</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-ok">PR #244</span> Deployed 14:32 UTC &mdash; no impact observed</p>
+                  <p><span class="t-warn">PR #245</span> Deployed 15:01 UTC &mdash; p99 latency +180ms</p>
+                  <p class="t-dim">&nbsp;&nbsp;GET /orders: 220ms &rarr; 400ms post-deploy</p>
+                  <p class="t-dim">&nbsp;&nbsp;Likely N+1 in fetchOrders (added in this PR)</p>
+                  <p><span class="t-label">PR #246</span> Not yet deployed &mdash; queued behind staging</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:security-audit</code></h3>
+                <p class="skill-role">Audit dependencies for vulnerabilities, outdated packages, and license issues.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Run a security audit across all services.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-warn">Critical</span> jsonwebtoken@8.5.1 &mdash; CVE-2022-23529</p>
+                  <p class="t-dim">&nbsp;&nbsp;api/package.json &mdash; upgrade to &gt;=9.0.0</p>
+                  <p><span class="t-amber">High</span> express@4.17.1 &mdash; 3 known vulns, 2 years old</p>
+                  <p><span class="t-label">License</span> worker uses AGPL dep (pdf-parse) &mdash; review</p>
+                  <p><span class="t-ok">Clean</span> shared-lib &mdash; 0 findings, lockfile present</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:observability-gap-hunt</code></h3>
+                <p class="skill-role">Find missing logs, metrics, traces, alerts, and dashboards.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>What telemetry gaps do we have in the payment service?</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-warn">Blind</span> No error logging in payment/retry.ts</p>
+                  <p class="t-dim">&nbsp;&nbsp;Silent failures on Stripe webhook retries</p>
+                  <p><span class="t-warn">Blind</span> No latency metric on /checkout endpoint</p>
+                  <p><span class="t-label">Weak</span> Alert on error rate but threshold is 10% (too high)</p>
+                  <p><span class="t-ok">Covered</span> Traces present on charge + refund flows</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:ownership-risk-map</code></h3>
+                <p class="skill-role">Map bus factor, orphaned files, and ownership gaps from git evidence.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Which areas of this repo have dangerous bus factor?</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-warn">Bus 1</span> billing/ &mdash; sole contributor left 4 months ago</p>
+                  <p class="t-dim">&nbsp;&nbsp;47 files, 0 CODEOWNERS, 12% test coverage</p>
+                  <p><span class="t-warn">Bus 1</span> infra/terraform/ &mdash; 1 active contributor</p>
+                  <p><span class="t-label">Moderate</span> worker/ &mdash; 2 contributors, low recent activity</p>
+                  <p><span class="t-ok">Healthy</span> api/src/routes/ &mdash; 6 contributors, active</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:performance-hunt</code></h3>
+                <p class="skill-role">Find real performance bottlenecks with profiler data and measured evidence.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Why is the /orders endpoint slow? Profile it.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-warn">Bottleneck</span> N+1 query in fetchOrders &mdash; 340ms of 420ms</p>
+                  <p class="t-dim">&nbsp;&nbsp;1 query per line item &times; avg 18 items = 306 queries</p>
+                  <p><span class="t-label">Secondary</span> JSON serialization &mdash; 55ms (large payload)</p>
+                  <p><span class="t-ok">Fix</span> Add eager load: <span class="t-dim">include: { lineItems: true }</span></p>
+                  <p><span class="t-ok">Expected</span> p50: 420ms &rarr; ~80ms after fix</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:docs-drift-audit</code></h3>
+                <p class="skill-role">Find documentation that drifted from recent code, config, or interface changes.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Are our docs still accurate after last week's refactor?</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-warn">Stale</span> README install section references <span class="t-dim">--legacy</span> flag</p>
+                  <p class="t-dim">&nbsp;&nbsp;Flag removed in PR #239 &mdash; delete from step 3</p>
+                  <p><span class="t-warn">Stale</span> API docs list /v1/users (renamed to /v2/users)</p>
+                  <p><span class="t-label">Missing</span> No runbook for new payment retry flow</p>
+                  <p><span class="t-ok">Current</span> CONTRIBUTING.md &mdash; matches repo conventions</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:incident-followup-audit</code></h3>
+                <p class="skill-role">Verify post-incident engineering follow-through &mdash; tests, monitors, runbooks, tickets.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Did we finish all follow-up from the auth outage?</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-ok">Done</span> Regression test added (auth/token-expiry.test.ts)</p>
+                  <p><span class="t-ok">Done</span> Alert threshold lowered from 10% to 2% error rate</p>
+                  <p><span class="t-warn">Missing</span> No runbook for token rotation procedure</p>
+                  <p><span class="t-warn">Missing</span> JIRA-1847 still open &mdash; rate limiter not shipped</p>
+                  <p><span class="t-label">Partial</span> Monitoring added but no dashboard link in wiki</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- IMPROVE -->
+            <p class="skill-group-label">Improve</p>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:test-gap-hunt</code></h3>
+                <p class="skill-role">Incrementally close the highest-value test coverage gaps.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Find the weakest tests and biggest coverage gaps.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-warn">Gap</span> billing/charge.ts &mdash; 0% coverage, 14 recent PRs</p>
+                  <p><span class="t-warn">Gap</span> worker/process.ts &mdash; 0% coverage, error-prone</p>
+                  <p><span class="t-label">Weak</span> auth/login.test.ts &mdash; happy path only, no edge cases</p>
+                  <p><span class="t-ok">Plan</span> 4 tests to add, narrowest first, est. 25 min</p>
+                  <p><span class="t-ok">Backlog</span> 6 more opportunities ranked for next pass</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:refactor-opportunities</code></h3>
+                <p class="skill-role">Find small, parallelizable refactor tickets with clear boundaries.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Give me 5 low-risk refactors I can hand to agents.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-ok">#1</span> Extract shared validation into lib/validate.ts</p>
+                  <p class="t-dim">&nbsp;&nbsp;3 routes duplicate the same 40-line schema &mdash; low risk</p>
+                  <p><span class="t-ok">#2</span> Remove dead feature flag <span class="t-dim">ENABLE_V1_AUTH</span></p>
+                  <p class="t-dim">&nbsp;&nbsp;Flag always true in prod for 6 months &mdash; 4 files</p>
+                  <p><span class="t-ok">#3</span> Collapse OrderStatus enum (3 unused values since v2)</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full skill-meta-card">
+              <div class="skill-meta">
+                <p class="eyebrow">Extensible</p>
+                <h3><code>swe:create-skill</code></h3>
+                <p class="skill-role">Author new swe: skills with matching eval suites. Build your own.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Create a new swe: skill for auditing API contract changes.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-ok">Created</span> skills/api-contract-audit/SKILL.md</p>
+                  <p><span class="t-ok">Created</span> evals/api-contract-audit/cases.json (6 cases)</p>
+                  <p><span class="t-ok">Created</span> evals/api-contract-audit/rubric.md</p>
+                  <p><span class="t-label">Triggers</span> "check API contracts", "breaking change review"</p>
+                  <p><span class="t-label">Non-goals</span> Runtime testing, load testing, docs generation</p>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- SCHEDULES -->
+        <section class="schedules section numbered" id="schedules" data-reveal>
+          <div class="section-heading">
+            <span class="section-number">04</span>
+            <div>
+              <p class="eyebrow">Suggested schedules</p>
+              <h2>Run once, or run continuously.</h2>
+            </div>
+          </div>
+
+          <div class="schedule-grid">
+            <article class="schedule-card">
+              <span class="schedule-badge badge-pr">Every PR</span>
+              <ul>
+                <li><code>swe:pr-risk-review</code></li>
+                <li><code>swe:change-validation-planner</code></li>
+              </ul>
+              <p class="schedule-why">Catch risk before it merges.</p>
+            </article>
+            <article class="schedule-card">
+              <span class="schedule-badge badge-daily">Daily</span>
+              <ul>
+                <li><code>swe:recent-commit-bug-hunt</code></li>
+                <li><code>swe:merged-pr-monitoring</code></li>
+                <li><code>swe:test-gap-hunt</code></li>
+                <li><code>swe:docs-drift-audit</code></li>
+                <li><code>swe:security-audit</code></li>
+                <li><code>swe:observability-gap-hunt</code></li>
+                <li><code>swe:performance-hunt</code></li>
+                <li><code>swe:refactor-opportunities</code></li>
+                <li><code>swe:capture-knowledge</code></li>
+                <li><code>swe:incident-followup-audit</code></li>
+              </ul>
+              <p class="schedule-why">Catch regressions, gaps, and drift while context is fresh.</p>
+            </article>
+            <article class="schedule-card">
+              <span class="schedule-badge badge-weekly">Weekly</span>
+              <ul>
+                <li><code>swe:ownership-risk-map</code></li>
+                <li><code>swe:repo-introspection</code></li>
+              </ul>
+              <p class="schedule-why">Structural checks that don't change day-to-day.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- INSTALL -->
+        <section class="install section numbered" id="install" data-reveal>
+          <div class="section-heading">
+            <span class="section-number">05</span>
+            <div>
+              <p class="eyebrow">Get started</p>
+              <h2>One command. Every major AI harness.</h2>
+            </div>
+          </div>
+
+          <div class="install-layout">
+            <div class="install-copy">
+              <p>
+                Install the full SWE skills framework, then start with
+                <code>swe:repo-introspection</code> to understand your codebase
+                or <code>swe:pr-risk-review</code> on your next PR.
+              </p>
+              <ul class="install-notes">
+                <li>Works with Claude, Codex, Cursor, Gemini CLI, GitHub Copilot, and OpenClaw-compatible setups</li>
+                <li>Language and framework agnostic &mdash; works on any codebase</li>
+                <li>Evidence-led: every finding cites files, lines, commits, or metrics</li>
+                <li>Designed for recurring use, not one-off runs</li>
+              </ul>
+            </div>
+
+            <div class="command-block">
+              <p class="command-label">Install</p>
+              <div class="command-row">
+                <code id="install-command">npx skills install ckorhonen/swe-skills</code>
+                <button class="copy-button" type="button" data-copy-target="install-command">Copy</button>
+              </div>
+              <p class="command-help">
+                Installs all 15 skills into your project. Works with any agent
+                that supports the skills standard.
+              </p>
+            </div>
+          </div>
+          <div class="install-separator" aria-hidden="true"></div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq section numbered" id="faq" data-reveal>
+          <div class="section-heading">
+            <span class="section-number">06</span>
+            <div>
+              <p class="eyebrow">Frequently asked</p>
+              <h2>For engineers moving from curiosity to practice.</h2>
+            </div>
+          </div>
+
+          <div class="faq-list">
+            <details>
+              <summary>Who is this for?</summary>
+              <p>
+                Software engineers, tech leads, and platform teams who want
+                their AI coding assistants to be more rigorous &mdash; catching
+                real bugs, validating changes with evidence, and maintaining
+                code health systematically.
+              </p>
+            </details>
+            <details>
+              <summary>Does it work with any language or framework?</summary>
+              <p>
+                Yes. Skills are language-agnostic and adapt to whatever tooling
+                your repo already uses &mdash; npm, cargo, pip, bundler, go
+                modules, or anything else. They read your repo, not a config file.
+              </p>
+            </details>
+            <details>
+              <summary>How is this different from linters or CI checks?</summary>
+              <p>
+                Linters check syntax and style. CI runs predefined tests. These
+                skills reason about your code &mdash; finding bugs linters miss,
+                validating changes holistically, and producing actionable
+                engineering judgment rather than pass/fail signals.
+              </p>
+            </details>
+            <details>
+              <summary>Can I run these on a schedule?</summary>
+              <p>
+                Absolutely. Skills like <code>swe:recent-commit-bug-hunt</code>,
+                <code>swe:test-gap-hunt</code>, and
+                <code>swe:security-audit</code> are designed to run repeatedly.
+                Output formats support comparison across runs.
+              </p>
+            </details>
+            <details>
+              <summary>Where should I start?</summary>
+              <p>
+                Run <code>swe:repo-introspection</code> to understand your
+                codebase, then try <code>swe:pr-risk-review</code> on your
+                next pull request. Both produce immediate value.
+              </p>
+            </details>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p class="footer-brand">swe-skills</p>
+        <p class="footer-copy">
+          AI engineering skills for code health, safety, and maintenance.
+          Evidence-grounded. Designed for recurring use.
+        </p>
+        <div class="footer-links">
+          <a href="https://github.com/ckorhonen/swe-skills">GitHub</a>
+          <a href="https://github.com/ckorhonen/swe-skills#readme">README</a>
+          <a href="https://cdd.dev">Context-Driven Development (CDD)</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

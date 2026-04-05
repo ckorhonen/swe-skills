@@ -56,6 +56,32 @@ Confirm or infer:
 - Whether the user wants a whole-repo view or only selected directories
 - Whether recent activity or ownership context matters
 
+## Optional Local Preference Layer
+
+If `.ai/swe.json` exists and the current request or repo guidance does not
+override it, this skill may consult only these keys:
+
+- `report`
+- `alts`
+- `paths`
+
+Use them only to refine defaults:
+
+- `report` can change how concise or detailed each section is
+- `alts` can control whether multiple safe entry points are surfaced
+- `paths` can keep matching areas out of the default "safe starting points"
+  list unless the user explicitly asks for them
+
+Apply preferences in this order:
+
+1. explicit user request
+2. repo guidance such as `AGENTS.md` or `README.md`
+3. `.ai/swe.json`
+4. this skill's defaults
+
+Do not let `.ai/swe.json` remove required sections, hide important boundaries,
+or override direct repo evidence.
+
 ## What To Optimize For
 
 - Concrete evidence from the repository
@@ -206,6 +232,7 @@ hidden architecture as a fact.
 - Be concise but specific
 - Prefer named files and directories over generic descriptions
 - Distinguish facts from inferences
+- Use `.ai/swe.json` only as an optional local default layer for relevant keys
 - Do not pretend to understand hidden architecture that is not visible in the
   repo
 - Make the report useful for immediate follow-on engineering work
