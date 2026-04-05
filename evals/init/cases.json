@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:init",
+  "cases": [
+    {
+      "id": "init-interview-local-preferences",
+      "title": "Run the short interview and write only non-default overrides",
+      "tags": [
+        "happy-path",
+        "interview"
+      ],
+      "user_request": "Initialize agent settings for this repo. Ask me a short questionnaire and save the result in .ai/swe.json.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The user wants local-first agent collaboration preferences, not project scaffolding.",
+          "The file should stay token-efficient and machine-readable."
+        ],
+        "available_artifacts": [
+          "AGENTS.md",
+          "README.md",
+          ".gitignore",
+          "Working tree"
+        ]
+      },
+      "artifact_requirements": [
+        "short interview or equivalent preference capture",
+        ".ai/swe.json contract",
+        "non-default override behavior",
+        "precedence rule"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "instruction-adherence",
+        "actionable-output",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Uses .ai/swe.json rather than an alternate filename.",
+        "Keeps the interview focused on behavior-shaping preferences."
+      ],
+      "review_questions": [
+        "Does the response keep the workflow focused on local agent collaboration preferences instead of repo bootstrap?",
+        "Does it describe or produce compact omit-defaults JSON rather than a verbose full config?",
+        "Does it explain how later skills should apply the precedence rule?"
+      ]
+    },
+    {
+      "id": "init-quick-defaults-no-gitignore",
+      "title": "Quick mode writes only the version marker and leaves gitignore alone",
+      "tags": [
+        "quick-mode",
+        "local-first"
+      ],
+      "user_request": "Run swe:init --quick here, and do not change .gitignore.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "Quick mode should be zero-question and should not materialize the built-in defaults.",
+          "The user explicitly said not to change .gitignore."
+        ],
+        "available_artifacts": [
+          ".gitignore",
+          "Working tree"
+        ]
+      },
+      "artifact_requirements": [
+        "quick-mode decision",
+        "{\"v\":1} contract",
+        "no gitignore change"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "instruction-adherence",
+        "actionable-output"
+      ],
+      "static_checks": [
+        "Does not ask interview questions in quick mode.",
+        "Does not expand the defaults into the saved file."
+      ],
+      "review_questions": [
+        "Does the response keep quick mode zero-question unless an existing file blocks the write?",
+        "Does it use only the version marker instead of a fully expanded default object?",
+        "Does it leave .gitignore untouched as requested?"
+      ]
+    },
+    {
+      "id": "init-existing-file-protection",
+      "title": "Protect an existing swe.json from silent replacement",
+      "tags": [
+        "edge-case",
+        "existing-state"
+      ],
+      "user_request": "Set up .ai/swe.json for this repo, but do not lose anything if there is already a file there.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "An existing .ai/swe.json may already contain local preferences.",
+          "The skill should preserve state until the user explicitly chooses to replace or edit it."
+        ],
+        "available_artifacts": [
+          ".ai/swe.json",
+          ".gitignore",
+          "Working tree"
+        ]
+      },
+      "artifact_requirements": [
+        "existing-file inspection",
+        "no-silent-overwrite behavior",
+        "follow-up decision path"
+      ],
+      "shared_criteria": [
+        "instruction-adherence",
+        "honest-unknowns",
+        "actionable-output",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Reads the existing file before proposing replacement."
+      ],
+      "review_questions": [
+        "Does the response avoid silently replacing an existing valid or malformed preference file?",
+        "Does it surface a concrete keep/edit/replace decision instead of assuming overwrite is acceptable?",
+        "Does it explain what prevents immediate write-back?"
+      ]
+    },
+    {
+      "id": "init-non-trigger-project-bootstrap",
+      "title": "Do not trigger on project scaffolding requests",
+      "tags": [
+        "non-goal",
+        "trigger-boundary"
+      ],
+      "user_request": "npm init this repo and scaffold the initial package setup.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The request is about project bootstrap, not local agent-collaboration preferences.",
+          "The correct behavior is to decline this skill and redirect."
+        ],
+        "available_artifacts": [
+          "Working tree",
+          "package.json"
+        ]
+      },
+      "artifact_requirements": [
+        "non-applicability decision",
+        "redirect to bootstrap workflow",
+        "no .ai/swe.json plan"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "instruction-adherence",
+        "actionable-output"
+      ],
+      "static_checks": [
+        "Does not propose .ai/swe.json for a package bootstrap request."
+      ],
+      "review_questions": [
+        "Does the response clearly state that this skill is not the right fit for project scaffolding?",
+        "Does it avoid broadening the request into a local preference setup anyway?",
+        "Does it leave the user with a clear redirect instead of a partial init workflow?"
+      ]
+    }
+  ]
+}
