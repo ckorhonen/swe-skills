@@ -3,7 +3,7 @@
   "datasetId": "test-gap-hunt.synthetic",
   "title": "swe:test-gap-hunt Synthetic Review Dataset",
   "description": "Synthetic seed review items for swe:test-gap-hunt. Use these for UI smoke tests and rubric walk-throughs only.",
-  "generatedAt": "2026-04-05T19:08:59.828Z",
+  "generatedAt": "2026-04-05T19:16:33.000Z",
   "source": {
     "kind": "synthetic-seed",
     "evalDirectory": "evals/test-gap-hunt"

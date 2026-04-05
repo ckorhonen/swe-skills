@@ -3,7 +3,7 @@
   "datasetId": "docs-drift-audit.synthetic",
   "title": "swe:docs-drift-audit Synthetic Review Dataset",
   "description": "Synthetic seed review items for swe:docs-drift-audit. Use these for UI smoke tests and rubric walk-throughs only.",
-  "generatedAt": "2026-04-05T19:08:59.813Z",
+  "generatedAt": "2026-04-05T19:16:32.986Z",
   "source": {
     "kind": "synthetic-seed",
     "evalDirectory": "evals/docs-drift-audit"

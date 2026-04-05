@@ -3,7 +3,7 @@
   "datasetId": "incident-followup-audit.synthetic",
   "title": "swe:incident-followup-audit Synthetic Review Dataset",
   "description": "Synthetic seed review items for swe:incident-followup-audit. Use these for UI smoke tests and rubric walk-throughs only.",
-  "generatedAt": "2026-04-05T19:08:59.814Z",
+  "generatedAt": "2026-04-05T19:16:32.988Z",
   "source": {
     "kind": "synthetic-seed",
     "evalDirectory": "evals/incident-followup-audit"
