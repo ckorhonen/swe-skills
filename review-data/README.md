@@ -11,6 +11,9 @@ This directory stores local JSON files for the review workflow.
   reviewed items.
 - `results/` contains local saved annotations from the review app.
 
+Prompt assets for producing or auditing those labels live in
+`review-agents/`, not in this directory.
+
 ## Git Rules
 
 - Generated dataset JSON files stay local by default.

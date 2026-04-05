@@ -170,9 +170,6 @@ for (const judge of judges) {
 
   for (const [datasetId, dataset] of datasets.entries()) {
     const reviewDocument = results.get(datasetId);
-    if (!reviewDocument) {
-      continue;
-    }
 
     for (const item of dataset.items ?? []) {
       const isEligible = (item.sharedCriteria ?? []).some(
@@ -183,7 +180,7 @@ for (const judge of judges) {
         eligibleItemCount += 1;
       }
 
-      const review = reviewDocument.reviews?.[item.itemId];
+      const review = reviewDocument?.reviews?.[item.itemId];
       const label = review?.criteria?.[judge.criterion];
       if (!isBinaryLabel(label)) {
         continue;

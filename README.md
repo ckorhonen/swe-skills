@@ -8,6 +8,8 @@ AI skill files and eval suites for streamlining SWE workflows.
 - `evals/` stores evaluation suites and fixtures.
 - `judges/` stores draft LLM-as-judge prompt assets for subjective eval
   criteria.
+- `review-agents/` stores reusable prompt assets for agents that label or audit
+  review data, including web-interface variants.
 - `review-app/` stores the zero-dependency browser review interface.
 - `review-data/` stores local generated review datasets and saved review
   results.
@@ -130,9 +132,15 @@ Use `npx skills install ckorhonen/swe-skills`.
 
 - `npm run review:build-dataset` generates local JSON review datasets under
   `review-data/datasets/`.
+- The dataset builder preserves the baseline `__synthetic-pass` and
+  `__synthetic-fail` items, then adds additional targeted variants such as
+  nuanced-pass, scope-drift, evidence-thin, and vague-output to increase the
+  label pool without changing the review format.
 - `npm run review:coverage` shows which items still need explicit criterion or
   review-question labels.
 - `npm run review:serve` starts a small local server for the browser review app.
+- `review-agents/` contains first-pass labeler and second-pass reviewer prompts
+  for both direct JSON workflows and browser-driven review sessions.
 - The review app saves annotations to local JSON files under
   `review-data/results/`.
 - `npm run judges:build-datasets` exports explicit criterion-labeled examples to
@@ -142,6 +150,8 @@ Use `npx skills install ckorhonen/swe-skills`.
 ## Draft Judges
 
 - Judge prompts in `judges/` are draft assets only.
+- First-pass labeling and second-pass audit prompts live in `review-agents/`;
+  they are operator prompts, not calibrated evaluators.
 - They are intended for subjective criteria such as scope discipline,
   evidence-grounding, and actionability.
 - They are not validated and should not be treated as trusted evaluators until
