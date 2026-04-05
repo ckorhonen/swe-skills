@@ -52,6 +52,9 @@ Use `npx skills install ckorhonen/swe-skills`.
 - Use `swe:create-skill` before creating or revising anything under `skills/`
   and the matching `evals/` assets. It distills the Anthropic skill-building
   guide into this repo's local authoring workflow.
+- If a skill consults `.ai/swe.json`, treat it as an optional local preference
+  layer only. Explicit user requests and repo guidance such as `AGENTS.md`
+  still outrank it.
 - Write frontmatter descriptions so they clearly state what the skill does, when
   to use it, and a few realistic trigger phrases.
 - Include explicit non-goals or negative triggers so skills do not overfire.
@@ -75,6 +78,9 @@ Use `npx skills install ckorhonen/swe-skills`.
 - `swe:docs-drift-audit`: Audits human-facing and operational docs for drift
   from code, config, interface, or workflow changes without turning into a
   broad documentation rewrite.
+- `swe:init`: Creates or updates a local-first `.ai/swe.json` preference file
+  that captures how agents should plan, scope, validate, and report work in
+  one repository.
 - `swe:incident-followup-audit`: Audits whether the engineering follow-up after
   an incident actually happened, including tests, monitors, docs, ownership,
   tickets, and the remaining backlog.
