@@ -1,0 +1,6 @@
+name = "swe-skills-site"
+account_id = "ea76e5b24c115e61c4ca83acb28b7e4d"
+compatibility_date = "2024-12-01"
+
+[assets]
+directory = "./site"
