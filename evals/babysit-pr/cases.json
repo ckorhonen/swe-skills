@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "skill": "swe:babysit-pr",
+  "cases": [
+    {
+      "id": "babysit-pr-happy-path",
+      "title": "Open PR with actionable review feedback and merge-ready finish",
+      "tags": [
+        "happy-path",
+        "pre-merge"
+      ],
+      "user_request": "Babysit PR #247 until it is ready to merge. Handle review comments, requested changes, and CI for me.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The PR is open and the local checkout is available.",
+          "GitHub comments, reviews, CI status, and push access are available.",
+          "At least one new actionable review comment and one requested-changes review arrive during the watch loop."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "PR diff",
+          "Issue comments",
+          "Inline review comments",
+          "Reviews",
+          "CI status"
+        ]
+      },
+      "artifact_requirements": [
+        "persistent PR watch loop",
+        "comment acknowledgement and triage",
+        "fix-and-push workflow",
+        "ready-to-merge terminal summary"
+      ],
+      "shared_criteria": [
+        "instruction-adherence",
+        "actionable-output",
+        "reviewable-structure",
+        "concrete-evidence"
+      ],
+      "static_checks": [
+        "Keeps working until the PR is actually merge-ready instead of stopping at the first snapshot."
+      ],
+      "review_questions": [
+        "Does the response behave like a continuous PR shepherd rather than a one-shot reviewer?",
+        "Does it acknowledge new feedback, push the needed follow-up, and keep watching after the push?",
+        "Does the final state clearly explain why the PR is now ready to merge?"
+      ]
+    },
+    {
+      "id": "babysit-pr-ambiguous-feedback",
+      "title": "Reviewer comment is ambiguous and needs clarification",
+      "tags": [
+        "edge-case",
+        "ambiguity"
+      ],
+      "user_request": "Watch this PR until reviewers are happy, but do not guess if a review comment is unclear.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer leaves a comment with multiple plausible interpretations.",
+          "The product intent is not clear enough to choose a code change safely."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "Review comment thread",
+          "Local checkout"
+        ]
+      },
+      "artifact_requirements": [
+        "clarifying question",
+        "2-3 options with tradeoffs",
+        "blocked-until-clarified status"
+      ],
+      "shared_criteria": [
+        "instruction-adherence",
+        "honest-unknowns",
+        "reviewable-structure",
+        "scope-discipline"
+      ],
+      "static_checks": [
+        "Does not make speculative code changes while reviewer intent is ambiguous."
+      ],
+      "review_questions": [
+        "Does the response ask a concrete clarifying question instead of guessing?",
+        "Does it present options and their tradeoffs clearly enough for a reviewer or user to choose?",
+        "Does it keep the PR in a clearly blocked state rather than pretending the comment was resolved?"
+      ]
+    },
+    {
+      "id": "babysit-pr-invalid-feedback",
+      "title": "Review feedback is invalid and should be answered, not implemented",
+      "tags": [
+        "edge-case",
+        "invalid-feedback"
+      ],
+      "user_request": "Babysit the PR and reply to reviewers when needed. If a review request is wrong, explain why.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer asks for a change that would remove a required safeguard or reintroduce a known bug.",
+          "The local checkout and evidence such as tests or requirements are available."
+        ],
+        "available_artifacts": [
+          "PR diff",
+          "Review thread",
+          "Tests or validation evidence",
+          "Repo guidance"
+        ]
+      },
+      "artifact_requirements": [
+        "evidence-backed reviewer reply",
+        "no blind code change",
+        "continued watch state"
+      ],
+      "shared_criteria": [
+        "concrete-evidence",
+        "instruction-adherence",
+        "actionable-output",
+        "scope-discipline"
+      ],
+      "static_checks": [
+        "Explains why the feedback is invalid instead of implementing it blindly."
+      ],
+      "review_questions": [
+        "Does the response cite concrete evidence for rejecting or reframing the requested change?",
+        "Does it avoid turning reviewer disagreement into a broad argument unrelated to the PR?",
+        "Does it keep the loop alive so the reviewer can respond to the explanation?"
+      ]
+    },
+    {
+      "id": "babysit-pr-score-and-ci-loop",
+      "title": "Explicit reviewer score plus CI failures require iteration",
+      "tags": [
+        "score-gate",
+        "ci"
+      ],
+      "user_request": "Keep iterating on this PR until the review score is maxed out and CI is green.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "A reviewer or review bot posts an explicit numeric score below the top of its scale.",
+          "One CI failure is branch-related and another failure may be flaky or unrelated."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "Review summary with score",
+          "CI checks",
+          "Failed logs",
+          "Local checkout"
+        ]
+      },
+      "artifact_requirements": [
+        "score-aware iteration plan",
+        "CI classification and response",
+        "terminal summary only after score and CI gates are satisfied"
+      ],
+      "shared_criteria": [
+        "instruction-adherence",
+        "concrete-evidence",
+        "actionable-output",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Does not declare success while the explicit score is below the maximum available score."
+      ],
+      "review_questions": [
+        "Does the response treat the numeric score as a real iteration gate instead of a suggestion?",
+        "Does it inspect CI evidence before deciding whether to fix or rerun a failure?",
+        "Does it wait for both CI and reviewer score to clear before calling the PR ready?"
+      ]
+    }
+  ]
+}
