@@ -15,8 +15,8 @@ This repository stores AI skill files and evaluation suites for SWE workflows.
 
 ## Installation
 
-- Install skills with `npx skills install`.
-- Document install examples using `npx skills install`, not alternate commands.
+- Install skills with `npx skills add ckorhonen/swe-skills`.
+- Document install examples using `npx skills add ckorhonen/swe-skills`, not alternate commands.
 
 ## Marketing site (`site/`)
 

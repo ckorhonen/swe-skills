@@ -23,7 +23,7 @@ AI skill files and eval suites for streamlining SWE workflows.
 
 ## Install
 
-Use `npx skills install`.
+Use `npx skills add ckorhonen/swe-skills`.
 
 ## Development
 
