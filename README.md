@@ -96,6 +96,9 @@ Use `npx skills install ckorhonen/swe-skills`.
 - `swe:performance-hunt`: Hunts for concrete performance bottlenecks using
   profiler output, benchmarks, traces, query plans, bundle analysis, or repo
   evidence, then returns the smallest high-value experiments or fixes.
+- `swe:babysit-pr`: Watches one open PR in a live loop, reacts to comments and
+  reviews, addresses valid feedback, explains invalid feedback, handles CI, and
+  stops only when the PR is merge-ready or clearly blocked.
 - `swe:pr-risk-review`: Reviews open or draft pull requests for merge risk,
   focusing on missing validation, hidden coupling, rollout and rollback gaps,
   migrations, and feature-flag issues.

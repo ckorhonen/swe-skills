@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SWE Skills &mdash; AI Engineering Skills for Code Health, Safety &amp; Maintenance</title>
+    <title>SWE Skills &mdash; 17 AI Engineering Skills for Code Health, Safety &amp; Maintenance</title>
     <meta
       name="description"
-      content="15 AI skills that turn coding assistants into careful senior engineers. Evidence-based code review, change validation, maintenance, and improvement across any codebase."
+      content="17 AI skills that turn coding assistants into careful senior engineers. Evidence-based code review, change validation, maintenance, and improvement across any codebase."
     />
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href="https://cdd.dev/skill/" />
     <meta name="theme-color" content="#0f1117" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#f4f5f7" media="(prefers-color-scheme: light)" />
     <meta property="og:title" content="SWE Skills &mdash; AI Engineering Skills for Code Health, Safety &amp; Maintenance" />
-    <meta property="og:description" content="15 AI skills that turn coding assistants into careful senior engineers. Evidence-based validation, maintenance, and improvement." />
+    <meta property="og:description" content="17 AI skills that turn coding assistants into careful senior engineers. Evidence-based validation, maintenance, and improvement." />
     <meta property="og:url" content="https://cdd.dev/skill/" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="SWE Skills &mdash; AI Engineering Skills" />
-    <meta name="twitter:description" content="15 AI skills that turn coding assistants into careful senior engineers." />
+    <meta name="twitter:description" content="17 AI skills that turn coding assistants into careful senior engineers." />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -27,7 +27,7 @@
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Any",
         "url": "https://cdd.dev/skill/",
-        "description": "15 AI skills for software engineering: code review, change validation, maintenance, and improvement.",
+        "description": "17 AI skills for software engineering: code review, change validation, maintenance, and improvement.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
       }
     </script>
@@ -72,7 +72,7 @@
             <p class="eyebrow">Engineering rigor for AI assistants</p>
             <h1>Ship with confidence.</h1>
             <p class="lede">
-              15 skills that turn AI coding assistants into careful senior
+              17 skills that turn AI coding assistants into careful senior
               engineers &mdash; catching bugs, validating changes, and
               maintaining code health with concrete, repo-grounded evidence.
             </p>
@@ -175,7 +175,7 @@
             <span class="section-number">02</span>
             <div>
               <p class="eyebrow">The framework</p>
-              <h2>15 skills across the full engineering lifecycle.</h2>
+              <h2>17 skills across the full engineering lifecycle.</h2>
             </div>
           </div>
 
@@ -192,8 +192,8 @@
               </article>
               <article class="phase-card">
                 <span>Validate</span>
-                <p class="phase-count">3 skills</p>
-                <p>Review PRs for risk, hunt bugs in recent commits, plan validation paths.</p>
+                <p class="phase-count">4 skills</p>
+                <p>Review PRs for risk, shepherd live review cycles, hunt recent regressions, and plan validation paths.</p>
               </article>
               <article class="phase-card">
                 <span>Maintain</span>
@@ -202,8 +202,8 @@
               </article>
               <article class="phase-card">
                 <span>Improve</span>
-                <p class="phase-count">3 skills</p>
-                <p>Close test gaps, find refactor opportunities, and build new skills.</p>
+                <p class="phase-count">4 skills</p>
+                <p>Close test gaps, set repo-local defaults, find refactor opportunities, and build new skills.</p>
               </article>
             </div>
           </div>
@@ -282,6 +282,25 @@
                   <p><span class="t-warn">Risk</span> Migration adds NOT NULL, no default &mdash; will fail</p>
                   <p><span class="t-label">Note</span> Feature flag present but no rollback documented</p>
                   <p><span class="t-ok">Action</span> Add zod schema + write rollback migration</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
+                <h3><code>swe:babysit-pr</code></h3>
+                <p class="skill-role">Watch one PR in a live loop and handle comments, review requests, scores, and CI until it is ready to merge.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Babysit PR #247 until reviewers are happy and CI is green.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-label">Loop</span> Polling PR #247 every 60s</p>
+                  <p><span class="t-ok">Ack</span> Reacted to new review thread with <span class="t-dim">eyes</span></p>
+                  <p><span class="t-ok">Fix</span> Pushed follow-up for failing auth test + reviewer note</p>
+                  <p><span class="t-label">Score</span> 4/5 &rarr; 5/5 after second revision</p>
+                  <p><span class="t-ok">Ready</span> CI green, no unresolved feedback, safe to merge</p>
                 </div>
               </div>
             </article>
@@ -484,6 +503,25 @@
 
             <article class="skill-card skill-full">
               <div class="skill-meta">
+                <h3><code>swe:init</code></h3>
+                <p class="skill-role">Create a small repo-local <code>.ai/swe.json</code> so later swe: skills match how you like to work.</p>
+              </div>
+              <div class="skill-content">
+                <p class="prompt-label">Example prompt</p>
+                <pre><code>Run swe:init --quick --gitignore for this repo.</code></pre>
+                <p class="output-label">Sample output</p>
+                <div class="sample-output">
+                  <p><span class="t-ok">Wrote</span> <span class="t-dim">.ai/swe.json</span> with quick defaults</p>
+                  <p><span class="t-ok">Ignored</span> Added <span class="t-dim">.ai/swe.json</span> to <span class="t-dim">.gitignore</span></p>
+                  <p><span class="t-label">Mode</span> quick --gitignore</p>
+                  <p><span class="t-label">Saved</span> Only non-default overrides</p>
+                  <p><span class="t-ok">Rule</span> Explicit user requests still outrank local prefs</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="skill-card skill-full">
+              <div class="skill-meta">
                 <h3><code>swe:refactor-opportunities</code></h3>
                 <p class="skill-role">Find small, parallelizable refactor tickets with clear boundaries.</p>
               </div>
@@ -539,9 +577,10 @@
               <span class="schedule-badge badge-pr">Every PR</span>
               <ul>
                 <li><code>swe:pr-risk-review</code></li>
+                <li><code>swe:babysit-pr</code></li>
                 <li><code>swe:change-validation-planner</code></li>
               </ul>
-              <p class="schedule-why">Catch risk before it merges.</p>
+              <p class="schedule-why">Catch risk early, then shepherd the PR across the finish line.</p>
             </article>
             <article class="schedule-card">
               <span class="schedule-badge badge-daily">Daily</span>
@@ -602,7 +641,7 @@
                 <button class="copy-button" type="button" data-copy-target="install-command">Copy</button>
               </div>
               <p class="command-help">
-                Installs all 15 skills into your project. Works with any agent
+                Installs all 17 skills into your project. Works with any agent
                 that supports the skills standard.
               </p>
             </div>
