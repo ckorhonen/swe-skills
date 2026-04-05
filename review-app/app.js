@@ -15,6 +15,7 @@ const elements = {
   countFail: document.querySelector("#count-fail"),
   countDefer: document.querySelector("#count-defer"),
   countUnlabeled: document.querySelector("#count-unlabeled"),
+  countNeedsDetail: document.querySelector("#count-needs-detail"),
   jumpInput: document.querySelector("#jump-input"),
   skillLabel: document.querySelector("#skill-label"),
   itemTitle: document.querySelector("#item-title"),
@@ -32,7 +33,9 @@ const elements = {
   rubricPanel: document.querySelector("#rubric-panel"),
   referencePanel: document.querySelector("#reference-panel"),
   prevButton: document.querySelector("#prev-button"),
+  nextDetailButton: document.querySelector("#next-detail-button"),
   nextButton: document.querySelector("#next-button"),
+  detailStatus: document.querySelector("#detail-status"),
   decisionButtons: [...document.querySelectorAll(".decision-button")]
 };
 
@@ -148,6 +151,30 @@ function currentReview(itemId = currentItem()?.itemId) {
   return state.results.reviews[itemId];
 }
 
+function isBinaryLabel(value) {
+  return value === "Pass" || value === "Fail";
+}
+
+function getCompletion(item, review) {
+  const criteriaKeys = (item?.sharedCriteria ?? []).map((criterion) => criterion.id);
+  const questionKeys = (item?.reviewQuestions ?? []).map((_, index) => String(index));
+  const criteriaLabeled = criteriaKeys.filter((key) => isBinaryLabel(review?.criteria?.[key])).length;
+  const questionsLabeled = questionKeys.filter((key) => isBinaryLabel(review?.questions?.[key])).length;
+  const overallLabeled = typeof review?.status === "string" && review.status.length > 0;
+
+  return {
+    overallLabeled,
+    criteriaLabeled,
+    criteriaTotal: criteriaKeys.length,
+    questionsLabeled,
+    questionsTotal: questionKeys.length,
+    needsDetail:
+      !overallLabeled ||
+      criteriaLabeled < criteriaKeys.length ||
+      questionsLabeled < questionKeys.length
+  };
+}
+
 function cloneReviews() {
   return JSON.parse(JSON.stringify(state.results.reviews));
 }
@@ -180,19 +207,25 @@ function queueSave() {
 }
 
 function updateCounts() {
-  const reviews = Object.values(state.results.reviews);
   const counts = { Pass: 0, Fail: 0, Defer: 0, Unlabeled: 0 };
+  let needsDetail = 0;
 
   for (const item of state.dataset.items) {
-    const status = state.results.reviews[item.itemId]?.status || "Unlabeled";
+    const review = state.results.reviews[item.itemId];
+    const status = review?.status || "Unlabeled";
     counts[status] += 1;
+    if (getCompletion(item, review).needsDetail) {
+      needsDetail += 1;
+    }
   }
 
   elements.countPass.textContent = String(counts.Pass);
   elements.countFail.textContent = String(counts.Fail);
   elements.countDefer.textContent = String(counts.Defer);
   elements.countUnlabeled.textContent = String(counts.Unlabeled);
+  elements.countNeedsDetail.textContent = String(needsDetail);
   elements.itemCounter.textContent = `${state.currentIndex + 1} of ${state.dataset.items.length}`;
+  elements.nextDetailButton.disabled = needsDetail === 0;
 }
 
 function renderChecklist(container, items, valueGetter, onChange) {
@@ -276,6 +309,7 @@ function renderCurrentItem() {
   }
 
   const review = currentReview(item.itemId);
+  const completion = getCompletion(item, review);
   elements.skillLabel.textContent = item.skill;
   elements.itemTitle.textContent = item.title;
   elements.variantPill.textContent = item.variant;
@@ -287,6 +321,11 @@ function renderCurrentItem() {
     ? renderMarkdown(item.candidateOutput.content)
     : `<pre>${escapeHtml(item.candidateOutput.content)}</pre>`;
   elements.notes.value = review.notes || "";
+  elements.detailStatus.textContent =
+    `Overall ${review.status || "unlabeled"}. ` +
+    `Criteria ${completion.criteriaLabeled}/${completion.criteriaTotal}. ` +
+    `Questions ${completion.questionsLabeled}/${completion.questionsTotal}.`;
+  elements.detailStatus.dataset.status = completion.needsDetail ? "incomplete" : "complete";
 
   for (const button of elements.decisionButtons) {
     button.classList.toggle("active", button.dataset.decision === review.status);
@@ -377,6 +416,22 @@ function move(delta) {
   renderCurrentItem();
 }
 
+function moveToNextIncomplete() {
+  if (!state.dataset) return;
+
+  for (let offset = 1; offset <= state.dataset.items.length; offset += 1) {
+    const index = (state.currentIndex + offset) % state.dataset.items.length;
+    const item = state.dataset.items[index];
+    const review = state.results.reviews[item.itemId];
+
+    if (getCompletion(item, review).needsDetail) {
+      state.currentIndex = index;
+      renderCurrentItem();
+      return;
+    }
+  }
+}
+
 async function loadDataset(datasetId) {
   state.dataset = await fetchJson(`/api/datasets/${datasetId}`);
   state.results = await fetchJson(`/api/results/${datasetId}`);
@@ -447,6 +502,7 @@ elements.jumpInput.addEventListener("keydown", (event) => {
 });
 
 elements.prevButton.addEventListener("click", () => move(-1));
+elements.nextDetailButton.addEventListener("click", () => moveToNextIncomplete());
 elements.nextButton.addEventListener("click", () => move(1));
 
 for (const button of elements.decisionButtons) {

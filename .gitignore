@@ -3,6 +3,8 @@ node_modules/
 .env.*
 !.env.example
 review-data/datasets/*.json
+review-data/judges/*.json
 review-data/results/*.json
 !review-data/datasets/.gitkeep
+!review-data/judges/.gitkeep
 !review-data/results/.gitkeep

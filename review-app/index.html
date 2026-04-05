@@ -29,6 +29,7 @@
           <span class="pill pill-fail">Fail <strong id="count-fail">0</strong></span>
           <span class="pill pill-defer">Defer <strong id="count-defer">0</strong></span>
           <span class="pill pill-empty">Unlabeled <strong id="count-unlabeled">0</strong></span>
+          <span class="pill pill-attention">Needs detail <strong id="count-needs-detail">0</strong></span>
         </div>
         <label class="control-group jump-group">
           <span>Jump to item ID</span>
@@ -71,8 +72,11 @@
 
           <div class="card">
             <div class="card-header">
-              <h3>Review Decision</h3>
-              <p class="hint">Shortcuts: 1 pass, 2 fail, D defer, arrows navigate, U undo, Cmd/Ctrl+S save, Cmd/Ctrl+Enter save and next.</p>
+              <div>
+                <h3>Review Decision</h3>
+                <p class="hint">Shortcuts: 1 pass, 2 fail, D defer, arrows navigate, U undo, Cmd/Ctrl+S save, Cmd/Ctrl+Enter save and next.</p>
+              </div>
+              <div class="detail-status" id="detail-status">Overall unlabeled. Criteria 0/0. Questions 0/0.</div>
             </div>
             <div class="decision-row">
               <button class="decision-button pass" data-decision="Pass">Pass</button>
@@ -87,6 +91,7 @@
 
           <div class="nav-row">
             <button id="prev-button">Previous</button>
+            <button id="next-detail-button" class="secondary-button">Next Missing Detail</button>
             <button id="next-button">Next</button>
           </div>
         </section>

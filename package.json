@@ -7,9 +7,11 @@
     "evals:check": "node scripts/validate-evals.mjs",
     "evals:packet": "node scripts/render-review-packet.mjs",
     "judges:check": "node scripts/validate-judges.mjs",
+    "judges:build-datasets": "node scripts/build-judge-datasets.mjs",
     "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
     "lint:md:fix": "markdownlint-cli2 --fix \"**/*.md\" \"#node_modules\"",
     "review:build-dataset": "node scripts/build-review-dataset.mjs",
+    "review:coverage": "node scripts/review-coverage.mjs",
     "review:serve": "node scripts/review-server.mjs"
   },
   "devDependencies": {

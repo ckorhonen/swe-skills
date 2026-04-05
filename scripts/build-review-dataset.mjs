@@ -62,6 +62,63 @@ function parseRubricSections(markdown) {
   };
 }
 
+function sentenceCase(value) {
+  if (typeof value !== "string" || value.length === 0) {
+    return "Unnamed requirement";
+  }
+
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function quotedList(values) {
+  return values.map((value) => `\`${value}\``).join(", ");
+}
+
+function buildGenericPassOutput(slug, testCase) {
+  const availableArtifacts = testCase.context.available_artifacts ?? [];
+  const notes = testCase.context.notes ?? [];
+  const artifactRequirements = testCase.artifact_requirements ?? [];
+  const leadArtifacts = availableArtifacts.slice(0, 3);
+
+  const requirementLines = artifactRequirements.map((requirement, index) => {
+    const supportingArtifact = availableArtifacts[index % Math.max(availableArtifacts.length, 1)] ??
+      "visible repo evidence";
+    return `${index + 1}. ${sentenceCase(requirement)}: ground this in ${supportingArtifact} and keep it bounded to the requested surface.`;
+  });
+
+  const unknowns = notes.length > 1
+    ? notes.slice(1).map((note) => `- ${note}`)
+    : ["- Anything beyond the visible artifacts stays labeled as unverified."];
+
+  return [
+    "## Scope",
+    `- User request: ${testCase.user_request}`,
+    notes[0] ? `- Primary boundary: ${notes[0]}` : "- Primary boundary: stay inside the requested task.",
+    leadArtifacts.length > 0
+      ? `- Evidence reviewed: ${quotedList(leadArtifacts)}`
+      : "- Evidence reviewed: visible repo artifacts only.",
+    "",
+    `## Draft ${slugToSkillName(slug)} Output`,
+    ...requirementLines,
+    "",
+    "## Unknowns Or Residual Risk",
+    ...unknowns,
+    "",
+    "## Recommended Next Step",
+    "- Use this draft as a reviewable starting point, then run only the narrow validation or follow-up work implied by the scoped output."
+  ].join("\n");
+}
+
+function buildGenericFailOutput(slug, testCase) {
+  const notes = testCase.context.notes ?? [];
+
+  return [
+    `The best path for ${slugToSkillName(slug)} is probably a broader repo-wide investigation before deciding anything.`,
+    "I would expand beyond the requested surface, assume the missing details from context, and come back with a larger rewrite or audit plan.",
+    notes[0] ? `The current note about "${notes[0]}" is probably enough to generalize from without checking the artifacts directly.` : "The current context is probably enough to generalize from without checking the artifacts directly."
+  ].join(" ");
+}
+
 function buildCandidateOutput(slug, verdict, testCase) {
   const outputs = {
     "capture-knowledge": {
@@ -95,8 +152,8 @@ function buildCandidateOutput(slug, verdict, testCase) {
     return {
       format: "markdown",
       content: verdict === "pass"
-        ? `Structured output for ${slugToSkillName(slug)} that stays within scope and cites visible repo evidence.`
-        : `Generic unsupported output for ${slugToSkillName(slug)} with weak evidence and poor actionability.`
+        ? buildGenericPassOutput(slug, testCase)
+        : buildGenericFailOutput(slug, testCase)
     };
   }
 

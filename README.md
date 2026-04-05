@@ -34,8 +34,12 @@ Use `npx skills install`.
 - Run `npm run evals:packet -- <skill-slug>` to render a review packet for one
   skill.
 - Run `npm run judges:check` to validate draft judge prompt assets.
+- Run `npm run judges:build-datasets` to export explicit criterion-labeled
+  examples for each draft judge from local review results.
 - Run `npm run review:build-dataset` to generate local review datasets from the
   current eval cases.
+- Run `npm run review:coverage` to inspect overall, criterion, and
+  review-question label coverage plus judge-readiness gaps.
 - Run `npm run review:serve` to start the zero-dependency local review server
   and open the browser UI manually if desired.
 - Pre-commit runs `lint-staged`, which lints and auto-fixes staged Markdown
@@ -117,9 +121,13 @@ Use `npx skills install`.
 
 - `npm run review:build-dataset` generates local JSON review datasets under
   `review-data/datasets/`.
+- `npm run review:coverage` shows which items still need explicit criterion or
+  review-question labels.
 - `npm run review:serve` starts a small local server for the browser review app.
 - The review app saves annotations to local JSON files under
   `review-data/results/`.
+- `npm run judges:build-datasets` exports explicit criterion-labeled examples to
+  `review-data/judges/`.
 - Generated review data files stay local by default and are ignored by git.
 
 ## Draft Judges
@@ -129,6 +137,8 @@ Use `npx skills install`.
   evidence-grounding, and actionability.
 - They are not validated and should not be treated as trusted evaluators until
   enough human-labeled review data exists to run a proper train/dev/test split.
+- Overall Pass/Fail labels are useful, but judge calibration requires explicit
+  criterion labels for the criterion each judge is meant to score.
 
 ## Notes
 
