@@ -1,0 +1,10 @@
+{
+  "name": "swe-skills",
+  "version": "0.1.0",
+  "description": "15 Claude Code skills for engineering analysis and judgment — PR risk review, repo introspection, audits, ownership maps, refactor opportunities. See cdd.dev/skills/swe.",
+  "author": {
+    "name": "Chris Korhonen"
+  },
+  "repository": "https://github.com/ckorhonen/swe-skills",
+  "keywords": ["claude-code","codex","agent-skills","code-review","engineering","cdd"]
+}
