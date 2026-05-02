@@ -1,7 +1,7 @@
 {
   "name": "swe-skills",
   "version": "0.1.0",
-  "description": "15 Claude Code skills for engineering analysis and judgment — PR risk review, repo introspection, audits, ownership maps, refactor opportunities. See cdd.dev/skills/swe.",
+  "description": "17 agent skills for engineering analysis and judgment — PR risk review, repo introspection, audits, ownership maps, refactor opportunities. See https://cdd.dev/skill/.",
   "author": {
     "name": "Chris Korhonen"
   },
