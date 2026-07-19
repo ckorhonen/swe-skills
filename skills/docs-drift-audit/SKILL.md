@@ -5,8 +5,9 @@ description: >-
   from code, config, interfaces, workflows, or repo structure changes. Use when
   a user says `check docs drift`, `docs are stale`, `update the runbook after
   this change`, or `what documentation is missing after this change`. Do NOT use
-  for agent-guidance updates, generic documentation rewrites, or writing docs
-  without evidence that they are stale.
+  for generic documentation rewrites or writing docs without evidence that they
+  are stale; for agent-facing guidance such as `AGENTS.md` or `CLAUDE.md`, use
+  `swe:capture-knowledge` instead.
 compatibility: >-
   Requires local repository checkout and access to docs, changelogs, configs,
   code, and recent git history. Works best with shell access plus standard repo
@@ -46,7 +47,8 @@ Use this skill when the user wants to:
 
 Do not use this skill for:
 
-- updating agent-facing guidance such as `AGENTS.md` or `CLAUDE.md`
+- updating agent-facing guidance such as `AGENTS.md` or `CLAUDE.md` (that is
+  `swe:capture-knowledge`)
 - rewriting documentation for style alone
 - generic repo orientation with no docs-mismatch goal
 - inventing documentation from product expectations instead of repo evidence

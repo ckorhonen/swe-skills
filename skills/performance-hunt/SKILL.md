@@ -6,9 +6,10 @@ description: >-
   repo evidence, then returns the smallest high-value follow-up experiments or
   fixes. Use when a user says `find performance bottlenecks`, `why is this
   slow`, `profile this flow`, `hunt hot paths`, or asks for a recurring
-  performance review. Do NOT use for live incident response, generic
-  observability audits, speculative micro-optimization, or broad architecture
-  rewrites with no bottleneck evidence.
+  performance review. Do NOT use for live incident response, speculative
+  micro-optimization, or broad architecture rewrites with no bottleneck
+  evidence; for telemetry coverage gaps in logs, metrics, or alerts, use
+  `swe:observability-gap-hunt` instead.
 compatibility: >-
   Requires a local repository checkout and works best with benchmark harnesses,
   profiler output, flamegraphs, query plans, frontend bundle reports, load-test
@@ -50,7 +51,7 @@ Use this skill when the user wants to:
 Do not use this skill for:
 
 - live incident response or active outage triage
-- generic observability coverage audits
+- generic observability coverage audits (that is `swe:observability-gap-hunt`)
 - broad cleanup or refactor planning with no performance target
 - speculative micro-optimization with no measured user or system impact
 - architecture rewrites that are not justified by bottleneck evidence
