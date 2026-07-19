@@ -29,7 +29,8 @@ The job is not to summarize the repo. The job is to compare:
 - What the existing agent guidance already says
 - What high-signal guidance is still missing
 
-Then draft the missing entries and stop for review before writing anything.
+Then draft the missing entries and pause for explicit review. Write-back
+happens only after the user approves, and only for the approved subset.
 
 ## When To Use
 

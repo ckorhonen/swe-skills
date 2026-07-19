@@ -135,8 +135,9 @@ Prefer suggestions that are also:
 
 ## Output Requirements
 
-Return 5-10 suggestions total. If the repository does not contain enough good
-candidates under these constraints, say so instead of forcing weak ideas.
+Return up to 10 suggestions, best-first. A shorter list is the correct output
+when the repository does not contain enough good candidates under these
+constraints; say so instead of forcing weak ideas.
 
 Rank the suggestions best-first.
 
@@ -150,7 +151,9 @@ For each suggestion, include:
 - Why this is a good small task
 - Expected impact
 - Risk level: `low` or `medium`
-- Why it is a good fit for the user specifically, based on recent contributions
+- Why it is a good fit for the user, based on recent contributions when
+  history is available; otherwise grounded in the surfaces already under
+  discussion, with the missing history stated plainly
 
 ## Response Shape
 
