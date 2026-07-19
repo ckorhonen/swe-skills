@@ -159,6 +159,14 @@ Add optional sections only when they help, such as:
 - `## Examples`
 - `## Troubleshooting`
 
+If the skill's behavior varies along planning depth, edit scope, validation
+breadth, or reporting detail, add one short note in `Inputs To Confirm` or
+`Instructions` telling the skill to consult `.ai/swe.json` under the
+precedence rule defined in `swe:init`: explicit user request, then repo
+guidance, then `.ai/swe.json`, then the skill's own defaults. A missing or
+malformed file must fall back safely. Skills with fixed behavior should not
+mention the file at all.
+
 ### Step 6: Draft Matching Eval Assets
 
 Create or update:

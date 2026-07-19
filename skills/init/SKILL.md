@@ -62,7 +62,10 @@ Confirm or infer:
 - whether `.gitignore` should be updated
 - whether any sensitive paths should trigger extra caution
 
-If the user asks for quick mode, skip the interview entirely.
+If the user asks for quick mode, skip the interview entirely. Treat `--quick`
+and `--gitignore` as request phrases, not real CLI flags: `--quick` means
+zero-question quick mode, and `--gitignore` means local-only storage with a
+`.gitignore` entry. Natural-language equivalents count the same.
 
 If `.ai/swe.json` already exists, do not overwrite it silently. Ask whether the
 user wants to keep it, edit it, or replace it.
@@ -92,6 +95,30 @@ Use this schema:
 - `paths`: array of sensitive path strings
 
 Do not write prose, Markdown, YAML, or duplicated default values.
+
+### Value Semantics
+
+Consuming skills interpret each value the same way:
+
+- `autonomy`: `bounded` acts freely inside the requested scope; `ask` confirms
+  before any non-trivial edit; `assertive` may also fix adjacent problems it is
+  confident about, reporting them explicitly.
+- `plan`: `minimal` skips upfront plans for small tasks; `short` states a brief
+  plan before non-trivial work; `design` writes a reviewable plan before
+  implementation.
+- `scope`: `minimal` makes the smallest correct change; `balanced` includes
+  closely related cleanups in touched files; `broad` allows opportunistic
+  improvements across the touched surface.
+- `verify`: `narrow` runs only checks targeted at touched surfaces; `standard`
+  runs narrow checks first and then the relevant suite; `broad` also runs the
+  full suite, lint, and typecheck when available.
+- `report`: `terse` reports the outcome only; `evidence` adds the validation
+  commands and results; `full` adds a detailed walkthrough of files, evidence,
+  and remaining risks.
+- `alts`: `material` mentions alternatives only when the tradeoff is material;
+  `usually` presents alternatives for most non-trivial decisions.
+- `paths`: path prefixes the agent should treat as sensitive, confirming before
+  editing anything under them.
 
 ## Built-In Defaults
 

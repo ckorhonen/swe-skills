@@ -161,6 +161,44 @@
         "Does it avoid broadening the request into a local preference setup anyway?",
         "Does it leave the user with a clear redirect instead of a partial init workflow?"
       ]
+    },
+    {
+      "id": "init-malformed-existing-file",
+      "title": "Existing .ai/swe.json is invalid JSON and must not be silently discarded",
+      "tags": [
+        "edge-case",
+        "malformed-file"
+      ],
+      "user_request": "Re-run init for this repo. I think my .ai/swe.json got corrupted at some point.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "An existing .ai/swe.json is present but fails to parse as JSON.",
+          "The skill's contract says to show the parse problem briefly and ask before repairing or replacing."
+        ],
+        "available_artifacts": [
+          "Working tree",
+          "Malformed .ai/swe.json"
+        ]
+      },
+      "artifact_requirements": [
+        "brief statement of the parse problem",
+        "keep/repair/replace question before any write",
+        "no silent overwrite of the existing file"
+      ],
+      "shared_criteria": [
+        "instruction-adherence",
+        "honest-unknowns",
+        "scope-discipline"
+      ],
+      "static_checks": [
+        "Does not overwrite or discard the malformed file before the user chooses repair or replace."
+      ],
+      "review_questions": [
+        "Does the response surface the parse problem instead of quietly regenerating the file?",
+        "Does it ask the user to choose between repairing and replacing before writing?",
+        "Does it preserve any recoverable existing preferences in the repair option?"
+      ]
     }
   ]
 }
