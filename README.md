@@ -66,6 +66,10 @@ Use `npx skills install ckorhonen/swe-skills`.
 - Prefer a consistent `SKILL.md` structure: what the skill does, when to use
   it, inputs to confirm, instructions, output requirements, examples, and
   troubleshooting.
+- Start shared optional sections (`Tooling Stance`, `Parallelization Rule`,
+  `Evidence Rules`) from the canonical templates in
+  `skills/create-skill/references/shared-sections.md` instead of copying a
+  sibling skill.
 - Add `compatibility` notes when a skill depends on local checkout access,
   GitHub metadata, observability tooling, or ecosystem-specific scanners.
 

@@ -62,7 +62,7 @@ Confirm or infer:
 Create one session per service or package when the environment supports parallel
 agent work.
 
-- Run up to 10 sessions at a time
+- Cap concurrency at what the environment and user guidance allow
 - Give each session a disjoint surface area
 - Have each session return raw evidence, not just conclusions
 - Compile the final report centrally after the sessions finish

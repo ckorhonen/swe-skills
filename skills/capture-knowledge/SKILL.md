@@ -61,6 +61,20 @@ Before doing deep work, confirm or infer:
 If the scope is missing, ask for the narrowest clarification needed before
 proceeding.
 
+## Tooling Stance
+
+This skill is tool agnostic.
+
+Use the strongest available evidence sources, such as:
+
+- `git log`, `git blame`, and commit history
+- `rg` or equivalent search over code and docs
+- `fd` or equivalent file discovery
+- existing guidance files and skill definitions
+
+Prefer the repository's own tooling and conventions over ad hoc commands. If a
+needed source is unavailable, say so explicitly instead of inventing evidence.
+
 ## Instructions
 
 ### Step 1: Inventory Existing Guidance
