@@ -7,7 +7,8 @@ description: >-
   `document implicit conventions`, `turn repo patterns into agent rules`, or
   asks what future agents should remember about a codebase. Do NOT use for a
   generic repo tour, onboarding walkthrough, or architecture summary that does
-  not need reusable guidance updates.
+  not need reusable guidance updates; for stale human-facing docs such as
+  READMEs and runbooks, use `swe:docs-drift-audit` instead.
 compatibility: >-
   Requires a local repository checkout plus access to docs and existing
   agent-facing guidance files. Works best with shell access and standard repo
@@ -46,7 +47,8 @@ Do not use this skill for:
 
 - A general repo orientation report with no writing goal
 - A broad architecture review that will not produce guidance updates
-- A documentation audit for human-facing docs only
+- A documentation audit for human-facing docs only (that is
+  `swe:docs-drift-audit`)
 - Automatic write-back without an explicit review step
 
 ## Inputs To Confirm

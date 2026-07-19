@@ -6,8 +6,9 @@ description: >-
   tightly scoped backlog of observability gaps. Use when a user says `find
   observability gaps`, `audit telemetry coverage`, `what logs or metrics are
   missing`, `check alerting coverage`, or asks for a recurring telemetry review.
-  Do NOT use for live incident response, root-cause analysis, generic
-  performance tuning, or a broad code review.
+  Do NOT use for live incident response, root-cause analysis, or a broad code
+  review; for latency or throughput bottleneck hunting, use
+  `swe:performance-hunt` instead.
 compatibility: >-
   Requires a local repository checkout and works best with access to service
   configs, logging or metrics code, alert definitions, dashboard manifests,
@@ -46,7 +47,8 @@ Use this skill when the user wants to:
 Do not use this skill for:
 
 - live incident response or active root-cause analysis
-- generic latency, throughput, or performance optimization
+- generic latency, throughput, or performance optimization (that is
+  `swe:performance-hunt`)
 - broad application code review with no observability goal
 - redesigning the entire monitoring stack
 - replacing existing observability tooling without repository evidence
