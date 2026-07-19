@@ -8,9 +8,10 @@ description: >-
   merge`, or asks for a risk-focused PR review. Do NOT use for post-merge
   production monitoring, broad code smell review, or commit-scoped bug hunting.
 compatibility: >-
-  Requires access to PR metadata, diffs, and preferably CI or validation
-  signals. Works best with local checkout access, GitHub PR context, and the
-  repository's own test or release workflow.
+  Requires access to PR metadata and diffs via an authenticated `gh` CLI
+  session or equivalent GitHub tooling, and preferably CI or validation
+  signals. Works best with local checkout access and the repository's own test
+  or release workflow.
 metadata:
   short-description: Review open PRs for merge risk
 ---
@@ -73,7 +74,7 @@ This skill is tool agnostic.
 
 Use the strongest available evidence from:
 
-- PR metadata and diffs
+- PR metadata and diffs, typically via `gh pr view` and `gh pr diff`
 - CI status or failing checks
 - local test or typecheck commands
 - migration or rollout notes

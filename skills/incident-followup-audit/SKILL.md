@@ -79,6 +79,10 @@ Use whichever sources provide the strongest direct evidence, such as:
 - Monitoring, alerting, dashboards, or traces
 - Runbooks or operational docs
 
+In a bare repository checkout with no connected tracker or observability
+system, many categories will legitimately end up `unknown`. That is a valid,
+honest audit result; report it as such rather than inferring completion.
+
 Prefer direct evidence over inference. If a system is unavailable, say so
 explicitly.
 
