@@ -9,9 +9,11 @@ description: >-
   code review, incident analysis with no PR scope, or generic dashboard triage
   disconnected from merged changes.
 compatibility: >-
-  Requires access to GitHub PR metadata plus deployment and observability
-  sources such as CI or CD logs, release dashboards, metrics, traces, or
-  service health tools.
+  Requires GitHub PR metadata via an authenticated `gh` CLI session or
+  equivalent GitHub tooling, plus deployment and observability sources such as
+  CI or CD logs, release dashboards, metrics, traces, or service health tools.
+  Without connected observability sources, deploy and impact status will
+  largely be reported as unverified.
 metadata:
   short-description: Monitor production impact of merged PRs
 ---
@@ -67,6 +69,7 @@ This skill is tool agnostic.
 
 Use whichever deployment and observability sources are available, such as:
 
+- `gh` CLI for merged PRs, deployments, and workflow runs
 - Datadog
 - Grafana
 - CloudWatch
@@ -118,7 +121,10 @@ production impact.
 ### Step 5: Compare The Before And After Window
 
 For deployed changes, compare a narrow window around the deployment, usually
-about 1-2 hours before versus after.
+about 1-2 hours before versus after. Widen the window when the default has no
+signal: low-traffic services, async or batch jobs, and sparse metrics may need
+a day or a full cycle of the job to show impact. State which window was used
+and why.
 
 Review both:
 

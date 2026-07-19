@@ -1,7 +1,7 @@
 ---
 name: "swe:babysit-pr"
 description: >-
-  Babysits an open pull request end-to-end by polling every minute, triaging
+  Babysits an open pull request end-to-end by polling on a short cadence, triaging
   new comments and reviews, handling CI failures, iterating on reviewer
   scores, and stopping only when the PR is ready to merge. Use when a user
   says `babysit this PR`, `watch this PR until it's merge-ready`, `handle
@@ -108,9 +108,14 @@ Create a small working state for the session that tracks:
 If the worktree has unrelated uncommitted changes, stop and ask the user before
 editing the PR branch.
 
-### Step 2: Run A 60-Second Watch Loop
+### Step 2: Run A Persistent Watch Loop
 
-Poll the PR every 60 seconds until a terminal state is reached.
+Poll the PR on the shortest cadence the runtime supports, ideally about once a
+minute, until a terminal state is reached. Use whatever persistence mechanism
+the environment provides: a scheduled wake-up, a monitored watch loop, or
+explicit re-invocation. If the environment cannot sustain a live loop at all,
+say so and report the current snapshot plus what the next pass should check,
+instead of silently degrading into a one-shot review.
 
 Each pass should refresh:
 
