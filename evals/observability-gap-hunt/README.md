@@ -15,6 +15,7 @@ This eval set checks whether the skill:
 - `observability-gap-hunt-full-surface-review`
 - `observability-gap-hunt-missing-external-telemetry`
 - `observability-gap-hunt-recurring-incremental-pass`
+- `observability-gap-hunt-bounded-surface`
 
 ## Review Workflow
 

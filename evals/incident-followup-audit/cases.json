@@ -126,6 +126,47 @@
         "Does it avoid producing a speculative list of bugs or causes?",
         "Does it redirect the user toward the right scope without losing helpfulness?"
       ]
+    },
+    {
+      "id": "incident-followup-audit-bounded-categories",
+      "title": "Bounded audit of only the requested follow-up categories",
+      "tags": [
+        "bounded-scope",
+        "category-subset"
+      ],
+      "user_request": "For SEV-45, only audit whether the regression tests and monitoring changes actually shipped. Skip docs, tickets, and ownership for now.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The user restricted the audit to two follow-up categories.",
+          "Evidence for tests and monitors is available; other categories should be left out rather than audited anyway."
+        ],
+        "available_artifacts": [
+          "Postmortem",
+          "Pull requests",
+          "Test files and CI results",
+          "Monitoring or alerting configs"
+        ]
+      },
+      "artifact_requirements": [
+        "scope statement naming the two audited categories",
+        "done/partial/missing/unknown status for tests and monitors only",
+        "explicit note that other categories were excluded by request"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "instruction-adherence",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Audits only the requested categories and says the rest were excluded, instead of expanding to the full checklist."
+      ],
+      "review_questions": [
+        "Does the response audit only regression tests and monitoring as requested?",
+        "Does it state that the other follow-up categories were excluded rather than implying full coverage?",
+        "Are the two audited categories still classified with the done/partial/missing/unknown discipline?"
+      ]
     }
   ]
 }

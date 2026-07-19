@@ -16,6 +16,7 @@ This eval set checks whether the skill:
 - `babysit-pr-ambiguous-feedback`
 - `babysit-pr-invalid-feedback`
 - `babysit-pr-score-and-ci-loop`
+- `babysit-pr-bounded-watch`
 
 ## Review Workflow
 

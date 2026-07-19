@@ -124,6 +124,83 @@
         "Does it mention ordering, compatibility, or rollback concerns where relevant?",
         "Would the recommendation help the author make the PR safer without broadening scope?"
       ]
+    },
+    {
+      "id": "pr-risk-review-bounded-scope",
+      "title": "Report-only review restricted to one requested risk surface",
+      "tags": [
+        "bounded-scope",
+        "report-only"
+      ],
+      "user_request": "Only review the database migration files in this PR for merge risk. Report findings only; do not suggest changes to any other part of the diff.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The PR touches migrations plus several unrelated files.",
+          "The user explicitly limited the review to the migration surface and to a report-only response."
+        ],
+        "available_artifacts": [
+          "PR metadata",
+          "PR diff",
+          "Schema or migration files",
+          "CI status"
+        ]
+      },
+      "artifact_requirements": [
+        "scope statement naming the reviewed surface",
+        "migration-focused findings or clean report",
+        "explicit note that other surfaces were not reviewed"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "honest-unknowns",
+        "reviewable-structure"
+      ],
+      "static_checks": [
+        "Reviews only the requested migration surface and says so, instead of silently expanding to the full diff."
+      ],
+      "review_questions": [
+        "Does the response stay within the migration surface the user requested?",
+        "Does it state plainly that the rest of the diff was not reviewed rather than implying full coverage?",
+        "Does it stay report-only instead of proposing edits outside the requested boundary?"
+      ]
+    },
+    {
+      "id": "pr-risk-review-vague-request",
+      "title": "Vague request without a PR identifier",
+      "tags": [
+        "edge-case",
+        "trigger-boundary"
+      ],
+      "user_request": "Can you check if my PR is risky?",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "No PR link, number, or branch is provided, and several PRs may be open.",
+          "The skill's own inputs section says to ask for the PR link or number when the request is vague."
+        ],
+        "available_artifacts": [
+          "Repository checkout",
+          "No identified PR"
+        ]
+      },
+      "artifact_requirements": [
+        "request for the PR link, number, or branch",
+        "no invented PR content or findings"
+      ],
+      "shared_criteria": [
+        "instruction-adherence",
+        "honest-unknowns",
+        "scope-discipline"
+      ],
+      "static_checks": [
+        "Asks for the missing PR identifier instead of guessing which PR to review or inventing findings."
+      ],
+      "review_questions": [
+        "Does the response ask for the specific PR instead of assuming one?",
+        "Does it avoid fabricating diff content, findings, or risk claims before the PR is identified?"
+      ]
     }
   ]
 }

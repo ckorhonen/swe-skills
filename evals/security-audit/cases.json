@@ -38,7 +38,7 @@
       ],
       "review_questions": [
         "Does the report stay grounded in dependency or package-surface evidence rather than drifting into general code review?",
-        "Does it explain what was audited and why that uniting makes sense for the repo?",
+        "Does it explain what was audited and why that unit split makes sense for the repo?",
         "Are findings ranked with enough detail for a follow-on remediation decision?"
       ]
     },

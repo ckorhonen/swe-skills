@@ -127,6 +127,47 @@
         "Does it use parallel work only where the write surfaces are clearly separated?",
         "Would the resulting backlog help improve observability over time instead of just listing problems?"
       ]
+    },
+    {
+      "id": "observability-gap-hunt-bounded-surface",
+      "title": "Bounded pass over one requested service surface",
+      "tags": [
+        "bounded-scope",
+        "single-surface"
+      ],
+      "user_request": "Only look at the payments service for observability gaps. Leave the rest of the workspace alone.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The user restricted the hunt to a single service surface.",
+          "Other services have visible telemetry issues that should not be pulled into this pass."
+        ],
+        "available_artifacts": [
+          "Payments service code",
+          "Payments service configs",
+          "Shared observability helpers",
+          "Operational docs"
+        ]
+      },
+      "artifact_requirements": [
+        "scope statement naming the single audited surface",
+        "ranked gaps for that surface only",
+        "explicit note that other services were not reviewed"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "instruction-adherence",
+        "actionable-output"
+      ],
+      "static_checks": [
+        "Keeps findings within the requested service surface instead of expanding to the whole workspace."
+      ],
+      "review_questions": [
+        "Does the response confine its findings to the requested service surface?",
+        "Does it say plainly that other services were not reviewed rather than implying workspace-wide coverage?",
+        "Are the ranked gaps still evidence-backed within the narrowed scope?"
+      ]
     }
   ]
 }
