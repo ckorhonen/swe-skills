@@ -14,6 +14,7 @@ This eval set checks whether the skill:
 - `incident-followup-audit-complete-loop`
 - `incident-followup-audit-partial-evidence`
 - `incident-followup-audit-overbroad-root-cause-request`
+- `incident-followup-audit-bounded-categories`
 
 ## Review Workflow
 

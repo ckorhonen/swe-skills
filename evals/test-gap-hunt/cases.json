@@ -129,6 +129,48 @@
         "Does it use parallel or subagent work only where write boundaries are clearly separated?",
         "Would the resulting workflow improve confidence over time instead of just inflating coverage metrics?"
       ]
+    },
+    {
+      "id": "test-gap-hunt-bounded-package",
+      "title": "Bounded pass restricted to one requested package",
+      "tags": [
+        "bounded-scope",
+        "single-package"
+      ],
+      "user_request": "Only improve test coverage for the parser package this pass. Don't touch tests anywhere else in the workspace.",
+      "context": {
+        "repo_path": ".",
+        "notes": [
+          "The user restricted the pass to a single package.",
+          "Other packages have visible gaps that should be noted for the backlog, not worked on."
+        ],
+        "available_artifacts": [
+          "Parser package source and tests",
+          "Package scripts",
+          "Coverage or CI signals",
+          "Workspace structure"
+        ]
+      },
+      "artifact_requirements": [
+        "scope statement naming the single package",
+        "ranked gaps and changes within that package only",
+        "narrow validation run for the touched package",
+        "out-of-scope gaps deferred to the backlog"
+      ],
+      "shared_criteria": [
+        "scope-discipline",
+        "concrete-evidence",
+        "instruction-adherence",
+        "actionable-output"
+      ],
+      "static_checks": [
+        "Keeps all test changes inside the requested package and defers other gaps to the backlog."
+      ],
+      "review_questions": [
+        "Do all proposed or executed test changes stay inside the requested package?",
+        "Does the response validate with the narrowest command that covers the touched package?",
+        "Are gaps outside the package deferred to the backlog instead of silently worked on or ignored?"
+      ]
     }
   ]
 }
