@@ -132,6 +132,16 @@ Keep the skill package layered:
 Do not inline large reference material if a short summary plus targeted lookup is
 enough.
 
+Keep `SKILL.md` under 500 lines and write the frontmatter description in third
+person with the concrete trigger phrases front-loaded in the first sentence;
+skill listings truncate long descriptions, so the discriminating words must
+come first.
+
+When the skill needs a `Tooling Stance`, `Parallelization Rule`, or
+`Evidence Rules` section, start from the canonical templates in
+`references/shared-sections.md` instead of copying a sibling skill; forked
+copies of these sections have drifted before.
+
 ### Step 5: Draft The Skill Body
 
 Draft the `SKILL.md` body using this repository's required structure:

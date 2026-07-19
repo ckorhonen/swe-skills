@@ -63,6 +63,20 @@ Confirm or infer:
 
 If the scope is unclear, ask for the smallest useful boundary before proceeding.
 
+## Tooling Stance
+
+This skill is tool agnostic.
+
+Use the strongest available evidence sources, such as:
+
+- `git log` and `git diff` for recent change surfaces
+- `rg` or equivalent search across docs and code
+- `fd` or equivalent file discovery
+- CI workflows, package scripts, and config files as ground truth
+
+Prefer the repository's own tooling and conventions over ad hoc commands. If a
+needed source is unavailable, say so explicitly instead of inventing evidence.
+
 ## Instructions
 
 ### Step 1: Define The Change Surface
