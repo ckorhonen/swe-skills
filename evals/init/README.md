@@ -16,6 +16,7 @@ This eval set checks whether the skill:
 - `init-quick-defaults-no-gitignore`
 - `init-existing-file-protection`
 - `init-non-trigger-project-bootstrap`
+- `init-malformed-existing-file`
 
 ## Review Workflow
 
