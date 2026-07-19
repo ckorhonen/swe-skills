@@ -131,6 +131,21 @@ Separate findings into:
 
 Only propose remediation sessions for strong or moderate findings.
 
+### Step 6: Propose Minimal Remediation Sessions
+
+For every finding that clears the evidence bar, propose one small remediation
+session with:
+
+- Session name
+- Objective
+- Target repo
+- Expected files to touch
+- Minimal fix strategy
+- Validation plan
+
+Prefer one issue per session unless two issues share the same tiny write
+surface and can safely be fixed together.
+
 ## What Counts As A Good Finding
 
 Every proposed issue should:
@@ -148,21 +163,6 @@ Avoid:
 - Large rewrites
 - Style-only issues
 - Findings that require broad product or domain assumptions
-
-### Step 6: Propose Minimal Remediation Sessions
-
-For every finding that clears the evidence bar, propose one small remediation
-session with:
-
-- Session name
-- Objective
-- Target repo
-- Expected files to touch
-- Minimal fix strategy
-- Validation plan
-
-Prefer one issue per session unless two issues share the same tiny write
-surface and can safely be fixed together.
 
 ## Output Requirements
 

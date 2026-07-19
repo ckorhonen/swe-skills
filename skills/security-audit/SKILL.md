@@ -70,6 +70,25 @@ agent work.
 If parallel sessions are unavailable, process the units in local batches and
 keep the same report shape.
 
+## Tooling Stance
+
+This skill is tool agnostic.
+
+Use the strongest available tools for the detected ecosystem, such as:
+
+- `npm audit`, `pnpm audit`, or `yarn audit`
+- `cargo audit`
+- `pip-audit`, `safety`, or `poetry show --outdated`
+- `bundle audit` or `bundler outdated`
+- `go list -m -u all` or `govulncheck`
+- `osv-scanner`
+- `trivy`
+- `license_finder`
+- Ecosystem-native outdated or advisory commands
+
+Prefer the package manager and scanner already used by the repository. Do not
+invent tooling if the environment already has a clear local pattern.
+
 ## Instructions
 
 ### Step 1: Identify Audit Units
@@ -93,25 +112,6 @@ correct scanner or audit command can be chosen.
 Run the most appropriate security, dependency, and license checks for each
 surface. Prefer the package manager and scanners already used by the repo.
 
-## Tooling Stance
-
-This skill is tool agnostic.
-
-Use the strongest available tools for the detected ecosystem, such as:
-
-- `npm audit`, `pnpm audit`, or `yarn audit`
-- `cargo audit`
-- `pip-audit`, `safety`, or `poetry show --outdated`
-- `bundle audit` or `bundler outdated`
-- `go list -m -u all` or `govulncheck`
-- `osv-scanner`
-- `trivy`
-- `license_finder`
-- Ecosystem-native outdated or advisory commands
-
-Prefer the package manager and scanner already used by the repository. Do not
-invent tooling if the environment already has a clear local pattern.
-
 ### Step 4: Capture Raw Evidence
 
 Capture concrete evidence from:
@@ -123,6 +123,12 @@ Capture concrete evidence from:
 - CI signals
 
 If a check cannot be run, say why and do not guess the result.
+
+### Step 5: Aggregate And Rank Findings
+
+Aggregate all findings into one report ranked by severity and confidence.
+
+Call out units with no findings explicitly.
 
 ## Evidence Rules
 
@@ -165,12 +171,6 @@ For license issues:
 
 - Report concrete incompatible, unknown, or restricted licenses
 - Note when license data is incomplete or unavailable
-
-### Step 5: Aggregate And Rank Findings
-
-Aggregate all findings into one report ranked by severity and confidence.
-
-Call out units with no findings explicitly.
 
 ## Output Requirements
 
