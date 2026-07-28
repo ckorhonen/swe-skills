@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "lint-staged": "^15.5.2",
-    "markdownlint-cli2": "^0.22.0",
+    "markdownlint-cli2": "^0.23.2",
     "simple-git-hooks": "^2.13.1"
   },
   "lint-staged": {
