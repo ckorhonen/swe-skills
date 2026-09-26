@@ -52,3 +52,18 @@ This repository stores AI skill files and evaluation suites for SWE workflows.
 - Update `README.md` whenever repository structure, install flow, or skill/eval workflows change.
 - Do not land changes that make `README.md` materially inaccurate.
 - Do not land changes to skills without checking `site/index.html` for accuracy.
+
+## Local validation and completion
+
+- Use Node 22 (as in lint CI) and `npm ci`; installation configures Git hooks.
+- `npm run lint:md` checks Markdown. For skill/eval changes also run
+  `npm run evals:check`; for judge assets run `npm run judges:check`.
+- `review-app/` is the local review UI; `review-data/` holds generated local
+  datasets/results. `npm run review:serve` starts the review server and can save
+  annotations, so it is not a read-only validation command.
+- The repository has no application build/typecheck script. For instruction-only
+  edits check Markdown, paths, and the diff; do not run provider evaluations or
+  deploy the site to prove a prose change.
+- Continue authorized work through relevant checks and repair introduced failures.
+  Make routine choices directly; raise only material scope questions or exact
+  prerequisite blockers. Report changed paths, actual checks/results, and gaps.
